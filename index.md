@@ -15,8 +15,8 @@ title: Feed
     <hr style="width:100%;text-align:left;margin-left:0;border-width:0;height:2px;color:lightgray;background-color:lightgray;">
 </body>
 {% endfor %}
-<h1>
+<h3>
     <a href="{{ site.baseurl }}/blog.html" class="a">
-        More Posts.......
+        More Posts...
     </a>
-</h1>
+</h3>

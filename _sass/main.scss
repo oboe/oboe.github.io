@@ -41,6 +41,7 @@ blockquote {
 a {
   text-decoration: none;
   color: black; //rgb(17, 138, 132);
+  font-weight: 600;
   &:hover {
     text-decoration:underline;
   }
