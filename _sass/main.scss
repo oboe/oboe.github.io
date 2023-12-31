@@ -40,13 +40,13 @@ blockquote {
 
 a {
   text-decoration: none;
-  color: rgb(17, 138, 132);
+  color: black; //rgb(17, 138, 132);
   &:hover {
     text-decoration:underline;
   }
   &:visited,:active {
     text-decoration: none;
-    color: rgb(17, 138, 132);
+    color: black; //rgb(17, 138, 132);
   }
 }
 
