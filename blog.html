@@ -1,0 +1,16 @@
+---
+layout: default
+title: Blog
+---
+<h2>Archive</h2>
+
+<div class="archive">
+  {% for post in site.posts %} 
+    <div class="archive-item">
+      <div class="archive-item-title">
+        <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
+      </div>
+      <span class="archive-date">{{ post.date | date: "%b %Y" }}</span>
+    </div>
+  {% endfor %}
+</div>
