@@ -17,6 +17,6 @@ title: Feed
 {% endfor %}
 <h3>
     <a href="{{ site.baseurl }}/blog.html" class="a">
-        More Posts...
+        More Posts
     </a>
 </h3>
