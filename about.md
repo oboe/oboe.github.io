@@ -2,6 +2,10 @@
 layout: default
 title: Home
 ---
+*Live with blistering intensity.*
+
+*You are what you do daily.*
+
 ## About
 Distingushed L9 Principal Engineer at Albertsons.
 
