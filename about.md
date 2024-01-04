@@ -20,5 +20,5 @@ Lets hope that works :)
 ## About the site
 This is the 3rd or 4th site I've made for myself. 
 All previous sites died with the design trends I liked at the time.
-This site aims to be ruthlessly minimalistic so it doesn't look ugly next year. (I know that even this is following the medium/notion minimalist design trend, I can't help myself the group-think brain rot is in too deep)
+This site aims to be ruthlessly minimalistic so it doesn't look ugly next year. (I know that even this is following the medium/notion minimalist design trend, I can't help myself, the group-think brain rot is in too deep)
 - made with [Jekyll](https://jekyllrb.com/)
