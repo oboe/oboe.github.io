@@ -12,7 +12,7 @@ I think both are important and necessary. I think input and output goals are at 
 Explicit Tasks -> Input Goals -> Ouput Goals -> Ambigous Objectives
 
 e.g
-Write this code -> X Feature -> Solve X problem -> Make customers happy
+Write this code -> X Feature -> Increase Retention -> Make customers happy
 ```
 #### So how can you set great goals?
 You should try to reduce as much ambiguity as possible. This means that you need to set goals that are as input goals as possible without losing sight of the true objective. A great way of thinking about this is that in unambiguous domains (where its clear on how to reach the goal) you should set input goals, and in ambiguous domains set output goals.
