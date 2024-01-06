@@ -15,7 +15,7 @@ e.g
 Write this code -> X Feature -> Solve X problem -> Make customers happy
 ```
 #### So how can you set great goals?
-You should try to reduce as much ambiguity as possible. This means that you need to set goals that are as input goals as possible without losing sight of the goal. A great way of thinking about this is that in unambiguous domains (where its clear on how to reach the goal) you should set input goals, and in ambiguous domains set output goals.
+You should try to reduce as much ambiguity as possible. This means that you need to set goals that are as input goals as possible without losing sight of the true objective. A great way of thinking about this is that in unambiguous domains (where its clear on how to reach the goal) you should set input goals, and in ambiguous domains set output goals.
 
 An example of an unambiguous domain is losing weight. Its studied extensively and its well known how humans can do this. So set explicit input goals here. For example: run X times.
 
