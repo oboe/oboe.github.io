@@ -75,3 +75,10 @@ http://localhost:9870/
 
 ```
 
+## Issues
+https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+Java+Versions 
+Hadoop has limited Java support. I'm going to use Java 8.
+```
+brew install --cask homebrew/cask-versions/adoptopenjdk8
+```
+
