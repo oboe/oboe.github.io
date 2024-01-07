@@ -1,6 +1,8 @@
 I'd expect it to be no different than instructions, but I'll log any differences here:
 https://apache.github.io/hadoop/hadoop-project-dist/hadoop-common/SingleCluster.html
 
+## Pseudo-Distributed Operation
+
 ```
 
 brew install hadoop
@@ -50,11 +52,15 @@ ssh localhost
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-// format something
+// format hdfs
 hadoop namenode -format 
 
 // Run everything
 ./../../sbin/start-all.sh
+or
+start-dfs.sh
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
 
 // check stuff is running
 jps
