@@ -4,6 +4,7 @@ https://brew.sh/
 ### 2. Install iterm2
 https://iterm2.com/
 ### 3. Install oh my zsh
+https://ohmyz.sh/
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
