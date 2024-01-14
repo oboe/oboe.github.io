@@ -53,4 +53,10 @@ brew install git-delta
 [diff]
     colorMoved = default
 ```
+### 7. Basic vim defaults
+https://github.com/amix/vimrc
+```
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_basic_vimrc.sh
+```
 
