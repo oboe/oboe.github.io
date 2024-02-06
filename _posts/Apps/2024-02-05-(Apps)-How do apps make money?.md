@@ -7,6 +7,7 @@ In app purchases are usually split into four categories.
 2. Subscriptions: dominant strategy in non gaming apps, can be seen in popular mobile games as season passes. Great to create alignment between the user and the app.
 3. Consumables: things to improve or accelerate the game. Coins, gems, boosters, those candy crush retry hammer things.
 4. Non-consumables: more permanent things that alter the longer app or game experience. Loot boxes, ad removal.
+
 ## Advertisements
 Ads usually come in three flavours.
 1. Banner ads: the least profit
