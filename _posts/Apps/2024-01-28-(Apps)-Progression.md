@@ -6,7 +6,7 @@ When designing your apps you should make sure this idea is present as well. In y
 
 This idea also bleeds into other aspects of life as well. Create metrics and dashboards about things you care about and you and others will most likely optimise on these things which are measured.
 
-### (5th Feb Update)
+### Visual rewards in mobile games
 Was able to learn a super interesting piece of data that showing progress or this visual reward in the first 30 seconds of a game is one of the best ways to increase the retention rate of mobile games.
 
 So what counts as a visual reward? Any text, sounds, graphic that shows progression and encouragement. When the user completes an action, a level etc.
