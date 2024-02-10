@@ -1,0 +1,1 @@
+Something I've been uncomfortable about is asking for a shaved head at the barbers. I feel it's almost disrespectful to ask someone who's job is cutting hair to just shave my head. It's as if I'm asking an artist to fill in a colouring book.
