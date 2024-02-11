@@ -121,6 +121,7 @@ Lots of easy app ideas here, the main blocker will be differentiating enough to 
 
 I see no real option to differentiate here without building a backend or investing a lot of time to move outside of MapKit. A micro idea would be a travelling tick list for each of the cool Apple MapKit landmarks.
 - https://apps.apple.com/us/app/been-track-visited-countries/id1659477938
+
 ## Finance ❌
 I don't want to deal with the risk and liability of running a finance app. So this category will have to be thrown.
 ## Travel ❌
