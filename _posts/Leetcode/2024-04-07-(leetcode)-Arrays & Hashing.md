@@ -76,8 +76,44 @@ public:
 };
 ```
 https://leetcode.com/problems/group-anagrams/description/
-Naive 
+Naive
+- pop one, find all matching anagrams, do this again
+- create a sorted version of each string, sort the entire strings, pop each matching string with two pointers
 
+Good
+- Instead of using a hashmap just bit encode it 2^26, or just a 26 length array
+- Create a key that represents the anagram and pass: n, n space
+
+
+```cpp
+class Solution {
+public:
+    string getCharMap(string s) {
+        vector<int> cMap(26,0);
+        for (int i = 0 ; i < s.size() ; i++) {
+            int c = s[i];
+            cMap[(c - 'a')]++;
+        }
+        string ans = "";
+        for (int i = 0 ; i < cMap.size() ;i++) {
+            ans += cMap[i];
+        }
+        return ans;
+    }
+
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> ans;
+        unordered_map<string,vector<string>> stringToMap;
+        for(int i = 0 ; i < strs.size() ; i++){
+            stringToMap[getCharMap(strs[i])].push_back(strs[i]);
+        }
+        for(auto kv : stringToMap) {
+            ans.push_back(kv.second);
+        }
+        return ans;
+    }
+};
+```
 
 https://leetcode.com/problems/top-k-frequent-elements/description/
 
