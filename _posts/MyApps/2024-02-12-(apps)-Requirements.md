@@ -15,6 +15,12 @@ To avoid market risk the app must solve a known problem. People should be visibl
 Execution risk is much easier to resolve as building apps isn't hard.
 
 This makes it crystal clear that the key bet being played here with the 24 apps goal is whether I can effectively learn and get distribution for these apps.
+### distribution risk: People should already be searching for this app
+This is a follow up on reducing distribution risk. You can find this out on the standard ASO platforms.
+### market risk: People should be willing to pay money for it
+The app should provide enough visible value for the customer to want to give you their money. Are people already paying money for this solution?
+### execution risk: I can build the product
+The app I create must be competitive so I shouldn't take on projects I don't have the right domain expertise on. I shouldn't build an app to teach a language I don't know. That should be obvious.
 ### 3. Not cross platform
 Supporting both platforms is way too much surface area for a single person to support over 24 apps.
 ### 4. No backends
