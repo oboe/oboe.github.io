@@ -1,5 +1,6 @@
 
 https://leetcode.com/problems/contains-duplicate/
+
 Naive
 - Sort and pass: nlogn time, 1 space
 
@@ -24,6 +25,7 @@ public:
 ```
 
 https://leetcode.com/problems/valid-anagram/description/
+
 Naive
 - Sort and pass: nlogn, 1 space
 
@@ -55,6 +57,7 @@ public:
 
 
 https://leetcode.com/problems/two-sum/description/
+
 Naive
 - nested loop: n^2, 1 space
 -  encode index, sort, two pointer: nlogn, 1 space
@@ -76,13 +79,15 @@ public:
 };
 ```
 https://leetcode.com/problems/group-anagrams/description/
+
 Naive
 - pop one, find all matching anagrams, do this again
 - create a sorted version of each string, sort the entire strings, pop each matching string with two pointers
 
 Good
 - Instead of using a hashmap just bit encode it 2^26, or just a 26 length array
-- Create a key that represents the anagram and pass: n, n space
+- **Create a key that represents the anagram (charmap/sort) and pass: n, n space**
+- When you want to group elements of a vector ask yourself if theres a way to encode a key so you can use a hashmap to do it in a single pass
 
 
 ```cpp
