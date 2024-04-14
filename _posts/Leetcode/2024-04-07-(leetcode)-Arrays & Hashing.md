@@ -1,3 +1,5 @@
+Hashing is great to check for duplicates and to group things.
+
 
 https://leetcode.com/problems/contains-duplicate/
 
@@ -121,7 +123,140 @@ public:
 ```
 
 https://leetcode.com/problems/top-k-frequent-elements/description/
+Naive
+- Sort, pass through with map, sort map results: nlogn, n space
+
+Good
+- Use a priority queue: nlogk, nspace
+
+```cpp
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        unordered_map<int,int> numToFreq;
+        for(int i = 0 ; i < nums.size() ; i++) {
+            numToFreq[nums[i]]++;
+        }
+        vector<pair<int,int>> freqNumPairs;
+        for(auto kv : numToFreq){
+            freqNumPairs.push_back(make_pair(kv.second,kv.first));
+        }
+        sort(freqNumPairs.rbegin(),freqNumPairs.rend());
+        vector<int> ans;
+        for(int i = 0 ; i < k ; i++){
+            ans.push_back(freqNumPairs[i].second);
+        }
+        return ans;
+    }
+};
+```
 
 https://leetcode.com/problems/product-of-array-except-self/description/
 
+Just maths?
+
+```cpp
+class Solution {
+    // [b*c,a*c,a*b]
+    // [1,a,ab]
+    // [bc,b,1]
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> ans(nums.size(), 1);
+        int last = 1;
+        for(int i = 0 ; i < nums.size() ; i++){
+            ans[i] = ans[i]*last;
+            last = last * nums[i];
+        }
+        last = 1;
+        for(int i = nums.size() -1 ; i >= 0 ; i-- ){
+            ans[i] = ans[i]*last;
+            last = last * nums[i];
+        }
+        return ans;
+    }
+};
+```
+
 https://leetcode.com/problems/valid-sudoku/description/
+Straightforward
+
+```cpp
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        for(vector<char> row : board){
+            if (!isValidRow(row)) {
+                return false;
+            }
+        }
+        for(int i = 0 ; i < 9 ; i++){
+            if (!isValidCol(i,board)) {
+                return false;
+            }
+        }
+        for(int i = 0 ; i < 3 ; i++){
+            for(int j = 0 ; j < 3 ;j++){
+                if (!isValidBox(i,j,board)) {
+                   return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    bool isValidRow(vector<char> row) {
+        unordered_set<char> cMap;
+        for(char c : row) {
+            if (c != '.' && cMap.count(c) != 0) {
+                return false;
+            }
+            cMap.insert(c);
+        }
+        return true;
+    }
+
+    bool isValidCol(int colNum, vector<vector<char>>& board) {
+        unordered_set<char> cMap;
+        for(int i = 0 ; i < 9 ; i++) {
+            char c = board[i][colNum];
+            if (c != '.' && cMap.count(c) != 0) {
+                return false;
+            }
+            cMap.insert(c);
+        }
+        return true;
+    }
+
+    bool isValidBox(int boxX, int boxY, vector<vector<char>>& board) {
+        unordered_set<char> cMap;
+        for(int i = 0 ; i < 9 ; i++){
+            if ((boxX*3) > i) {
+                continue;
+            }
+            if ((boxX + 1)*3 <= i ){
+                continue;
+            }
+            for(int j = 0 ; j < 9 ; j++){
+                if ((boxY*3) > j) {
+                    continue;
+                }
+                if ((boxY + 1)*3 <= j ){
+                    continue;
+                }
+                char c = board[i][j];
+                if (c != '.' && cMap.count(c) != 0) {
+                    return false;
+                }
+                cMap.insert(c);
+            }
+        }
+        return true;
+    }
+};
+```
+
+https://leetcode.com/problems/longest-consecutive-sequence/
+Naive
+- hashmap
