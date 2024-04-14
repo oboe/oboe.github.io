@@ -3,7 +3,7 @@ layout: default
 title: Feed
 ---
 
-{% for post in site.posts limit: 50 %} 
+{% for post in site.posts limit: 100 %} 
 <body>
     <h1>
         <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
