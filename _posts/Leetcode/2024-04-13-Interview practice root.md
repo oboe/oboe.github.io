@@ -10,9 +10,10 @@ System design
 
 Behavioural+
 - [ ] Polish CV
-- [ ] Re create the behavioural interview grid for things on my CV
+- [ ] Re create the behavioural interview grid STAR for things on my CV
 
 General strategy
+- [ ] Add more roles from linekdin, like optiver and github
 - [ ] Interview with less desirable places first to prep
 
 Why did you apply
