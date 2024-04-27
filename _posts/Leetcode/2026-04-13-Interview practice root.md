@@ -9,7 +9,10 @@ System design
 - [ ] Read system design interview book
 
 Behavioural+
-- [ ] Polish CV
+- [ ] Polish CV:
+	- [ ] https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edit
+	- [ ] https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edit
+	- [ ] Ping friend for feedback
 - [ ] Re create the behavioural interview grid STAR for things on my CV
 
 General strategy
