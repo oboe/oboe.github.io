@@ -250,9 +250,147 @@ public:
 ```
 
 https://leetcode.com/problems/find-the-duplicate-number/description/
+Naive
+- theres one repeated number
+- constant space
+- 1 -> n
+
+Good
+- floyd algo, need to use the unintuitive reset fast pointer to find the cycle start
+
+```cpp
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        fast = nums[0];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};
+```
 
 https://leetcode.com/problems/lru-cache/description/
+Naive
+- get returns value of key, constant time, so needs some sort of constant time lookup, most likely needs a hashmap somewhere for this.
+- Main issue is evicting the least recently used key. Needs some sort of structure that preserves insertion ordering. Likely a queue.
+
+Good
+- Hmm I guess I'll try having a deque and a hashmap. Keys pointing to the deque iterators.
+
+```cpp
+class Node {
+public:
+    int val;
+    int key;
+    Node* prev;
+    Node* next;
+    Node(){
+        val = 0;
+        key = 0;
+        prev = nullptr;
+        next = nullptr;
+    }
+    Node(int v){
+        val = v;
+        key = 0;
+        prev = nullptr;
+        next = nullptr;
+    }
+    Node(int v, int k){
+        val = v;
+        key = k;
+        prev = nullptr;
+        next = nullptr;
+    }
+};
+
+class LRUCache {
+public:
+    unordered_map<int,Node*> m;
+    int cap = 0;
+    int size = 0;
+    Node* dummyHead;
+    Node* dummyBack;
+    LRUCache(int capacity) {
+        cap = capacity;
+        dummyHead = new Node();
+        dummyBack = new Node();
+        dummyHead->next = dummyBack;
+        dummyBack->prev = dummyHead;
+    }
+    
+    int get(int key) {
+        if(m.count(key) == 0){
+            return -1;
+        }
+        Node* it = m[key];
+        pop(it, key);
+        insertTop(it, key);
+        return it->val;
+    }
+
+    void pop(Node* popVal, int key){
+        Node* pNext = popVal->next;
+        Node* pPrev = popVal->prev;
+        pPrev->next = pNext;
+        pNext->prev = pPrev;
+        size--;
+        m.erase(key);
+    }
+
+    void insertTop(Node* insertNode, int key){
+        Node* prevFirst = dummyHead->next ? dummyHead->next : nullptr;
+        insertNode->next = prevFirst;
+        insertNode->prev = dummyHead;
+        if (prevFirst != nullptr) prevFirst->prev = insertNode;
+        dummyHead->next = insertNode;
+        m[key] = insertNode;
+        size++;
+    }
+    
+    void put(int key, int value) {
+        // Update the value of the key if the key exists.
+        if(m.count(key) != 0){
+            Node* it = m[key];
+            pop(it, key);
+        }
+
+        // Otherwise, add the key-value pair to the cache.
+        Node* newNode = new Node(value, key);
+        insertTop(newNode, key);
+
+        if(size <= cap || size == 0){
+            return;
+        }
+        // If the number of keys exceeds the capacity from this 
+        // operation, evict the least recently used key.
+        Node* prevBack = dummyBack->prev;
+        pop(prevBack,prevBack->key);
+    }
+};
+```
 
 https://leetcode.com/problems/merge-k-sorted-lists/description/
+Naive
+- Just go through each list and add the lowest value?
+
+Good
+- Read through the question end to end!
+- You could also just merge two lists one by one?
 
 https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+Naive
+- Just pop k, reverse and re append?
+- Whats hard here other than the implementation?
+- Just a finnicky implementation
