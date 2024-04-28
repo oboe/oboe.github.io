@@ -375,8 +375,76 @@ public:
 
 
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+Naive
+- recursively split preorder and inorder and create the tree
+- nothing too surprising just recursive
 
+```cpp
+class Solution {
+public:
+TreeNode* constructTree(vector < int > & preorder, int preStart, int preEnd, vector 
+ < int > & inorder, int inStart, int inEnd, map < int, int > & mp) {
+    if (preStart > preEnd || inStart > inEnd) return NULL;
+
+    TreeNode* root = new TreeNode(preorder[preStart]);
+    int elem = mp[root -> val];
+    int nElem = elem - inStart;
+
+    root -> left = constructTree(preorder, preStart + 1, preStart + nElem, inorder,
+    inStart, elem - 1, mp);
+    root -> right = constructTree(preorder, preStart + nElem + 1, preEnd, inorder, 
+    elem + 1, inEnd, mp);
+
+    return root;
+}
+
+TreeNode* buildTree(vector < int > & preorder, vector < int > & inorder) {
+    int preStart = 0, preEnd = preorder.size() - 1;
+    int inStart = 0, inEnd = inorder.size() - 1;
+
+    map < int, int > mp;
+    for (int i = inStart; i <= inEnd; i++) {
+        mp[inorder[i]] = i;
+    }
+
+    return constructTree(preorder, preStart, preEnd, inorder, inStart, inEnd, mp);
+    }
+};
+```
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
+Naive
+- Just dfs with a update single ans value, and passing correct value through the dfs
+
+```cpp
+class Solution {
+public:
+    int ans;
+    int maxPathSum(TreeNode* root) {
+        ans = INT_MIN;
+        maxPathIncludingRoot(root);
+        return ans;
+    }
+
+    int maxPathIncludingRoot(TreeNode* root) {
+        if(!root) return 0;
+        int l = maxPathIncludingRoot(root->left);
+        int r = maxPathIncludingRoot(root->right);
+        //update ans with best passing through root
+        int a = root->val;
+        a += max(0,l) + max(0,r);
+        ans = max(ans,a);
+        // return val of highest single path
+        int b = root->val;
+        b += max(max(l,r),0);
+        return b;
+    }
+};
+```
 
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
-
+Naive
+- so many ways to do this
+- inorder,preorder traversal and rejoin
+- quick json encoding? Rely on some kind of standard library
+- BST, level encoding, populating the lack of nodes with nulls
+- preorder traversal with blocking nulls to indicate dead ends
