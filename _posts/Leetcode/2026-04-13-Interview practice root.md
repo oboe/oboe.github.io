@@ -13,6 +13,7 @@ Behavioural+
 	- [ ] https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edit
 	- [ ] https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edit
 	- [ ] Ping friend for feedback
+	- [ ] Include the java and python cdk skills into the top my current experience section
 - [ ] Re create the behavioural interview grid STAR for things on my CV
 
 General strategy

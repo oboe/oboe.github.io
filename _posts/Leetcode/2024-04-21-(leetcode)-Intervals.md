@@ -1,4 +1,6 @@
 https://leetcode.com/problems/insert-interval/
+Naive
+
 
 https://leetcode.com/problems/merge-intervals/
 
