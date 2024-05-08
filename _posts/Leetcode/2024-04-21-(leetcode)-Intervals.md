@@ -33,7 +33,34 @@ public:
 ```
 https://leetcode.com/problems/merge-intervals/
 
+```cpp
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(),intervals.end());
+        if(intervals.size()==0) return intervals;
+        vector<vector<int>> ans;
+        vector<int> curr = intervals[0];
+        for(int i = 1 ;i <intervals.size(); i++){
+            if(curr[1]< intervals[i][0]){//non overlapping
+                ans.push_back(curr);
+                curr = intervals[i];
+                continue;
+            } else{
+                curr[0] = min(curr[0],intervals[i][0]);
+                curr[1] = max(curr[1],intervals[i][1]);
+            }
+        }
+        ans.push_back(curr);
+        return ans;
+    }
+};
+```
+
 https://leetcode.com/problems/non-overlapping-intervals/
+Naive
+- bad solution would be try every removal permutation and select this minimum valid one
+- Main thinking go through sorted version and when i find out a and be are colliding remove one and continue. Main issue is that i need to choose between which one to remove here and both could be valid options.
 
 https://leetcode.com/problems/minimum-interval-to-include-each-query/
 
