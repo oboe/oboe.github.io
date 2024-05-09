@@ -60,7 +60,7 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_basic_vimrc.sh
 ```
 
-### fzf
+### 8. fzf
 https://github.com/junegunn/fzf
 
 ```
@@ -70,7 +70,7 @@ brew install fzf
 # At the end of the file
 eval "$(fzf --zsh)"
 ```
-### zoxide
+### 9. zoxide
 https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file
 
 ```
