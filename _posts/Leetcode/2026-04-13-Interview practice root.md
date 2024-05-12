@@ -22,4 +22,5 @@ General strategy
 
 Why did you apply
 - [ ] Point to their blog post and research about it
-
+- [ ] https://www.mavensecurities.com/maven-interview-question-revealed/
+- [ ] https://www.mavensecurities.com/revisiting-interview-questions-at-maven/

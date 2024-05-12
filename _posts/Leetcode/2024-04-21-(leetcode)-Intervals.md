@@ -60,7 +60,48 @@ public:
 https://leetcode.com/problems/non-overlapping-intervals/
 Naive
 - bad solution would be try every removal permutation and select this minimum valid one
+- 2^n complexity
 - Main thinking go through sorted version and when i find out a and be are colliding remove one and continue. Main issue is that i need to choose between which one to remove here and both could be valid options.
 
-https://leetcode.com/problems/minimum-interval-to-include-each-query/
+Good
+- What would a good solution look like?
+- solution is greedy
+- Sort and sequentially compare adjacent intervals
+- Greedily prioritise removing the intervals which would most negatively impact us: those with a larger ending point.
 
+```cpp
+class Solution {
+public:
+    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+        sort(intervals.begin(),intervals.end());
+        if(intervals.size() <= 1){
+            return 0;
+        }
+        //track last interval end
+        int lastEnd = max(INT_MIN, intervals[0][1]);
+        int ans = 0;
+        for(int i = 1 ; i < intervals.size() ; i++){
+            if(lastEnd <= intervals[i][0]){ //not overlapping
+                lastEnd = intervals[i][1];
+            } else { //overlapping
+                ans++;
+                //remove shorter end interval
+                lastEnd = min(lastEnd, intervals[i][1]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+https://leetcode.com/problems/minimum-interval-to-include-each-query/
+Naive
+- list of intervals
+- wants queries getting the size of the smallest interval which is within a query
+- length of intervals is n, number of queries is also n
+- Naive approach is just for each query, doing a pass to find valid intervals and maintaining the one with the smallest one
+- Definitely feels like I need to maintain something to quickly get the intervals
+- Another thing I could do is sort on interval size, and leading from largest intervals paint the 10^7 range with the relevant interval
+- interesting call out is they are not asking for the interval index, they are asking for the interval size
+
+Good
