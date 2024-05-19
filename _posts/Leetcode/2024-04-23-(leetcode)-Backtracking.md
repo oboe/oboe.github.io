@@ -60,6 +60,9 @@ do {
 	// process permutation
 } while (next_permutation(permutation.begin(),permutation.end()));
 ```
+
+#### Backtracking
+What does it mean to backtrack? It's to incrementally build candidates to the solutions and abandons a candidate as soon as it determines that the candidate cannot lead to a final solution.
 ## Qs
 
 https://leetcode.com/problems/subsets/
