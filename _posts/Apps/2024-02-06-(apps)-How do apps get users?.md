@@ -7,5 +7,5 @@ Theres two main families of user acquisition.
 2. Unpaid acquisition: users sharing the app, rating the app, etc.
 
 Something to really care about is are you paying less to acquire a user than what they bring in. To help with this user attribution is necessary. These help you connect the cost you paid for a specific user to the profit they bring in.
-- Theres a bunch of these:<<https://appradar.com/blog/14-best-mobile-attribution-partner>>
+- Theres a bunch of these:<https://appradar.com/blog/14-best-mobile-attribution-partner>
 - Still not too clear on which of these have the best data

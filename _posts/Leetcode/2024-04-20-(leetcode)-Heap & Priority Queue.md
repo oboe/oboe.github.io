@@ -1,4 +1,4 @@
-<<https://leetcode.com/problems/kth-largest-element-in-a-stream>>
+<https://leetcode.com/problems/kth-largest-element-in-a-stream>
 Naive
 - hmm need something to maintain ordering
 - Initial impression is a pqueue or a multiset
@@ -12,7 +12,7 @@ Good
 class KthLargest {
 public:
 	// makes it a min pqueue aka smallest element on the top
-    priority_queue<int,vector<int>, greater<int>> pq;
+    priority_queue<int,vector<int>, greater<int> pq;
     int size;
     KthLargest(int k, vector<int>& nums) {
         size = k;
@@ -31,7 +31,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/last-stone-weight>>
+<https://leetcode.com/problems/last-stone-weight>
 This time it's a max heap.
 
 ```cpp
@@ -60,7 +60,7 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/k-closest-points-to-origin>>
+<https://leetcode.com/problems/k-closest-points-to-origin>
 Naive: 
 - Ask yourself what do you need
 - Do you need a min heap or a max heap?
@@ -70,19 +70,19 @@ Naive:
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        priority_queue<pair<float,int>> pqDistIndex;
+    vector<vector<int> kClosest(vector<vector<int>& points, int k) {
+        priority_queue<pair<float,int> pqDistIndex;
         for(int i = 0 ; i < points.size();i++){
             float x = points[i][0];
             float y = points[i][1];
             float ans = sqrt(x*x + y*y);
-            cout << ans << " "<<x << " " << y << "\n";
+            cout < ans < " "<x < " " < y < "\n";
             pqDistIndex.push(make_pair(ans,i));
         }
         while(pqDistIndex.size() > k ){
             pqDistIndex.pop();
         }
-        vector<vector<int>> ans;
+        vector<vector<int> ans;
         while(!pqDistIndex.empty()){
             ans.push_back(points[pqDistIndex.top().second]);
             pqDistIndex.pop();
@@ -92,7 +92,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/kth-largest-element-in-an-array>>
+<https://leetcode.com/problems/kth-largest-element-in-an-array>
 Naive
 - Need something which maintains ordering
 - Likely a p queue
@@ -102,7 +102,7 @@ Naive
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        priority_queue<int, vector<int>, greater<int>> pq;
+        priority_queue<int, vector<int>, greater<int> pq;
         for(int i : nums){
             pq.push(i);
             if (pq.size() > k) pq.pop();
@@ -112,7 +112,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/task-scheduler>>
+<https://leetcode.com/problems/task-scheduler>
 Naive
 - identical tasks must be separated by at least n intervals due to cooling time.
 - Return the minimum number of intervals required to complete all tasks
@@ -127,9 +127,9 @@ Good
 class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
-        priority_queue<pair<int,char>> pq;
+        priority_queue<pair<int,char> pq;
         int cooldownSize = 0;
-        vector<pair<int,char>> pairToCooldown(n+1);
+        vector<pair<int,char> pairToCooldown(n+1);
         int cycles = 0;
         //insert tasks
         unordered_map<char,int> singleUseMap;
@@ -164,7 +164,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/design-twitter>>
+<https://leetcode.com/problems/design-twitter>
 Naive
 - 10 most recent tweet ids
 - Each user maintains a min heap, with timestamp,tweetid pairs
@@ -172,8 +172,8 @@ Naive
 ```cpp
 class Twitter {
 public:
-    unordered_map<int,set<int>> userToFollows;
-    unordered_map<int,priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>> userTweets;
+    unordered_map<int,set<int> userToFollows;
+    unordered_map<int,priority_queue<pair<int,int>,vector<pair<int,int>,greater<pair<int,int>> userTweets;
     int time;
     Twitter() {
         time = 0;
@@ -186,7 +186,7 @@ public:
     }
     
     vector<int> getNewsFeed(int userId) {
-        priority_queue<pair<int,int>> pq;
+        priority_queue<pair<int,int> pq;
         addTweets(pq,userId);
         for(auto a: userToFollows[userId]){
             addTweets(pq,a);
@@ -202,8 +202,8 @@ public:
         return ans;
     }
 
-    void addTweets(priority_queue<pair<int,int>>& pq, int userId){
-        vector<pair<int,int>> temp;
+    void addTweets(priority_queue<pair<int,int>& pq, int userId){
+        vector<pair<int,int> temp;
         while(!userTweets[userId].empty()){
             pair<int,int> top = userTweets[userId].top();
             userTweets[userId].pop();
@@ -225,7 +225,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/find-median-from-data-stream>>
+<https://leetcode.com/problems/find-median-from-data-stream>
 Naive
 - 
 
@@ -235,7 +235,7 @@ Good
 ```cpp
 class MedianFinder {
 public:
-    priority_queue<int,vector<int>,greater<int>> minHeap;//top
+    priority_queue<int,vector<int>,greater<int> minHeap;//top
     priority_queue<int> maxHeap;//bottom
     MedianFinder() {}
     

@@ -22,10 +22,10 @@ void search(int k) {
 
 Another way is iteratively.
 ```cpp
-for (int b = 0; b < (1<<n); b++) {
+for (int b = 0; b < (1<n); b++) {
 	vector<int> subset;
 	for (int i = 0; i < n; i++) {
-	   if (b&(1<<i)) subset.push_back(i);
+	   if (b&(1<i)) subset.push_back(i);
 	}
 }
 ```
@@ -65,7 +65,7 @@ do {
 What does it mean to backtrack? It's to incrementally build candidates to the solutions and abandons a candidate as soon as it determines that the candidate cannot lead to a final solution.
 ## Qs
 
-<<https://leetcode.com/problems/subsets>>
+<https://leetcode.com/problems/subsets>
 Naive
 - generate all subsets
 - Just go through and double ans with possible vectors
@@ -73,11 +73,11 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> ans;
+    vector<vector<int> subsets(vector<int>& nums) {
+        vector<vector<int> ans;
         ans.push_back({});
         for(int i : nums){
-            vector<vector<int>> additions;
+            vector<vector<int> additions;
             for(vector<int> v : ans){
                 vector<int> c = v;
                 c.push_back(i);
@@ -96,12 +96,12 @@ Good
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> ans;
+    vector<vector<int> subsets(vector<int>& nums) {
+        vector<vector<int> ans;
         for(int i = 0 ; i < pow(2,nums.size()) ; i++){
             vector<int> curr;
             for(int j = 0 ; j < nums.size() ; j++){
-                if(i & (1<<j)){
+                if(i & (1<j)){
                     curr.push_back(nums[j]);
                 }
             }
@@ -112,7 +112,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/combination-sum>>
+<https://leetcode.com/problems/combination-sum>
 Naive
 - iterate through all candidate subsets, checking if they match the target
 - Read the goddamn question, numbers can be selected an unlimited number of times!
@@ -121,11 +121,11 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int> combinationSum(vector<int>& candidates, int target) {
         vector<int> subset;
-        set<vector<int>> ans;
+        set<vector<int> ans;
         search(candidates.size(),target,subset, ans, candidates);
-        vector<vector<int>> aa;
+        vector<vector<int> aa;
         for(auto ll: ans){
             aa.push_back(ll);
         }
@@ -133,7 +133,7 @@ public:
     }
 
     void search(int max,int target, 
-    vector<int>& subset,set<vector<int>>& ans,
+    vector<int>& subset,set<vector<int>& ans,
     vector<int>& candidates){
         int val = accumulate(subset.begin(),subset.end(),0);
         if(val == target){
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/permutations>>
+<https://leetcode.com/problems/permutations>
 Naive
 - return all permutations
 - no frills
@@ -160,16 +160,16 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int> permute(vector<int>& nums) {
         vector<int> permutation;
         vector<bool> chosen(nums.size(),false);
-        vector<vector<int>> ans;
+        vector<vector<int> ans;
         search(permutation,chosen,nums,ans);
         return ans;
     }
 
     void search(vector<int>& permutation,vector<bool> chosen,
-    vector<int>& nums,vector<vector<int>>& ans){
+    vector<int>& nums,vector<vector<int>& ans){
         if(permutation.size() == nums.size()){
             ans.push_back(permutation);
         } else {
@@ -186,7 +186,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/subsets-ii>>
+<https://leetcode.com/problems/subsets-ii>
 Naive
 - Below
 - You can actually sort the nums, and skip through the depth, if we've done a search already on depth.
@@ -194,18 +194,18 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        set<vector<int>> ans;
+    vector<vector<int> subsetsWithDup(vector<int>& nums) {
+        set<vector<int> ans;
         vector<int> subset;
         search(0,subset,ans,nums);
-        vector<vector<int>> vecans;
+        vector<vector<int> vecans;
         for(auto a: ans){
             vecans.push_back(a);
         }
         return vecans;
     }
 
-    void search(int depth,vector<int>& subset, set<vector<int>>& ans, vector<int>& nums){
+    void search(int depth,vector<int>& subset, set<vector<int>& ans, vector<int>& nums){
         if(depth == nums.size()){
             vector<int> s = subset;
             sort(s.begin(),s.end());
@@ -222,7 +222,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/combination-sum-ii>>
+<https://leetcode.com/problems/combination-sum-ii>
 Naive
 - find all unique combinations where candidate sum to target
 - Each number can only be used once
@@ -233,15 +233,15 @@ Naive
 //not really clean
 class Solution {
 public:
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    vector<vector<int> combinationSum2(vector<int>& candidates, int target) {
         vector<int> subset;
-        vector<vector<int>> ans;
+        vector<vector<int> ans;
         sort(candidates.begin(),candidates.end());
         search(0,subset,target,candidates,ans);
         return ans;
     }
 
-    void search(int depth,vector<int>& subset, int target, vector<int>& candidates,vector<vector<int>>& ans ){
+    void search(int depth,vector<int>& subset, int target, vector<int>& candidates,vector<vector<int>& ans ){
         int val = accumulate(subset.begin(),subset.end(),0);
         if(val == target){
             vector<int> cp = subset;
@@ -267,7 +267,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/word-search>>
+<https://leetcode.com/problems/word-search>
 Naive
  - find out if a grid contains a single word
  - Same letter may not be used more than once
@@ -280,11 +280,11 @@ Good
 ```cpp
 class Solution {
 public:
-    bool exist(vector<vector<char>>& board, string word) {
+    bool exist(vector<vector<char>& board, string word) {
         if(word.size()==0) return true;
         if(board.size()==0) return false;
 
-        vector<vector<bool>> visited(board.size(),vector<bool>(board[0].size(),false));
+        vector<vector<bool> visited(board.size(),vector<bool>(board[0].size(),false));
         for(int i = 0 ; i < board.size();i++){
             for(int j = 0 ;  j < board[0].size() ;j++){
                 bool ans = search(i,j,0,visited,board,word);
@@ -294,7 +294,7 @@ public:
         return false;
     }
 
-    bool search(int x, int y,int pos, vector<vector<bool>>& visited,vector<vector<char>>& board, string word){
+    bool search(int x, int y,int pos, vector<vector<bool>& visited,vector<vector<char>& board, string word){
         // is x y valid?
         if(x<0 || x >=board.size()) return false;
         if(y<0 || y >=board[0].size()) return false;
@@ -303,7 +303,7 @@ public:
         // and if its the last one, return true
         if(visited[x][y]) return false;
         char curr = board[x][y];
-        //cout << "curr: " << curr << "\n";
+        //cout < "curr: " < curr < "\n";
         if(word[pos] != curr) return false;
         if(pos >= word.size() -1) return true;
 
@@ -319,7 +319,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/palindrome-partitioning>>
+<https://leetcode.com/problems/palindrome-partitioning>
 Naive
 - Return every single palindrome partitioning
 - Cant really think of a clean brute force method here
@@ -328,8 +328,8 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<string>> ans;
-    vector<vector<string>> partition(string s) {
+    vector<vector<string> ans;
+    vector<vector<string> partition(string s) {
         vector<string> input;
         search(input, 0,s);
         return ans;
@@ -359,7 +359,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/letter-combinations-of-a-phone-number>>
+<https://leetcode.com/problems/letter-combinations-of-a-phone-number>
 Naive
 - return all possible letter combinations that the number could represent
 - 222 = aaa, ab, ba, c
@@ -369,7 +369,7 @@ Naive
 class Solution {
 public:
     vector<string> ans;
-    unordered_map<char, vector<char>> mapping{
+    unordered_map<char, vector<char> mapping{
         {'2', vector<char>{'a','b','c'}},
         {'3', vector<char>{'d','2','f'}},
         {'4', vector<char>{'g','h','i'}},
@@ -398,7 +398,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/n-queens>>
+<https://leetcode.com/problems/n-queens>
 Naive
 - Generate every single n queen permutation and check if it's valid
 
@@ -409,8 +409,8 @@ Good
 ```cpp
 class Solution {
 public:
-    vector<vector<string>> ans;
-    vector<vector<string>> solveNQueens(int n) {
+    vector<vector<string> ans;
+    vector<vector<string> solveNQueens(int n) {
         vector<string> curr;
         search(curr,0,n);
         return ans;    
@@ -436,7 +436,7 @@ public:
 
     bool isValid(vector<string> curr,int n){
         if(curr.size() ==0) return true;
-        vector<pair<int,int>> coods;
+        vector<pair<int,int> coods;
         //col
         vector<bool> colValid(n,false);
         for(int i = 0 ; i < curr.size(); i++){

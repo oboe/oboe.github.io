@@ -1,5 +1,5 @@
 I'd expect it to be no different than instructions, but I'll log any differences here:
-<<https://apache.github.io/hadoop/hadoop-project-dist/hadoop-common/SingleCluster.htm>>
+<https://apache.github.io/hadoop/hadoop-project-dist/hadoop-common/SingleCluster.htm>
 
 ## Pseudo-Distributed Operation
 
@@ -50,7 +50,7 @@ ssh localhost
 
 // Enable passwordless login
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
 
 // format hdfs
 hadoop namenode -format 
@@ -76,7 +76,7 @@ http://localhost:9870/
 ```
 
 ## Issues
-<<https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+Java+Versions>>
+<https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+Java+Versions>
 Hadoop has limited Java support. I'm going to use Java 8.
 ```
 brew install --cask homebrew/cask-versions/adoptopenjdk8

@@ -1,4 +1,4 @@
-<<https://leetcode.com/problems/implement-trie-prefix-tree>>
+<https://leetcode.com/problems/implement-trie-prefix-tree>
 Naive
 - Just implement a trie, I know I could make it better with a fixed array of 26 size.
 
@@ -52,7 +52,7 @@ public:
                     break;
                 }
             }
-            //cout << c <<":" << found << "\n";
+            //cout < c <":" < found < "\n";
             if(!found){
                 return false;
             }
@@ -84,7 +84,7 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/design-add-and-search-words-data-structure>>
+<https://leetcode.com/problems/design-add-and-search-words-data-structure>
 Naive
 - Same as above
 - Read the question
@@ -161,7 +161,7 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/word-search-ii>>
+<https://leetcode.com/problems/word-search-ii>
 Naive
 - generate every single word from the grid
 - optimisation could be to just hash every single sub word so i can exist early when i try generate every single word
@@ -188,7 +188,7 @@ class Node{
 class Solution {
 public:
     int wordsSize;
-    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+    vector<string> findWords(vector<vector<char>& board, vector<string>& words) {
         Node* root = new Node('#');
 
         //add all words to trie
@@ -214,7 +214,7 @@ public:
             if(possible){
                 wordsSize++;
                 addWord(word,root);
-                cout << word << "\n";
+                cout < word < "\n";
             }
         }
 
@@ -222,7 +222,7 @@ public:
         unordered_set<string> ans;
         for(int i = 0 ; i < board.size() ;i++){
             for(int j = 0 ; j < board[0].size() ; j++){
-                set<pair<int,int>> visited;
+                set<pair<int,int> visited;
                 search(i,j,visited,board,ans,root);
             }
         }
@@ -250,7 +250,7 @@ public:
         curr->word = word;
     }
 
-    void search(int x, int y, set<pair<int,int>>& visited, vector<vector<char>>& board, unordered_set<string>& ans, Node* curr){
+    void search(int x, int y, set<pair<int,int>& visited, vector<vector<char>& board, unordered_set<string>& ans, Node* curr){
         if(ans.size() == wordsSize) return;
         if(visited.count(make_pair(x,y)) !=0) return;
         if(x<0 || x >= board.size()) return;

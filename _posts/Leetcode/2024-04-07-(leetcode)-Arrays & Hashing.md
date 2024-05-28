@@ -1,7 +1,7 @@
 Hashing is great to check for duplicates and to group things.
 
 
-<<https://leetcode.com/problems/contains-duplicate>>
+<https://leetcode.com/problems/contains-duplicate>
 
 Naive
 - Sort and pass: nlogn time, 1 space
@@ -26,7 +26,7 @@ public:
 
 ```
 
-<<https://leetcode.com/problems/valid-anagram/description>>
+<https://leetcode.com/problems/valid-anagram/description>
 
 Naive
 - Sort and pass: nlogn, 1 space
@@ -58,7 +58,7 @@ public:
 ```
 
 
-<<https://leetcode.com/problems/two-sum/description>>
+<https://leetcode.com/problems/two-sum/description>
 
 Naive
 - nested loop: n^2, 1 space
@@ -80,7 +80,7 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/group-anagrams/description>>
+<https://leetcode.com/problems/group-anagrams/description>
 
 Naive
 - pop one, find all matching anagrams, do this again
@@ -108,9 +108,9 @@ public:
         return ans;
     }
 
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<vector<string>> ans;
-        unordered_map<string,vector<string>> stringToMap;
+    vector<vector<string> groupAnagrams(vector<string>& strs) {
+        vector<vector<string> ans;
+        unordered_map<string,vector<string> stringToMap;
         for(int i = 0 ; i < strs.size() ; i++){
             stringToMap[getCharMap(strs[i])].push_back(strs[i]);
         }
@@ -122,7 +122,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/top-k-frequent-elements/description>>
+<https://leetcode.com/problems/top-k-frequent-elements/description>
 Naive
 - Sort, pass through with map, sort map results: nlogn, n space
 
@@ -138,7 +138,7 @@ public:
         for(int i = 0 ; i < nums.size() ; i++) {
             numToFreq[nums[i]]++;
         }
-        vector<pair<int,int>> freqNumPairs;
+        vector<pair<int,int> freqNumPairs;
         for(auto kv : numToFreq){
             freqNumPairs.push_back(make_pair(kv.second,kv.first));
         }
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/product-of-array-except-self/description>>
+<https://leetcode.com/problems/product-of-array-except-self/description>
 
 Just maths?
 
@@ -179,13 +179,13 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/valid-sudoku/description>>
+<https://leetcode.com/problems/valid-sudoku/description>
 Straightforward
 
 ```cpp
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
+    bool isValidSudoku(vector<vector<char>& board) {
         for(vector<char> row : board){
             if (!isValidRow(row)) {
                 return false;
@@ -217,7 +217,7 @@ public:
         return true;
     }
 
-    bool isValidCol(int colNum, vector<vector<char>>& board) {
+    bool isValidCol(int colNum, vector<vector<char>& board) {
         unordered_set<char> cMap;
         for(int i = 0 ; i < 9 ; i++) {
             char c = board[i][colNum];
@@ -229,7 +229,7 @@ public:
         return true;
     }
 
-    bool isValidBox(int boxX, int boxY, vector<vector<char>>& board) {
+    bool isValidBox(int boxX, int boxY, vector<vector<char>& board) {
         unordered_set<char> cMap;
         for(int i = 0 ; i < 9 ; i++){
             if ((boxX*3) > i) {
@@ -257,6 +257,6 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/longest-consecutive-sequence>>
+<https://leetcode.com/problems/longest-consecutive-sequence>
 Naive
 - hashmap

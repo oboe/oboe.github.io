@@ -1,4 +1,4 @@
-<<https://leetcode.com/problems/insert-interval>>
+<https://leetcode.com/problems/insert-interval>
 Naive
 - insert an interval so its non overlapping
 - iterate through array, if non overlapping push to ans vector
@@ -8,8 +8,8 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
-        vector<vector<int>> ans;
+    vector<vector<int> insert(vector<vector<int>& intervals, vector<int>& newInterval) {
+        vector<vector<int> ans;
         bool inserted = false;
         for(int i = 0 ; i < intervals.size() ;i++){
             vector<int> curr = intervals[i];
@@ -31,15 +31,15 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/merge-intervals>>
+<https://leetcode.com/problems/merge-intervals>
 
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    vector<vector<int> merge(vector<vector<int>& intervals) {
         sort(intervals.begin(),intervals.end());
         if(intervals.size()==0) return intervals;
-        vector<vector<int>> ans;
+        vector<vector<int> ans;
         vector<int> curr = intervals[0];
         for(int i = 1 ;i <intervals.size(); i++){
             if(curr[1]< intervals[i][0]){//non overlapping
@@ -57,7 +57,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/non-overlapping-intervals>>
+<https://leetcode.com/problems/non-overlapping-intervals>
 Naive
 - bad solution would be try every removal permutation and select this minimum valid one
 - 2^n complexity
@@ -72,7 +72,7 @@ Good
 ```cpp
 class Solution {
 public:
-    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+    int eraseOverlapIntervals(vector<vector<int>& intervals) {
         sort(intervals.begin(),intervals.end());
         if(intervals.size() <= 1){
             return 0;
@@ -94,7 +94,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/minimum-interval-to-include-each-query>>
+<https://leetcode.com/problems/minimum-interval-to-include-each-query>
 Naive
 - list of intervals
 - wants queries getting the size of the smallest interval which is within a query

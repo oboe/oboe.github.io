@@ -1,4 +1,4 @@
-<<https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description>>
+<https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description>
 Good
 - Just keep a low value
 
@@ -27,7 +27,7 @@ public:
 ```
 
 
-<<https://leetcode.com/problems/longest-substring-without-repeating-characters/description>>
+<https://leetcode.com/problems/longest-substring-without-repeating-characters/description>
 Naive
 - nested loop, for every start and end position 
 - Just start i, and slowly increase the window until you hit 
@@ -61,7 +61,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/longest-repeating-character-replacement/description>>
+<https://leetcode.com/problems/longest-repeating-character-replacement/description>
 Naive
 - nested loop, for every start and end position
 
@@ -100,7 +100,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/permutation-in-string/description>>
+<https://leetcode.com/problems/permutation-in-string/description>
 Naive
 - nested for loop. check if it is a permutation
 
@@ -140,7 +140,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/minimum-window-substring/description>>
+<https://leetcode.com/problems/minimum-window-substring/description>
 Naive: 
 - nested for loop, checking if valid or not
 - go through all possible substrings and check if theyre valid or not, maintaining the minimum window substring
@@ -194,7 +194,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/sliding-window-maximum/description>>
+<https://leetcode.com/problems/sliding-window-maximum/description>
 Naive
 - nested for loop, calculate each time
 
@@ -208,7 +208,7 @@ Good
 
 Unrelated but heres how you'd define a priority queue for finding min element
 ```cpp
-priority_queue<int,vector<int>,greater<int>> q;
+priority_queue<int,vector<int>,greater<int> q;
 ```
 
 ```cpp

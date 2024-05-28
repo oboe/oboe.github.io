@@ -1,4 +1,4 @@
-<<https://leetcode.com/problems/number-of-islands>>
+<https://leetcode.com/problems/number-of-islands>
 Naive
 - iterate through each index, starting a search
 - Each search will paint all adjacents
@@ -7,7 +7,7 @@ Naive
 ```cpp
 class Solution {
 public:
-    int numIslands(vector<vector<char>>& grid) {
+    int numIslands(vector<vector<char>& grid) {
         int ans = 0;
         for(int i = 0 ; i < grid.size(); i++){
             for(int j = 0 ;j < grid[0].size();j++){
@@ -21,7 +21,7 @@ public:
     }
 
     //recursively paint all islands into water
-    void paint(vector<vector<char>>& grid, int x, int y){
+    void paint(vector<vector<char>& grid, int x, int y){
         if(x < 0 || x >= grid.size()) return;
         if(y < 0 || y >= grid[0].size()) return;
         if(grid[x][y] == '0') return;
@@ -34,7 +34,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/max-area-of-island>>
+<https://leetcode.com/problems/max-area-of-island>
 Naive
 - Just paint function which returns the value
 - n^2
@@ -42,7 +42,7 @@ Naive
 ```cpp
 class Solution {
 public:
-    int maxAreaOfIsland(vector<vector<int>>& grid) {
+    int maxAreaOfIsland(vector<vector<int>& grid) {
         int ans = 0;
         for(int i = 0 ; i < grid.size(); i++){
             for(int j = 0 ;j < grid[0].size();j++){
@@ -55,7 +55,7 @@ public:
     }
 
     //recursively paint all islands into water
-    int paint(vector<vector<int>>& grid, int x, int y){
+    int paint(vector<vector<int>& grid, int x, int y){
         if(x < 0 || x >= grid.size()) return 0;
         if(y < 0 || y >= grid[0].size()) return 0;
         if(grid[x][y] == 0) return 0;
@@ -70,7 +70,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/clone-graph>>
+<https://leetcode.com/problems/clone-graph>
 Naive
 - Pass through graph
 - Creating an adjacency list representation, hashmap, that maps to neighbours
@@ -80,7 +80,7 @@ Naive
 ```cpp
 class Solution {
 public:
-    unordered_map<int,vector<int>> valToNeighbors;
+    unordered_map<int,vector<int> valToNeighbors;
     unordered_map<int,Node*> valToNewNode;
     Node* cloneGraph(Node* node) {
         if(node == nullptr) return nullptr;
@@ -119,7 +119,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/rotting-oranges>>
+<https://leetcode.com/problems/rotting-oranges>
 Naive
 - copy grid
 - Start at infected, and pass down the time as it searches through the grid, incrementing by 1
@@ -128,8 +128,8 @@ Naive
 ```cpp
 class Solution {
 public:
-    int orangesRotting(vector<vector<int>>& grid) {
-        vector<vector<int>> gridCounter(grid.size(),vector<int>(grid[0].size(),-1));
+    int orangesRotting(vector<vector<int>& grid) {
+        vector<vector<int> gridCounter(grid.size(),vector<int>(grid[0].size(),-1));
         for(int i = 0 ; i < grid.size(); i++){
             for(int j = 0 ; j<grid[0].size();j++){
                 if(grid[i][j] == 1){//fresh
@@ -160,7 +160,7 @@ public:
     }
 
     //propagate minvalues 
-    void search(vector<vector<int>>& grid,int time,int x,int y){
+    void search(vector<vector<int>& grid,int time,int x,int y){
         if(x < 0 || x >= grid.size()) return;
         if(y < 0 || y >= grid[0].size()) return;
         if(grid[x][y] == -1) return; //no orange
@@ -174,20 +174,20 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/pacific-atlantic-water-flow>>
+<https://leetcode.com/problems/pacific-atlantic-water-flow>
 Naive
 - simple search
 
 ```cpp
 class Solution {
 public:
-    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
-        vector<vector<int>> ans;
+    vector<vector<int> pacificAtlantic(vector<vector<int>& heights) {
+        vector<vector<int> ans;
         if(heights.size()==0) return ans;
         int n = heights.size();
         int m = heights[0].size();
-        vector<vector<bool>> pacific(n,vector<bool>(m,false));
-        vector<vector<bool>> atlantic(n,vector<bool>(m,false));
+        vector<vector<bool> pacific(n,vector<bool>(m,false));
+        vector<vector<bool> atlantic(n,vector<bool>(m,false));
         for(int i = 0 ; i < heights.size() ;i++){
             search(heights,i,0,true, INT_MIN,pacific,atlantic);
             search(heights,i,heights[0].size()-1,false, INT_MIN,pacific,atlantic);
@@ -205,7 +205,7 @@ public:
         return ans;
     }
 
-    void search(vector<vector<int>>& heights, int x, int y,bool isPacific, int prevHeight, vector<vector<bool>>& pacific, vector<vector<bool>>& atlantic){
+    void search(vector<vector<int>& heights, int x, int y,bool isPacific, int prevHeight, vector<vector<bool>& pacific, vector<vector<bool>& atlantic){
         if(x < 0 || x >= heights.size()) return;
         if(y < 0 || y >= heights[0].size()) return;
         if(heights[x][y] < prevHeight) return;
@@ -225,16 +225,16 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/surrounded-regions>>
+<https://leetcode.com/problems/surrounded-regions>
 Naive
 - Just keep all Os that are adjacent to an edge
 
 ```cpp
 class Solution {
 public:
-    void solve(vector<vector<char>>& board) {
+    void solve(vector<vector<char>& board) {
         if(board.size() == 0) return;
-        vector<vector<char>> cpy(board.size(),vector<char>(board[0].size(),'X'));
+        vector<vector<char> cpy(board.size(),vector<char>(board[0].size(),'X'));
         for(int i  = 0 ; i < board.size() ;i++){
             if(board[i][0] == 'O') search(cpy,board,i,0);
             if(board[i][board[0].size()-1] == 'O') search(cpy,board,i,board[0].size()-1);
@@ -246,7 +246,7 @@ public:
         board = cpy;
     }
 
-    void search(vector<vector<char>>& cpy, vector<vector<char>>& board, int x, int y){
+    void search(vector<vector<char>& cpy, vector<vector<char>& board, int x, int y){
         if(x < 0 || x >= board.size()) return;
         if(y < 0 || y >= board[0].size()) return;
         if(board[x][y] != 'O') return;
@@ -259,7 +259,7 @@ public:
     }
 };
 ```
-<<https://leetcode.com/problems/course-schedule>>
+<https://leetcode.com/problems/course-schedule>
 Naive
 - Cycle detection
 - Go through each course, iterating through prerequisites, if we hit a duplicate throw false
@@ -271,15 +271,15 @@ Good
 class Solution {
 public:
     unordered_map<int,bool> courseToIsCycle;
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+    bool canFinish(int numCourses, vector<vector<int>& prerequisites) {
 
-        unordered_map<int,vector<int>> courseToPrerequisites;
+        unordered_map<int,vector<int> courseToPrerequisites;
         for(int i = 0 ; i < prerequisites.size() ;i++){
             courseToPrerequisites[prerequisites[i][1]].push_back(prerequisites[i][0]);
         }
 
         for(int i = 0 ; i < numCourses;i++){
-            //cout << i << "\n";
+            //cout < i < "\n";
             unordered_set<int> seen;
             bool cycle = isCycle(seen,courseToPrerequisites,i);
             if (cycle) return false;
@@ -287,11 +287,11 @@ public:
         return true;
     }
 
-    bool isCycle(unordered_set<int>& seen, unordered_map<int,vector<int>>& prerequisites, int& course){
+    bool isCycle(unordered_set<int>& seen, unordered_map<int,vector<int>& prerequisites, int& course){
         if(courseToIsCycle.count(course) > 0) return courseToIsCycle[course];
         if(seen.count(course) > 0) return true;
         seen.insert(course);
-        //cout << "visited: " << course << "\n";
+        //cout < "visited: " < course < "\n";
         for(int c : prerequisites[course]){
             bool cycle = isCycle(seen,prerequisites,c);
             courseToIsCycle[c] = cycle;
@@ -303,7 +303,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/course-schedule-ii>>
+<https://leetcode.com/problems/course-schedule-ii>
 Naive
 - Return the order you need to take to finish all courses
 - 😭 its a topological sort question now
@@ -316,13 +316,13 @@ public:
     bool cycle = false;
     vector<int> ans;
     unordered_set<int> added;
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
-        unordered_map<int,vector<int>> courseToPrerequisites;
+    vector<int> findOrder(int numCourses, vector<vector<int>& prerequisites) {
+        unordered_map<int,vector<int> courseToPrerequisites;
         for(int i = 0 ; i < prerequisites.size() ;i++){
             courseToPrerequisites[prerequisites[i][1]].push_back(prerequisites[i][0]);
         }
         for(int i = 0 ; i < numCourses;i++){
-            //cout << i << "\n";
+            //cout < i < "\n";
             unordered_set<int> seen;
             dfs(seen,courseToPrerequisites,i);
         }
@@ -331,7 +331,7 @@ public:
         return ans;
     }
 
-    void dfs(unordered_set<int>& seen, unordered_map<int,vector<int>>& prerequisites, int& course){
+    void dfs(unordered_set<int>& seen, unordered_map<int,vector<int>& prerequisites, int& course){
         if(added.count(course) > 0) return;
         if(seen.count(course) > 0){
             cycle = true;
@@ -350,7 +350,7 @@ public:
 ```
 
 
-<<https://leetcode.com/problems/redundant-connection>>
+<https://leetcode.com/problems/redundant-connection>
 Naive
 - Detect cycle and remove edge
 - Main sharp edge is that I need to return the answer that occurs last in the input
@@ -359,7 +359,7 @@ Naive
 ```cpp
 class Solution {
 public:
-    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+    vector<int> findRedundantConnection(vector<vector<int>& edges) {
         unordered_map<int,int> nodeToColor;
         for(int i = 0 ; i < edges.size();i++){
             nodeToColor[edges[i][0]] = edges[i][0];
@@ -382,6 +382,6 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/word-ladder>>
+<https://leetcode.com/problems/word-ladder>
 Naive
 - Its a shortest path problem

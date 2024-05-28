@@ -1,44 +1,44 @@
 Here's a ultra quick minimalist collections of plugins/programs which will help you become more productive on the mac terminal. (Without doing anything complicated)
 ### 1. Install homebrew
-<<https://brew.sh>>
+<https://brew.sh>
 
 A must have package manager that just works.
 ### 2. Install iterm2
-<<https://iterm2.com>>
+<https://iterm2.com>
 
 Extremely popular mac terminal. Stop using the default mac one.
 ### 3. Install oh my zsh
-<<https://ohmyz.sh>>
+<https://ohmyz.sh>
 ```
-sh -c "$(curl -fsSL<<https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)>>
+sh -c "$(curl -fsSL<https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)>
 
 Don't forget to move your old exports to the new zshrc
 ```
 ### 4. Powerlevel10k theme
-<<https://github.com/romkatv/powerlevel10k>>
+<https://github.com/romkatv/powerlevel10k>
 ```
-git clone --depth=1<<https://github.com/romkatv/powerlevel10k.git>>${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1<https://github.com/romkatv/powerlevel10k.git>${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 == ~/.zshrc ==
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 ### 5. Basic oh my zsh plugins
-<<https://github.com/zsh-users/zsh-autosuggestion>>
+<https://github.com/zsh-users/zsh-autosuggestion>
 ```
-git clone<<https://github.com/zsh-users/zsh-autosuggestions.git>>$ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone<https://github.com/zsh-users/zsh-autosuggestions.git>$ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 == ~/.zshrc ==
 add zsh-autosuggestions
 ```
-<<https://github.com/zsh-users/zsh-syntax-highlightin>>
+<https://github.com/zsh-users/zsh-syntax-highlightin>
 ```
-git clone<<https://github.com/zsh-users/zsh-syntax-highlighting.git>>$ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone<https://github.com/zsh-users/zsh-syntax-highlighting.git>$ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 == ~/.zshrc ==
 add zsh-syntax-highlighting
 ```
 ### 6. Better diffs
-<<https://github.com/dandavison/delta#readm>>
+<https://github.com/dandavison/delta#readm>
 ```
 brew install git-delta
 
@@ -58,14 +58,14 @@ brew install git-delta
     colorMoved = default
 ```
 ### 7. Basic vim defaults
-<<https://github.com/amix/vimr>>
+<https://github.com/amix/vimr>
 ```
-git clone --depth=1<<https://github.com/amix/vimrc.git>>~/.vim_runtime
+git clone --depth=1<https://github.com/amix/vimrc.git>~/.vim_runtime
 sh ~/.vim_runtime/install_basic_vimrc.sh
 ```
 
 ### 8. fzf
-<<https://github.com/junegunn/fz>>
+<https://github.com/junegunn/fz>
 
 ```
 brew install fzf
@@ -75,7 +75,7 @@ brew install fzf
 eval "$(fzf --zsh)"
 ```
 ### 9. zoxide
-<<https://github.com/ajeetdsouza/zoxide?tab=readme-ov-fil>>
+<https://github.com/ajeetdsouza/zoxide?tab=readme-ov-fil>
 
 ```
 brew install zoxide

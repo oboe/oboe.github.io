@@ -2,7 +2,7 @@ Deque vs vector
 - Vector has contiguous guarantee
 - Just use a deque for queue and stack problems
 
-<<https://leetcode.com/problems/valid-parentheses>>
+<https://leetcode.com/problems/valid-parentheses>
 Naive
 - ?
 
@@ -41,7 +41,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/min-stack/description>>
+<https://leetcode.com/problems/min-stack/description>
 Naive
 - Push, pop, top, can be supported with deque
 - Hard issue is with tracking the min
@@ -53,7 +53,7 @@ Good
 class MinStack {
 public:
 // each pair will be (val,current min)
-    deque<pair<int,int>> stack;
+    deque<pair<int,int> stack;
     MinStack() {}
     
     void push(int val) {
@@ -80,7 +80,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/evaluate-reverse-polish-notation/description>>
+<https://leetcode.com/problems/evaluate-reverse-polish-notation/description>
 Naive:
 - Want a simple parseInt function
 
@@ -120,7 +120,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/generate-parentheses/description>>
+<https://leetcode.com/problems/generate-parentheses/description>
 Naive:
 - generate all combinations of paranetheses and check if they're valid: (2^n)*n, 2^n space
 
@@ -134,7 +134,7 @@ class Solution {
 public:
 //(a)
 //ab
-    unordered_map<int,vector<string>> mem;
+    unordered_map<int,vector<string> mem;
     vector<string> generateParenthesis(int n) {
         if (mem.count(n) != 0) {
             return mem[n];
@@ -167,7 +167,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/daily-temperatures/description>>
+<https://leetcode.com/problems/daily-temperatures/description>
 Naive:
 - for each num, iterate forwards til you find the position: n^2, n space
 
@@ -179,7 +179,7 @@ class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         // (val, index)
-        deque<pair<int,int>> stack;
+        deque<pair<int,int> stack;
         vector<int> ans(temperatures.size(), 0);
         for(int i = temperatures.size() -1 ; i >= 0 ; i--){
             int curr = temperatures[i];
@@ -205,7 +205,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/car-fleet/description>>
+<https://leetcode.com/problems/car-fleet/description>
 Naive
 - nested loop, compare if car hits forward
 
@@ -218,14 +218,14 @@ public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {
 
         // (position, speed)
-        vector<pair<int,int>> carInfo;
+        vector<pair<int,int> carInfo;
         for(int i = 0 ; i < position.size() ; i++){
             carInfo.push_back(make_pair(position[i],speed[i]));
         }
         //want low positions first
         sort(carInfo.begin(),carInfo.end());
 
-        deque<pair<int,int>> carStack;
+        deque<pair<int,int> carStack;
         for(int i = 0 ;i < carInfo.size() ;i++){
             pair<int,int> currCar = carInfo[i];
             if (carStack.empty()){
@@ -256,7 +256,7 @@ public:
 ```
 
 
-<<https://leetcode.com/problems/largest-rectangle-in-histogram/description>>
+<https://leetcode.com/problems/largest-rectangle-in-histogram/description>
 Naive
 - nested for loop, start and end pos of rectangle: n^2, 1 space
 

@@ -12,7 +12,7 @@ Greedy algorithms exploit the fact that a locally optimal choice is also globall
 3. Can build intuition by solving a 2 task case
 
 ## Qs
-<<https://leetcode.com/problems/maximum-subarray>>
+<https://leetcode.com/problems/maximum-subarray>
 Naive
 - Taking all i,j positions, n^2
 
@@ -39,7 +39,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/jump-game>>
+<https://leetcode.com/problems/jump-game>
 Naive
 - Return if last is reachable
 - Go through every index, flag the next points we can reach
@@ -61,7 +61,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/jump-game-ii>>
+<https://leetcode.com/problems/jump-game-ii>
 Naive
 - return number of minimum jumps
 - Go through each index, paint vector with min jumps to reach
@@ -88,7 +88,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/gas-station>>
+<https://leetcode.com/problems/gas-station>
 Naive
 - Go through every index and try to find out if I can do a loop
 - Is there any way I can share the compute of previous calculations here?
@@ -119,7 +119,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/hand-of-straights>>
+<https://leetcode.com/problems/hand-of-straights>
 Naive
 - Verify if array can be split into k groups of consecutive numbers
 - As they want straights thinking that maybe I'd like some kind of ordering to help me here
@@ -132,7 +132,7 @@ public:
     bool isNStraightHand(vector<int>& hand, int groupSize) {
         if(hand.size()%groupSize != 0) return false;
         sort(hand.begin(),hand.end());
-        vector<pair<int,int>> valueSizePairs;
+        vector<pair<int,int> valueSizePairs;
         for(int i = 0 ; i < hand.size();i++){
             bool placed = false;
             for(int j = 0;j < valueSizePairs.size();j++){//find hand to place on
@@ -177,7 +177,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/merge-triplets-to-form-target-triplet>>
+<https://leetcode.com/problems/merge-triplets-to-form-target-triplet>
 Naive
 - Feels like just finding max possible by doing a pass, pruning invalid triplets
 - then at end compare if its our target
@@ -185,7 +185,7 @@ Naive
 ```cpp
 class Solution {
 public:
-    bool mergeTriplets(vector<vector<int>>& triplets, vector<int>& target) {
+    bool mergeTriplets(vector<vector<int>& triplets, vector<int>& target) {
         vector<int> best(3);
         for(vector<int> triplet: triplets){
             if(triplet[0] > target[0] || triplet[1] > target[1] || triplet[2] > target[2]) continue;
@@ -198,7 +198,7 @@ public:
 };
 ```
 
-<<https://leetcode.com/problems/partition-labels>>
+<https://leetcode.com/problems/partition-labels>
 Naive
 - Each letter has a min range, and overlapping ranges need to be merged
 - Pass to get min max for each letter
@@ -210,7 +210,7 @@ class Solution {
 public:
     vector<int> partitionLabels(string s) {
         //create min max intervals for each letter
-        unordered_map<char,pair<int,int>> charsToMinMaxPair;
+        unordered_map<char,pair<int,int> charsToMinMaxPair;
         for(int i = 0 ;i < s.size() ;i++){
             if(charsToMinMaxPair.count(s[i]) == 0){
                 charsToMinMaxPair[s[i]] = make_pair(i,i);
@@ -221,7 +221,7 @@ public:
         }
         vector<int> ans;
         //create vector of intervals
-        vector<pair<int,int>> intervals;
+        vector<pair<int,int> intervals;
         for(auto a : charsToMinMaxPair){
             intervals.push_back(a.second);
         }
@@ -247,7 +247,7 @@ Good
 - Find out last occurence of each character
 - Iterate through array, updating a pointer on last valid index. When the index we're at is equal to the last valid index then thats a partition. If its not the last index, kick back the pointer to the last one and move to the next character.
 
-<<https://leetcode.com/problems/valid-parenthesis-string>>
+<https://leetcode.com/problems/valid-parenthesis-string>
 Naive
 - Asking to verify if a character is valid
 - Key point is that it allows asterix which can be any character
