@@ -1,7 +1,7 @@
 
 Leetcode
 - Do all neetcode
-- <https://neetcode.io/roadmap>
+- <https://neetcode.io/roadma>p
 
 System design
 - [ ] Gather list of common system design questions<<https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>>
@@ -26,4 +26,4 @@ Why did you apply
 - [ ]<<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>>
 - [ ]<<https://www.mavensecurities.com/maven-interview-question-revealed>>
 - [ ]<<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>>
-- [ ]<<https://labuladong.gitbook.io/algo-e>>
+- [ ]<https://labuladong.gitbook.io/algo-e>n
