@@ -1,4 +1,4 @@
-<https://arxiv.org/pdf/2304.05028.pdf>
+<<https://arxiv.org/pdf/2304.05028.pdf>>
 
 Modern read heavy data analytics rely on columnar data storage. Parquet and ORC spawned from Hadoop are dominant, but much has changed in the hardware and workloads in the last decade.
 ### Intro

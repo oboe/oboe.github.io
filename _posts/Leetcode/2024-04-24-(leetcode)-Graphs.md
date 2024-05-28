@@ -1,4 +1,4 @@
-<https://leetcode.com/problems/number-of-islands>
+<<https://leetcode.com/problems/number-of-islands>>
 Naive
 - iterate through each index, starting a search
 - Each search will paint all adjacents
@@ -34,7 +34,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/max-area-of-island>
+<<https://leetcode.com/problems/max-area-of-island>>
 Naive
 - Just paint function which returns the value
 - n^2
@@ -70,7 +70,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/clone-graph>
+<<https://leetcode.com/problems/clone-graph>>
 Naive
 - Pass through graph
 - Creating an adjacency list representation, hashmap, that maps to neighbours
@@ -119,7 +119,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/rotting-oranges>
+<<https://leetcode.com/problems/rotting-oranges>>
 Naive
 - copy grid
 - Start at infected, and pass down the time as it searches through the grid, incrementing by 1
@@ -174,7 +174,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/pacific-atlantic-water-flow>
+<<https://leetcode.com/problems/pacific-atlantic-water-flow>>
 Naive
 - simple search
 
@@ -225,7 +225,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/surrounded-regions>
+<<https://leetcode.com/problems/surrounded-regions>>
 Naive
 - Just keep all Os that are adjacent to an edge
 
@@ -259,7 +259,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/course-schedule>
+<<https://leetcode.com/problems/course-schedule>>
 Naive
 - Cycle detection
 - Go through each course, iterating through prerequisites, if we hit a duplicate throw false
@@ -303,7 +303,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/course-schedule-ii>
+<<https://leetcode.com/problems/course-schedule-ii>>
 Naive
 - Return the order you need to take to finish all courses
 - 😭 its a topological sort question now
@@ -350,7 +350,7 @@ public:
 ```
 
 
-<https://leetcode.com/problems/redundant-connection>
+<<https://leetcode.com/problems/redundant-connection>>
 Naive
 - Detect cycle and remove edge
 - Main sharp edge is that I need to return the answer that occurs last in the input
@@ -382,6 +382,6 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/word-ladder>
+<<https://leetcode.com/problems/word-ladder>>
 Naive
 - Its a shortest path problem

@@ -1,4 +1,4 @@
-<https://leetcode.com/problems/implement-trie-prefix-tree>
+<<https://leetcode.com/problems/implement-trie-prefix-tree>>
 Naive
 - Just implement a trie, I know I could make it better with a fixed array of 26 size.
 
@@ -84,7 +84,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/design-add-and-search-words-data-structure>
+<<https://leetcode.com/problems/design-add-and-search-words-data-structure>>
 Naive
 - Same as above
 - Read the question
@@ -161,7 +161,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/word-search-ii>
+<<https://leetcode.com/problems/word-search-ii>>
 Naive
 - generate every single word from the grid
 - optimisation could be to just hash every single sub word so i can exist early when i try generate every single word

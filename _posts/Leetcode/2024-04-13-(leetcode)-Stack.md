@@ -2,7 +2,7 @@ Deque vs vector
 - Vector has contiguous guarantee
 - Just use a deque for queue and stack problems
 
-<https://leetcode.com/problems/valid-parentheses>
+<<https://leetcode.com/problems/valid-parentheses>>
 Naive
 - ?
 
@@ -41,7 +41,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/min-stack/description>
+<<https://leetcode.com/problems/min-stack/description>>
 Naive
 - Push, pop, top, can be supported with deque
 - Hard issue is with tracking the min
@@ -80,7 +80,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/evaluate-reverse-polish-notation/description>
+<<https://leetcode.com/problems/evaluate-reverse-polish-notation/description>>
 Naive:
 - Want a simple parseInt function
 
@@ -120,7 +120,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/generate-parentheses/description>
+<<https://leetcode.com/problems/generate-parentheses/description>>
 Naive:
 - generate all combinations of paranetheses and check if they're valid: (2^n)*n, 2^n space
 
@@ -167,7 +167,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/daily-temperatures/description>
+<<https://leetcode.com/problems/daily-temperatures/description>>
 Naive:
 - for each num, iterate forwards til you find the position: n^2, n space
 
@@ -205,7 +205,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/car-fleet/description>
+<<https://leetcode.com/problems/car-fleet/description>>
 Naive
 - nested loop, compare if car hits forward
 
@@ -256,7 +256,7 @@ public:
 ```
 
 
-<https://leetcode.com/problems/largest-rectangle-in-histogram/description>
+<<https://leetcode.com/problems/largest-rectangle-in-histogram/description>>
 Naive
 - nested for loop, start and end pos of rectangle: n^2, 1 space
 

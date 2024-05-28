@@ -1,4 +1,4 @@
-<https://leetcode.com/problems/insert-interval>
+<<https://leetcode.com/problems/insert-interval>>
 Naive
 - insert an interval so its non overlapping
 - iterate through array, if non overlapping push to ans vector
@@ -31,7 +31,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/merge-intervals>
+<<https://leetcode.com/problems/merge-intervals>>
 
 ```cpp
 class Solution {
@@ -57,7 +57,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/non-overlapping-intervals>
+<<https://leetcode.com/problems/non-overlapping-intervals>>
 Naive
 - bad solution would be try every removal permutation and select this minimum valid one
 - 2^n complexity
@@ -94,7 +94,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/minimum-interval-to-include-each-query>
+<<https://leetcode.com/problems/minimum-interval-to-include-each-query>>
 Naive
 - list of intervals
 - wants queries getting the size of the smallest interval which is within a query

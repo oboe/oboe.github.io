@@ -1,7 +1,7 @@
 Hashing is great to check for duplicates and to group things.
 
 
-<https://leetcode.com/problems/contains-duplicate>
+<<https://leetcode.com/problems/contains-duplicate>>
 
 Naive
 - Sort and pass: nlogn time, 1 space
@@ -26,7 +26,7 @@ public:
 
 ```
 
-<https://leetcode.com/problems/valid-anagram/description>
+<<https://leetcode.com/problems/valid-anagram/description>>
 
 Naive
 - Sort and pass: nlogn, 1 space
@@ -58,7 +58,7 @@ public:
 ```
 
 
-<https://leetcode.com/problems/two-sum/description>
+<<https://leetcode.com/problems/two-sum/description>>
 
 Naive
 - nested loop: n^2, 1 space
@@ -80,7 +80,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/group-anagrams/description>
+<<https://leetcode.com/problems/group-anagrams/description>>
 
 Naive
 - pop one, find all matching anagrams, do this again
@@ -122,7 +122,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/top-k-frequent-elements/description>
+<<https://leetcode.com/problems/top-k-frequent-elements/description>>
 Naive
 - Sort, pass through with map, sort map results: nlogn, n space
 
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/product-of-array-except-self/description>
+<<https://leetcode.com/problems/product-of-array-except-self/description>>
 
 Just maths?
 
@@ -179,7 +179,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/valid-sudoku/description>
+<<https://leetcode.com/problems/valid-sudoku/description>>
 Straightforward
 
 ```cpp
@@ -257,6 +257,6 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/longest-consecutive-sequence>
+<<https://leetcode.com/problems/longest-consecutive-sequence>>
 Naive
 - hashmap

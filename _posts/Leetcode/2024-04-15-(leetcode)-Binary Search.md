@@ -48,7 +48,7 @@ return r;
 ```
 
 ### Qs
-<https://leetcode.com/problems/binary-search>
+<<https://leetcode.com/problems/binary-search>>
 Just simple binary search
 
 ```cpp
@@ -73,7 +73,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/search-a-2d-matrix/description>
+<<https://leetcode.com/problems/search-a-2d-matrix/description>>
 Just simple binary search
 
 ```cpp
@@ -101,7 +101,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/koko-eating-bananas/description>
+<<https://leetcode.com/problems/koko-eating-bananas/description>>
 Naive
 - Intuition is that you want the sum of all piles divided by k to be equal to h
 
@@ -138,7 +138,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description>
+<<https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description>>
 Naive
 - Need to be careful with selecting the pivot. think through the steps of what happens when pivot is x or y. Do you need the lower bound or upper bound and how does that affect your binary search algo?
 
@@ -171,7 +171,7 @@ public:
     }
 };
 ```
-<https://leetcode.com/problems/search-in-rotated-sorted-array/description>
+<<https://leetcode.com/problems/search-in-rotated-sorted-array/description>>
 Good
 - Keep it simple stupid
 - Just think step by step on the base case, don't be too quick and copy just think through an example step by step, that is all you need
@@ -221,7 +221,7 @@ public:
 ```
 
 
-<https://leetcode.com/problems/time-based-key-value-store/description>
+<<https://leetcode.com/problems/time-based-key-value-store/description>>
 Naive
 - Initial impression is that we'd like something that works like a hashmap
 - But also preserves timestamp order (with the corresponding timestamp value)
@@ -258,7 +258,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/median-of-two-sorted-arrays/description>
+<<https://leetcode.com/problems/median-of-two-sorted-arrays/description>>
 Naive
 - I need something ordered to combine the two arrays, then after i've done the insertions I could to a find.
 - Issue with this solution is it is likely going to be nlogn

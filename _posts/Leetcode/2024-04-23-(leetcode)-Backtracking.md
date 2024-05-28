@@ -65,7 +65,7 @@ do {
 What does it mean to backtrack? It's to incrementally build candidates to the solutions and abandons a candidate as soon as it determines that the candidate cannot lead to a final solution.
 ## Qs
 
-<https://leetcode.com/problems/subsets>
+<<https://leetcode.com/problems/subsets>>
 Naive
 - generate all subsets
 - Just go through and double ans with possible vectors
@@ -112,7 +112,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/combination-sum>
+<<https://leetcode.com/problems/combination-sum>>
 Naive
 - iterate through all candidate subsets, checking if they match the target
 - Read the goddamn question, numbers can be selected an unlimited number of times!
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/permutations>
+<<https://leetcode.com/problems/permutations>>
 Naive
 - return all permutations
 - no frills
@@ -186,7 +186,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/subsets-ii>
+<<https://leetcode.com/problems/subsets-ii>>
 Naive
 - Below
 - You can actually sort the nums, and skip through the depth, if we've done a search already on depth.
@@ -222,7 +222,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/combination-sum-ii>
+<<https://leetcode.com/problems/combination-sum-ii>>
 Naive
 - find all unique combinations where candidate sum to target
 - Each number can only be used once
@@ -267,7 +267,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/word-search>
+<<https://leetcode.com/problems/word-search>>
 Naive
  - find out if a grid contains a single word
  - Same letter may not be used more than once
@@ -319,7 +319,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/palindrome-partitioning>
+<<https://leetcode.com/problems/palindrome-partitioning>>
 Naive
 - Return every single palindrome partitioning
 - Cant really think of a clean brute force method here
@@ -359,7 +359,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/letter-combinations-of-a-phone-number>
+<<https://leetcode.com/problems/letter-combinations-of-a-phone-number>>
 Naive
 - return all possible letter combinations that the number could represent
 - 222 = aaa, ab, ba, c
@@ -398,7 +398,7 @@ public:
 };
 ```
 
-<https://leetcode.com/problems/n-queens>
+<<https://leetcode.com/problems/n-queens>>
 Naive
 - Generate every single n queen permutation and check if it's valid
 
