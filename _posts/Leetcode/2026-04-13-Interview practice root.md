@@ -1,7 +1,7 @@
 
 Leetcode
 - Do all neetcode
-- <https://neetcode.io/roadma>p
+- <https://neetcode.io/roadmap>
 
 System design
 - [ ] Gather list of common system design questions<<https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>>
