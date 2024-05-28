@@ -23,14 +23,14 @@ git clone --depth=1<https://github.com/romkatv/powerlevel10k.git>${ZSH_CUSTOM:-$
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 ### 5. Basic oh my zsh plugins
-https://github.com/zsh-users/zsh-autosuggestions
+<https://github.com/zsh-users/zsh-autosuggestion>
 ```
 git clone<https://github.com/zsh-users/zsh-autosuggestions.git>$ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 == ~/.zshrc ==
 add zsh-autosuggestions
 ```
-https://github.com/zsh-users/zsh-syntax-highlighting
+<https://github.com/zsh-users/zsh-syntax-highlightin>
 ```
 git clone<https://github.com/zsh-users/zsh-syntax-highlighting.git>$ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
@@ -38,7 +38,7 @@ git clone<https://github.com/zsh-users/zsh-syntax-highlighting.git>$ZSH_CUSTOM/p
 add zsh-syntax-highlighting
 ```
 ### 6. Better diffs
-https://github.com/dandavison/delta#readme
+<https://github.com/dandavison/delta#readm>
 ```
 brew install git-delta
 
