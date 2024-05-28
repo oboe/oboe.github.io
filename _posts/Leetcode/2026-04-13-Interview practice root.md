@@ -26,4 +26,4 @@ Why did you apply
 - [ ]<<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>>
 - [ ]<<https://www.mavensecurities.com/maven-interview-question-revealed>>
 - [ ]<<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>>
-- [ ]<https://labuladong.gitbook.io/algo-e>n
+- [ ]<https://labuladong.gitbook.io/algo-en>
