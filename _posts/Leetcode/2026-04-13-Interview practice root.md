@@ -1,14 +1,7 @@
 
 Leetcode
 - Do all neetcode
--<https://neetcode.io/roadma>
-- [ ] Backtracking
-- [ ] Graphs
-- [ ] Advanced graphs
-- [ ] 1D DP
-- [ ] 2D DP
-- [ ] Bit Manipulation
-- [ ] Math & Geometry
+- https://neetcode.io/roadmap
 
 System design
 - [ ] Gather list of common system design questions<https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>
@@ -29,6 +22,8 @@ General strategy
 
 Why did you apply
 - [ ] Point to their blog post and research about it
+- [ ] https://www.mavensecurities.com/maven-interview-question-revealed/
+- [ ] https://www.mavensecurities.com/revisiting-interview-questions-at-maven/
 - [ ]<https://www.mavensecurities.com/maven-interview-question-revealed>
 - [ ]<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
 - [ ]<https://labuladong.gitbook.io/algo-e>
