@@ -1,8 +1,14 @@
-Here's a ultra quick minimalist collections of plugins/programs which will help you become more productive on the mac terminal. (Without doing anything complicated)
+An issue I've been having is being more productive in my terminal and cli, but whenever I read about solutions to this I feel it's way too much work or I'm accumulating a lot of bloat and tooling that I don't want to think about. I just want small simple tools that work well, not overcomplicating my dot files or installing esoteric programs and scripts.
+
+So here's my ultra quick minimalist collections of plugins/programs which will help you become more productive on the mac terminal. (Without doing anything complicated)
 ### 1. Install homebrew
 https://brew.sh/
+
+A must have package manager that just works.
 ### 2. Install iterm2
 https://iterm2.com/
+
+Extremely popular mac terminal. Stop using the default mac one.
 ### 3. Install oh my zsh
 https://ohmyz.sh/
 ```
@@ -10,6 +16,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 Don't forget to move your old exports to the new zshrc
 ```
+
+Tooling to help you configure your shell configs easier.
 ### 4. Powerlevel10k theme
 https://github.com/romkatv/powerlevel10k 
 ```
@@ -18,15 +26,20 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 == ~/.zshrc ==
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
+
+A nice theme, with very useful terminal prompts, like your branch, timing, etc.
 ### 5. Basic oh my zsh plugins
 https://github.com/zsh-users/zsh-autosuggestions
+Simple terminal autosuggestions, a must have.
 ```
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 == ~/.zshrc ==
 add zsh-autosuggestions
 ```
+
 https://github.com/zsh-users/zsh-syntax-highlighting
+Simple syntax highlighting, another must have.
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
@@ -35,6 +48,7 @@ add zsh-syntax-highlighting
 ```
 ### 6. Better diffs
 https://github.com/dandavison/delta#readme
+It's insane to not have this, it gets you the github or intellij like git diffs with nice colours and side by side.
 ```
 brew install git-delta
 

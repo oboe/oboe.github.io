@@ -268,10 +268,198 @@ public:
 ```
 
 https://leetcode.com/problems/word-search/
+Naive
+ - find out if a grid contains a single word
+ - Same letter may not be used more than once
+
+Good
+- Go through all indexes, starting a search
+- Each search will have a k, a copy of the grid to keep track of visited and do a search
+- The search can just return a bool, as that's what we're looking for
+
+```cpp
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        if(word.size()==0) return true;
+        if(board.size()==0) return false;
+
+        vector<vector<bool>> visited(board.size(),vector<bool>(board[0].size(),false));
+        for(int i = 0 ; i < board.size();i++){
+            for(int j = 0 ;  j < board[0].size() ;j++){
+                bool ans = search(i,j,0,visited,board,word);
+                if(ans) return true;
+            }
+        }
+        return false;
+    }
+
+    bool search(int x, int y,int pos, vector<vector<bool>>& visited,vector<vector<char>>& board, string word){
+        // is x y valid?
+        if(x<0 || x >=board.size()) return false;
+        if(y<0 || y >=board[0].size()) return false;
+
+        // is x y char match the word?
+        // and if its the last one, return true
+        if(visited[x][y]) return false;
+        char curr = board[x][y];
+        //cout << "curr: " << curr << "\n";
+        if(word[pos] != curr) return false;
+        if(pos >= word.size() -1) return true;
+
+        // if its not the last one then do searches on adjacents
+        visited[x][y] = true;
+        bool ans = search(x+1,y,pos+1,visited,board,word) 
+        || search(x-1,y,pos+1,visited,board,word)
+        || search(x,y+1,pos+1,visited,board,word) 
+        || search(x,y-1,pos+1,visited,board,word);
+        visited[x][y] = false;
+        return ans;
+    }
+};
+```
 
 https://leetcode.com/problems/palindrome-partitioning/
+Naive
+- Return every single palindrome partitioning
+- Cant really think of a clean brute force method here
+- Always try think of a brute force method, you just needed to iterate through it, adding and popping valid substrings
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> ans;
+    vector<vector<string>> partition(string s) {
+        vector<string> input;
+        search(input, 0,s);
+        return ans;
+    }
+
+    void search(vector<string>& curr, int pos, string s){
+        if(pos >= s.size()) ans.push_back(curr);
+        string pal = "";
+        for(int i = pos ;i < s.size() ;i++){
+            pal += s[i];
+            if(isPalindrome(pal)){
+                curr.push_back(pal);
+                search(curr, i+1, s);
+                curr.pop_back();
+            }
+        }
+    }
+
+    bool isPalindrome(string pal){
+        for(int i = 0 ;i < pal.size()/2 ; i++){
+            char l = pal[i];
+            char r = pal[pal.size()-1-i];
+            if(l!=r) return false;
+        }
+        return true;
+    }
+};
+```
 
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+Naive
+- return all possible letter combinations that the number could represent
+- 222 = aaa, ab, ba, c
+- Read the question wrong and implemented solution that works for the standard double press letter phone style, so I don't care as I feel what i've done is the cool solution
+
+```cpp
+class Solution {
+public:
+    vector<string> ans;
+    unordered_map<char, vector<char>> mapping{
+        {'2', vector<char>{'a','b','c'}},
+        {'3', vector<char>{'d','2','f'}},
+        {'4', vector<char>{'g','h','i'}},
+        {'5', vector<char>{'j','k','l'}},
+        {'6', vector<char>{'m','n','o'}},
+        {'7', vector<char>{'p','q','r','s'}},
+        {'8', vector<char>{'t','u','v'}},
+        {'9', vector<char>{'w','x','y','z'}},
+    };
+    vector<string> letterCombinations(string digits) {
+        string curr; 
+        search(0,digits,curr);
+        return ans;
+    }
+
+    void search(int pos, string digits, string& curr){
+        if(pos >= digits.size()) ans.push_back(curr);
+        char same = digits[pos];
+        for(int i = pos ; i < digits.size();i++){
+            if(digits[i] != same) break;
+            curr += mapping[same][i-pos];
+            search(i+1,digits,curr);
+            curr.pop_back();
+        }
+    }
+};
+```
 
 https://leetcode.com/problems/n-queens/
+Naive
+- Generate every single n queen permutation and check if it's valid
 
+Good
+- Iteratively place n queens on each row, until you hit the end
+- n^4
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> ans;
+    vector<vector<string>> solveNQueens(int n) {
+        vector<string> curr;
+        search(curr,0,n);
+        return ans;    
+    }
+
+    void search(vector<string>& curr, int row, int n){
+        //complete?
+        if(row >= n) {
+            ans.push_back(curr);
+            return;
+        }
+        // iterate through all possible qs
+        for(int i = 0 ; i < n; i++){
+            string newRow(n,'.');
+            newRow[i] = 'Q';
+            curr.push_back(newRow);
+            if(isValid(curr,n)){
+                search(curr,row+1,n);
+            }
+            curr.pop_back();
+        }
+    }
+
+    bool isValid(vector<string> curr,int n){
+        if(curr.size() ==0) return true;
+        vector<pair<int,int>> coods;
+        //col
+        vector<bool> colValid(n,false);
+        for(int i = 0 ; i < curr.size(); i++){
+            for(int j = 0 ; j < curr[0].size() ;j++){
+                if(curr[i][j] == '.') continue;
+                coods.push_back({i,j});
+                if(colValid[j]) {
+                    return false;
+                }
+                colValid[j] = true;
+            }
+        }
+        // diagonal
+        for(int i = 0 ; i < coods.size(); i++){
+            for(int j = i+1 ; j < coods.size() ;j++){
+                int xDiff = abs(coods[i].first - coods[j].first);
+                int yDiff = abs(coods[i].second - coods[j].second);
+                if(xDiff == yDiff) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+```
