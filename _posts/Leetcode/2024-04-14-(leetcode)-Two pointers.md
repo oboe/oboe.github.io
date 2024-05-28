@@ -1,4 +1,4 @@
-https://leetcode.com/problems/valid-palindrome/
+<https://leetcode.com/problems/valid-palindrome>
 Good:
 - Just a simple left right pointer: n, 1 space
 
@@ -32,7 +32,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+<https://leetcode.com/problems/two-sum-ii-input-array-is-sorted>
 Good:
 - Same as above: n, 1 space
 
@@ -57,7 +57,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/3sum/
+<https://leetcode.com/problems/3sum>
 Naive:
 - 3 for loops: n^3, 1 space
 
@@ -107,7 +107,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/container-with-most-water/description/
+<https://leetcode.com/problems/container-with-most-water/description>
 Naive
 - nested loop, pointing to two heights then just calculate: n^2, 1 space
 
@@ -115,7 +115,7 @@ Good
 - Intuition is that nlogn solution needs to be done, possible sorting?
 - The only way we can increase water is by getting a larger height because we are making the width smaller
 - Really didn't like that its just a gut feeling questions here's a blog on the proof for it.
-- https://leimao.github.io/blog/Proof-Container-With-Most-Water-Problem/ 
+-<https://leimao.github.io/blog/Proof-Container-With-Most-Water-Problem/>
 - Basically for smaller of the l,r pointers the longest width is the max possible area. Therefore you can move that pointer on each iteration as you already know the max water solution using that pointer.
 
 ```cpp
@@ -139,7 +139,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/trapping-rain-water/description/
+<https://leetcode.com/problems/trapping-rain-water/description>
 
 Naive
 - nested loop, for all l r indexes fill water in: n^2, n space

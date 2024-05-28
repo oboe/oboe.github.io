@@ -7,11 +7,11 @@ Basic process
 1. Get a heap dump, with `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp`
 2. Copy the dump
 3. Intellj does have a profiler tool but apparently
-4. https://www.jetbrains.com/help/idea/2021.2/open-an-external-profiling-report.html
+4.<https://www.jetbrains.com/help/idea/2021.2/open-an-external-profiling-report.htm>
 
 
 What kind of out of memory error is it?
-- https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks002.html 
+-<https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks002.html>
 
 ## JVM profiling commands
 
@@ -51,7 +51,7 @@ Swiss army knife of general tools.
 ### `jconsole`
 GUI for monitoring. Run it with a pid or you need a JMX port.
 ## More on Java from a person who loves perf
-- https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html#Java
+-<https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html#Jav>
 
 ## OS profiling
 Pretty much theres only a few ways to do this. The main problem is actually reading the information presented. Following the church of brendan gregg, lets use the USE method.
@@ -59,7 +59,7 @@ Pretty much theres only a few ways to do this. The main problem is actually read
 - Whats the saturation?
 - Whats the errors?
 
-https://www.brendangregg.com/USEmethod/use-unix7th.html 
+<https://www.brendangregg.com/USEmethod/use-unix7th.html>
 ### `dstat`
 
 ### `iostat`
@@ -67,6 +67,6 @@ https://www.brendangregg.com/USEmethod/use-unix7th.html
 ### `iotop`
 
 ## Appendix
-- https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks004.html
-- https://talktotheduck.dev/debug-the-jvm-using-jhsdb
-- https://spark.apache.org/docs/latest/monitoring.html 
+-<https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks004.htm>
+-<https://talktotheduck.dev/debug-the-jvm-using-jhsd>
+-<https://spark.apache.org/docs/latest/monitoring.html>

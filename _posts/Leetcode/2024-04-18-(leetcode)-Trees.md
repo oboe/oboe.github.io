@@ -1,4 +1,4 @@
-https://leetcode.com/problems/invert-binary-tree/
+<https://leetcode.com/problems/invert-binary-tree>
 Just recursively swap left and rights.
 
 ```cpp
@@ -18,7 +18,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/maximum-depth-of-binary-tree/
+<https://leetcode.com/problems/maximum-depth-of-binary-tree>
 Just recursively step downwards.
 
 ```cpp
@@ -31,7 +31,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/diameter-of-binary-tree/
+<https://leetcode.com/problems/diameter-of-binary-tree>
 Naive
 - Don;t code until I have a plan
 - guaranteed that it will pass through the left and right of one node
@@ -57,7 +57,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/balanced-binary-tree/
+<https://leetcode.com/problems/balanced-binary-tree>
 Naive
 - Are all these questions just going to be depth questions?
 
@@ -85,7 +85,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/same-tree/
+<https://leetcode.com/problems/same-tree>
 Simple recursive
 
 ```cpp
@@ -102,7 +102,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/subtree-of-another-tree/
+<https://leetcode.com/problems/subtree-of-another-tree>
 Simple recrusive
 
 ```cpp
@@ -127,7 +127,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+<https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree>
 Naive
 - Intuition is that lowest common ancestor of left and right is also lowest common ancestor of root.
 - return null if cannot find
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/binary-tree-level-order-traversal/
+<https://leetcode.com/problems/binary-tree-level-order-traversal>
 Naive
 - initial impression just BFS
 - or could just DFS and keep track of depth at each point so we can append to right vector
@@ -260,7 +260,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/binary-tree-right-side-view/
+<https://leetcode.com/problems/binary-tree-right-side-view>
 Naive:
 - we just need to left tor right order traversal
 
@@ -287,7 +287,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+<https://leetcode.com/problems/count-good-nodes-in-binary-tree>
 Naive
 - DFS traversal, maintaining last max state
 
@@ -311,7 +311,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/validate-binary-search-tree/
+<https://leetcode.com/problems/validate-binary-search-tree>
 Naive
 - check left and right to root each node?
 - Maintain a left and right bound and recursively check
@@ -336,7 +336,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+<https://leetcode.com/problems/kth-smallest-element-in-a-bst>
 Naive
 - unsure
 - Its a binary search tree
@@ -374,7 +374,7 @@ public:
 ```
 
 
-https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+<https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal>
 Naive
 - recursively split preorder and inorder and create the tree
 - nothing too surprising just recursive
@@ -411,7 +411,7 @@ TreeNode* buildTree(vector < int > & preorder, vector < int > & inorder) {
     }
 };
 ```
-https://leetcode.com/problems/binary-tree-maximum-path-sum/
+<https://leetcode.com/problems/binary-tree-maximum-path-sum>
 Naive
 - Just dfs with a update single ans value, and passing correct value through the dfs
 
@@ -441,7 +441,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+<https://leetcode.com/problems/serialize-and-deserialize-binary-tree>
 Naive
 - so many ways to do this
 - inorder,preorder traversal and rejoin

@@ -1,4 +1,4 @@
-https://leetcode.com/problems/reverse-linked-list/description/
+<https://leetcode.com/problems/reverse-linked-list/description>
 Naive
 - Just iterate through
 
@@ -18,7 +18,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/merge-two-sorted-lists/description/
+<https://leetcode.com/problems/merge-two-sorted-lists/description>
 
 Good
 - just zip the lists together
@@ -73,7 +73,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/reorder-list/description/
+<https://leetcode.com/problems/reorder-list/description>
 Good
 - I just dumped everything into a deque
 - You can also just reverse and reverse and reverse the list til the end
@@ -108,7 +108,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+<https://leetcode.com/problems/remove-nth-node-from-end-of-list/description>
 Good
 - Think about what should happens in the base case
 - Think about what happens in a normal case, step through it
@@ -142,7 +142,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/copy-list-with-random-pointer/description/
+<https://leetcode.com/problems/copy-list-with-random-pointer/description>
 Good
 -Straightforward
 - Can improve the find thing: as its nlogn time, n space right now
@@ -184,7 +184,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/add-two-numbers/description/
+<https://leetcode.com/problems/add-two-numbers/description>
 Naive
 - Just pop all from both lists, creating numbers, and add those together
 
@@ -224,7 +224,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/linked-list-cycle/description/
+<https://leetcode.com/problems/linked-list-cycle/description>
 Naive:
 - map
 
@@ -249,7 +249,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/find-the-duplicate-number/description/
+<https://leetcode.com/problems/find-the-duplicate-number/description>
 Naive
 - theres one repeated number
 - constant space
@@ -280,7 +280,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/lru-cache/description/
+<https://leetcode.com/problems/lru-cache/description>
 Naive
 - get returns value of key, constant time, so needs some sort of constant time lookup, most likely needs a hashmap somewhere for this.
 - Main issue is evicting the least recently used key. Needs some sort of structure that preserves insertion ordering. Likely a queue.
@@ -381,7 +381,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/merge-k-sorted-lists/description/
+<https://leetcode.com/problems/merge-k-sorted-lists/description>
 Naive
 - Just go through each list and add the lowest value?
 
@@ -389,7 +389,7 @@ Good
 - Read through the question end to end!
 - You could also just merge two lists one by one?
 
-https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+<https://leetcode.com/problems/reverse-nodes-in-k-group/description>
 Naive
 - Just pop k, reverse and re append?
 - Whats hard here other than the implementation?

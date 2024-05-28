@@ -1,4 +1,4 @@
-https://leetcode.com/problems/kth-largest-element-in-a-stream/
+<https://leetcode.com/problems/kth-largest-element-in-a-stream>
 Naive
 - hmm need something to maintain ordering
 - Initial impression is a pqueue or a multiset
@@ -31,7 +31,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/last-stone-weight/
+<https://leetcode.com/problems/last-stone-weight>
 This time it's a max heap.
 
 ```cpp
@@ -60,7 +60,7 @@ public:
     }
 };
 ```
-https://leetcode.com/problems/k-closest-points-to-origin/
+<https://leetcode.com/problems/k-closest-points-to-origin>
 Naive: 
 - Ask yourself what do you need
 - Do you need a min heap or a max heap?
@@ -92,7 +92,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/kth-largest-element-in-an-array/
+<https://leetcode.com/problems/kth-largest-element-in-an-array>
 Naive
 - Need something which maintains ordering
 - Likely a p queue
@@ -112,7 +112,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/task-scheduler/
+<https://leetcode.com/problems/task-scheduler>
 Naive
 - identical tasks must be separated by at least n intervals due to cooling time.
 - Return the minimum number of intervals required to complete all tasks
@@ -164,7 +164,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/design-twitter/
+<https://leetcode.com/problems/design-twitter>
 Naive
 - 10 most recent tweet ids
 - Each user maintains a min heap, with timestamp,tweetid pairs
@@ -225,7 +225,7 @@ public:
 };
 ```
 
-https://leetcode.com/problems/find-median-from-data-stream/
+<https://leetcode.com/problems/find-median-from-data-stream>
 Naive
 - 
 
