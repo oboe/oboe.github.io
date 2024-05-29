@@ -23,14 +23,14 @@ git clone --depth=1<https://github.com/romkatv/powerlevel10k.git>${ZSH_CUSTOM:-$
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 ### 5. Basic oh my zsh plugins
-<https://github.com/zsh-users/zsh-autosuggestion>
+<https://github.com/zsh-users/zsh-autosuggestions>
 ```
 git clone<https://github.com/zsh-users/zsh-autosuggestions.git>$ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 == ~/.zshrc ==
 add zsh-autosuggestions
 ```
-<https://github.com/zsh-users/zsh-syntax-highlightin>
+<https://github.com/zsh-users/zsh-syntax-highlighting>
 ```
 git clone<https://github.com/zsh-users/zsh-syntax-highlighting.git>$ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
@@ -38,7 +38,7 @@ git clone<https://github.com/zsh-users/zsh-syntax-highlighting.git>$ZSH_CUSTOM/p
 add zsh-syntax-highlighting
 ```
 ### 6. Better diffs
-<https://github.com/dandavison/delta#readm>
+<https://github.com/dandavison/delta#readme>
 ```
 brew install git-delta
 
@@ -58,14 +58,14 @@ brew install git-delta
     colorMoved = default
 ```
 ### 7. Basic vim defaults
-<https://github.com/amix/vimr>
+<https://github.com/amix/vimrc>
 ```
 git clone --depth=1<https://github.com/amix/vimrc.git>~/.vim_runtime
 sh ~/.vim_runtime/install_basic_vimrc.sh
 ```
 
 ### 8. fzf
-<https://github.com/junegunn/fz>
+<https://github.com/junegunn/fzf>
 
 ```
 brew install fzf
@@ -75,7 +75,7 @@ brew install fzf
 eval "$(fzf --zsh)"
 ```
 ### 9. zoxide
-<https://github.com/ajeetdsouza/zoxide?tab=readme-ov-fil>
+<https://github.com/ajeetdsouza/zoxide?tab=readme-ov-fill>
 
 ```
 brew install zoxide
