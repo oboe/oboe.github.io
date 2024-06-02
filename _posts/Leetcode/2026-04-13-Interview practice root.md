@@ -2,23 +2,63 @@
 Leetcode
 - Do all neetcode
 - <https://neetcode.io/roadmap>
-
-System design
-- [ ] Gather list of common system design questions<https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>
-- [ ] Write a series of blogs on me solving them
-- [ ] Read system design interview book
+- [ ] Graphs
+- [ ] Advanced graphs
+- [ ] 1D DP
+- [ ] 2D DP
+- [ ] Bit Manipulation
+- [ ] Math & Geometry
 
 Behavioural+
-- [ ] Polish CV:
+- [ ] (2hr) Polish CV:
 	- [ ]<https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edi>
 	- [ ]<https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edi>
 	- [ ] Ping friend for feedback
 	- [ ] Include the java and python cdk skills into the top my current experience section
-- [ ] Re create the behavioural interview grid STAR for things on my CV
+- [ ] (2hr) Re create the behavioural interview grid STAR for things on my CV
 
+System Design
+- <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#index-of-system-design-topics>
+- [ ] What is the CAP theorem?
+- [ ] What is consistency?
+- [ ] How does DNS work?
+- [ ] How do CDNs work?
+- [ ] How do LBs work?
+- [ ] What is a reverse proxy?
+- [ ] Relational DBs
+- [ ] Non relational DBs
+- [ ] Caching strategies
+- [ ] Async workflows
+- [ ] Communication, HTTP, TCP, UDP, RPC, REST
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#how-to-approach-a-system-design-interview-question>
+- [ ] Learn how to do a system design question
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#system-design-interview-questions-with-solutions>
+- [ ] Create a design pastebin post (with interview structure)
+- [ ] Twitter timeline and search
+- [ ] Web crawler
+- [ ] mint.com
+- [ ] data structures for a social network
+- [ ] KV store for a search engine
+- [ ] Amazon sales ranking by category feature
+- [ ] AWS scaling service
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#object-oriented-design-interview-questions-with-solutions>
+- [ ] hash map
+- [ ] LRU cache
+- [ ] call center
+- [ ] deck of cards
+- [ ] packing lot
+- [ ] chat server
+- [ ] circular array
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#additional-system-design-interview-questions>
+
+### Appendix
 General strategy
-- [ ] Add more roles from linekdin, like optiver and github
-- [ ] Interview with less desirable places first to prep
+- [x] Add more roles from linekdin, like optiver and github
+- [x] Interview with less desirable places first to prep
+
+System design content
+- <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#study-guide>
+- <https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>
 
 Why did you apply
 - [ ] Point to their blog post and research about it

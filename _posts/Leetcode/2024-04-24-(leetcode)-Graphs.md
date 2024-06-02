@@ -385,3 +385,51 @@ public:
 <https://leetcode.com/problems/word-ladder>
 Naive
 - Its a shortest path problem
+- Initial impression is we need a graph
+- Can do bfs or dfs, both maintaining distance, starting at begin word
+- n^2 complexity, n space
+- Intuition was correct, just do the simple bfs, when the ask is to find shortest distance
+```cpp
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> st(wordList.begin(), wordList.end());
+        queue<string> q;
+        int steps = 1;
+        q.push(beginWord);
+        while(!q.empty()){
+            int n = q.size();
+            for(int i = 0 ; i< n ;i++){
+                string curr = q.front();
+                q.pop();
+                if(curr == endWord){
+                    //cout << curr << "ended at "<< steps << "\n";
+                    return steps;
+                }
+                st.erase(curr);
+                //cout << curr << " "<< steps << "\n";
+                vector<string> qq;
+                for(auto it: st){
+                    if(connected(curr, it)){
+                        q.push(it);
+                        qq.push_back(it);
+                    }
+                }
+                for(string ss: qq){
+                    st.erase(ss);
+                }
+            }
+            steps++;
+        }
+        return 0;
+    }
+
+    bool connected(string a, string b){
+        int diff = 0;
+        for(int i = 0 ;i < a.size() ;i++){
+            if(a[i] != b[i]) diff++;
+        }
+        return (diff == 1);
+    }
+};
+```
