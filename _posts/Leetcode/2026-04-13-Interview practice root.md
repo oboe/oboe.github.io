@@ -2,7 +2,7 @@
 Leetcode
 - Do all neetcode
 - <https://neetcode.io/roadmap>
-- [ ] Graphs
+- [x] Graphs
 - [ ] Advanced graphs
 - [ ] 1D DP
 - [ ] 2D DP
