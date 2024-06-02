@@ -125,6 +125,45 @@ public:
 
 
 <https://leetcode.com/problems/longest-palindromic-substring>
+Naive
+- return the longest palindromic substring
+- Naive is just nested for loop
+- Can also just do it naively and memoize
+
+```cpp
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string best = "";
+        for(int i = 0 ;i < s.size();i++){
+            //odd
+            int oddCount = 0;
+            for(int j = 1 ; j <= s.size() ;j++){
+                if(i+j >= s.size() || i-j < 0) break;
+                if(s[i-j] == s[i+j]){
+                    oddCount = j;
+                } else{
+                    break;
+                }
+            }
+            if(best.size() < (oddCount*2)+1) best = s.substr(i-oddCount,(oddCount*2)+1);
+            //even
+            int evenCount = 0;
+            for(int j = 1 ; j <= s.size() ;j++){
+                if(i+j >= s.size() || i-j+1 < 0) break;
+                if(s[i-j+1] == s[i+j]){
+                    evenCount = j;
+                }else{
+                    break;
+                }
+            }
+            if(best.size() < evenCount*2) best = s.substr(i-evenCount+1,evenCount*2);
+
+        }
+        return best;
+    }
+};
+```
 
 <https://leetcode.com/problems/palindromic-substrings>
 
