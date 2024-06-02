@@ -166,9 +166,73 @@ public:
 ```
 
 <https://leetcode.com/problems/palindromic-substrings>
+Naive
+- return the number of substrings in it
 
+```cpp
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int ans = 0;
+        for(int i = 0 ;i < s.size();i++){
+            //odd
+            ans += 1;
+            for(int j = 1 ; j <= s.size() ;j++){
+                if(i+j >= s.size() || i-j < 0) break;
+                if(s[i-j] == s[i+j]){
+                    ans+=1;
+                } else{
+                    break;
+                }
+            }
+            //even
+            for(int j = 1 ; j <= s.size() ;j++){
+                if(i+j >= s.size() || i-j+1 < 0) break;
+                if(s[i-j+1] == s[i+j]){
+                    ans+=1;
+                }else{
+                    break;
+                }
+            }
+
+        }
+        return ans;
+    }
+};
+```
 <https://leetcode.com/problems/decode-ways>
+Naive
+- return number of ways to decode a string
+- decode(i) = (decode(i-1)+1) + (decode(i-2)+1)
+- where the i-2 one is only valid when the 2 chars are under 26
 
+```cpp
+class Solution {
+public:
+    int numDecodings(string s) {
+        vector<int> v(s.size()+2,0);
+        v[0] = 1;
+        for(int i = 0 ;i < s.size();i++){
+            if(s[i] != '0'){
+                v[i+1] += v[i];
+            }
+            if(i+1 < s.size() && isValid(s[i],s[i+1])){
+                v[i+2] += v[i];
+            }
+        }
+        return v[s.size()];
+    }
+
+    bool isValid(char a, char b){
+        if(a != '1' && a != '2') return false;
+        string s = "";
+        s.push_back(a);
+        s.push_back(b);
+        int i = stoi(s);
+        return (i <= 26);
+    }
+};
+```
 <https://leetcode.com/problems/coin-change>
 
 <https://leetcode.com/problems/maximum-product-subarray>
