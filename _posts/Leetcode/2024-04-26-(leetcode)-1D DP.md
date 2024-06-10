@@ -234,12 +234,177 @@ public:
 };
 ```
 <https://leetcode.com/problems/coin-change>
+Naive
+- given list of coins, and goal
+- get fewest number of coins that you need to make up that amount
+- unique coins, can use as many times as you want
+- So we could just brute force every single coin combination
+
+Good
+- need to return the number of coins to reach pos
+- num(i) = min(num(i-x) + 1 .... num(i-y) + 1)
+- few ways to do this bottom up and top down
+
+```cpp
+// Bottom up
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> v(amount+1,INT_MAX);
+        v[0] = 0;
+        for(int i = 0 ; i < amount ;i++){
+            for(int coin : coins){
+                if((long)i+(long)coin > (long)amount) continue;
+                if(v[i] == INT_MAX) continue;
+                v[i+coin] = min(v[i+coin],v[i]+1);
+            }
+        }
+        if(v[amount] == INT_MAX) return -1;
+        return v[amount];
+    }
+};
+```
+
+```cpp
+// top down
+class Solution {
+public:
+    vector<int> v = vector<int>(100000,INT_MAX);
+    int coinChange(vector<int>& coins, int amount) {
+        if(amount == 0) return 0;
+        if(amount < 0) return -1;
+        if(v[amount] != INT_MAX) return v[amount];
+        int least = INT_MAX;
+        for(int coin : coins){
+            if(amount-coin < 0) continue;
+            int val = coinChange(coins, amount-coin);
+            if(val != -1) least = min(least, val);
+        }
+        if(least == INT_MAX){
+            v[amount] = -1;
+            return -1;
+        }
+        else {
+            v[amount] = least + 1;
+            return least + 1;
+        }
+    }
+};
+```
 
 <https://leetcode.com/problems/maximum-product-subarray>
+Naive
+- just i, j nested loop and brute force it
+- max ending at:
+- maxEndingAt(i) = max(maxEndingAt(i-1) * current(i) ,current(i))
+- caveat is maxEndingAt(i) needs to be max neg or pos so need to maintain both
+- lets go bottom up
+
+```cpp
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxSum = 0;
+        int minSum = 0;
+        int ans = INT_MIN;
+        for(int i = 0; i < nums.size();i++){
+            if(i == 0){
+                maxSum = nums[i];
+                minSum = nums[i];
+                ans = max(ans, maxSum);
+                continue;
+            }
+            if(nums[i] > 0){
+                maxSum = max(nums[i], maxSum*nums[i]);
+                minSum = minSum*nums[i];
+            } else { // -ve
+                maxSum = min(nums[i], maxSum*nums[i]);
+                minSum = minSum*nums[i];
+                swap(maxSum,minSum);
+            }
+            ans = max(ans, maxSum);
+        }
+        return ans;
+    }
+};
+```
+
 
 <https://leetcode.com/problems/word-break>
+Naive
+- Return true or false if it's possible for the word to be segmentated
+- combine every single word, until you get the target word
+- Feels like fairly trivially 
+- break(word) = break(word-k) && break(k)
+- let's go top down
+
+```cpp
+class Solution {
+public:
+    unordered_map<string,bool> breaks;
+    bool wordBreak(string s, vector<string>& wordDict) {
+        if(s.size() ==0) return true;
+        if(breaks.count(s)) return breaks[s];
+        for(string word: wordDict){
+            if(match(s,word)){
+                string remainingStr = s.substr(word.size());
+                bool val = wordBreak(remainingStr,wordDict);
+                breaks[remainingStr] = val;
+                if(val) return true;
+            }
+        }
+        breaks[s] = false;
+        return false;
+    }
+
+    bool match(string a, string b){
+        if(b.size() > a.size()) return false;
+        for(int i = 0 ; i < b.size() ;i++){
+            if(a[i] != b[i]) return false;
+        }
+        return true;
+    }
+};
+```
+
 
 <https://leetcode.com/problems/longest-increasing-subsequence>
+Naive
+- return the longest strictly increasing subsequence, doesn't need to be connected
+- Try every subset, checking if its strictly increasing and maintaining a best.
+- A think there might be a recursive relation here.
+- I feel that LIS(i) = max((if larger than last)LIS(i-1) + 1, 1)
+- wait this doens't work, do i need to also maintain LIS(i) where it doens't contain that value?
+- Could just do a n^2 where inner loops through all previous LIS 
+- Take note of the N which is 1e3, so an n^2 is possible
 
 <https://leetcode.com/problems/partition-equal-subset-sum>
+Naive
+- Find out if I can split array into two subsets that they can sum together
+- Brute force is try every single subset
+- positive numbers only, so this means i could pass and find out the total sum, to find out what subset I need to insert to get the required total
+- The key question is how can can I avoid doing duplicate work here?
+- I guess this is 2d dp :I
 
+```cpp
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int target = accumulate(nums.begin(),nums.end(),0);
+        if(target%2 !=0) return false;
+        target = target/2;
+        unordered_set<int> s;
+        s.insert(0);
+        for(int num : nums){
+            vector<int> newAddtions;
+            for(int i : s){
+                if(i+num > target) continue;
+                if(i+num == target) return true;
+                newAddtions.push_back(i+num);
+            }
+            s.insert(newAddtions.begin(),newAddtions.end());
+        }
+        return false;
+    }
+};
+```
