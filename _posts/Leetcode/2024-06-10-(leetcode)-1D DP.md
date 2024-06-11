@@ -7,7 +7,7 @@ To solve DP, find the recursive function, what sub problems can you solve to cal
 
 The key of DP is to use memoization to cache the sub problem values efficiently.
 
-This is why theres two ways of doing DP problems, top down or bottom up. Are you going down or up the recursive tree?
+This is why theres two ways of doing DP problems, top down or bottom up (usually called tabulation, avoid stack calls). Are you going down or up the recursive tree?
 
 
 ## Qs
@@ -377,6 +377,24 @@ Naive
 - wait this doens't work, do i need to also maintain LIS(i) where it doens't contain that value?
 - Could just do a n^2 where inner loops through all previous LIS 
 - Take note of the N which is 1e3, so an n^2 is possible
+
+```cpp
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> v(nums.size()+1,1);
+        int best = 1;
+        for(int i = 0 ;i < nums.size() ;i++){
+            for(int j = 0 ; j < i ;j++){
+                if(nums[j] >= nums[i]) continue;
+                v[i] = max(v[i], v[j]+1);
+                best = max(best, v[i]);
+            }
+        }
+        return best;
+    }
+};
+```
 
 <https://leetcode.com/problems/partition-equal-subset-sum>
 Naive

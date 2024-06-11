@@ -4,8 +4,8 @@ Leetcode
 - <https://neetcode.io/roadmap>
 - [x] Graphs
 - [ ] Advanced graphs
-- [ ] 1D DP
-- [ ] 2D DP
+- [x] 1D DP
+- [x] 2D DP
 - [ ] Bit Manipulation
 - [ ] Math & Geometry
 
@@ -69,7 +69,10 @@ General strategy
 - [x] Add more roles from linekdin, like optiver and github
 - [x] Interview with less desirable places first to prep
 - [ ] <https://www.techinterviewhandbook.org/software-engineering-interview-guide/>
+
+Leetcode
 - [ ] <https://github.com/rgbedin/interview-prep/blob/main/algo-sheet.md>
+- [ ] <https://labuladong.gitbook.io/algo-en>
 
 System design content
 - <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#study-guide>
@@ -77,9 +80,9 @@ System design content
 
 Why did you apply
 - [ ] Point to their blog post and research about it
-- [ ]<https://www.mavensecurities.com/maven-interview-question-revealed>
-- [ ]<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
-- [ ]<https://www.mavensecurities.com/maven-interview-question-revealed>
-- [ ]<https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
-- [ ]<https://labuladong.gitbook.io/algo-en>
+- [ ] <https://www.mavensecurities.com/maven-interview-question-revealed>
+- [ ] <https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
+- [ ] <https://www.mavensecurities.com/maven-interview-question-revealed>
+- [ ] <https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
+
 
