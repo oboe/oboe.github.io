@@ -1,11 +1,7 @@
 
 Leetcode
-- Do all neetcode
 - <https://neetcode.io/roadmap>
-- [x] Graphs
 - [ ] Advanced graphs
-- [x] 1D DP
-- [x] 2D DP
 - [ ] Bit Manipulation
 - [ ] Math & Geometry
 
@@ -32,22 +28,30 @@ System Design
 - [ ] Caching strategies
 - [ ] Async workflows
 - [ ] Communication, HTTP, TCP, UDP, RPC, REST
-<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#how-to-approach-a-system-design-interview-question>
-- [ ] Learn how to do a system design question
-- [ ] <https://bytebytego.com/courses/system-design-interview/a-framework-for-system-design-interviews>
-- [ ] <https://gist.github.com/vasanthk/485d1c25737e8e72759f>
-- [ ] <https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery>
+
 <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#system-design-interview-questions-with-solutions>
 - [ ] Create a design pastebin post (with interview structure)
-- [ ] Twitter timeline and search
+- [ ] Twitter timeline and search <https://www.hiredintech.com/system-design/the-twitter-problem/ >
 - [ ] Web crawler
 - [ ] mint.com
 - [ ] data structures for a social network
 - [ ] design chat system <https://bytebytego.com/courses/system-design-interview/design-a-chat-system>
+- [ ] design summarisation system <https://www.hiredintech.com/system-design/the-summarization-problem/>
 - [ ] dsign youtube <https://bytebytego.com/courses/system-design-interview/design-youtube>
 - [ ] KV store for a search engine
 - [ ] Amazon sales ranking by category feature
 - [ ] AWS scaling service
+- [ ] Ticketmaster <https://www.hellointerview.com/learn/system-design/answer-keys/ticketmaster>
+- [ ] Uber <https://www.hellointerview.com/learn/system-design/answer-keys/uber>
+- [ ] Dropbox <https://www.hellointerview.com/learn/system-design/answer-keys/dropbox>
+- [ ] Ad click aggregator <https://www.hellointerview.com/learn/system-design/answer-keys/ad-click-aggregator >
+- [ ] Facebook live comments <https://www.hellointerview.com/learn/system-design/answer-keys/fb-live-comments>
+- [ ] Facebook news feed <https://www.hellointerview.com/learn/system-design/answer-keys/fb-news-feed>
+- [ ] Local delivery like gopuff <https://www.hellointerview.com/learn/system-design/answer-keys/gopuff>
+- [ ] Leetcode <https://www.hellointerview.com/learn/system-design/answer-keys/leetcode>
+- [ ] TopK youtube videos <https://www.hellointerview.com/learn/system-design/answer-keys/top-k>
+- [ ] tweet search <https://www.hellointerview.com/learn/system-design/answer-keys/tweet-search>
+
 <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#object-oriented-design-interview-questions-with-solutions>
 - [ ] hash map
 - [ ] LRU cache
@@ -78,11 +82,26 @@ System design content
 - <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#study-guide>
 - <https://www.youtube.com/watch?v=dUMWMZmMsVE&list=PLkQkbY7JNJuC99VDJcpQdww-4aT3QhdJv&index=2&ab_channel=TechDummiesNarendraL>
 
-Why did you apply
-- [ ] Point to their blog post and research about it
+HFT CPP [[2024-06-12-cpp trivia]]
+- [ ] Pros and cons of different generic patterns. Plain ol virtual inheritance, CRTP, Policy Based design
+- [ ] Really basic meta programming stuff mostly utilizing type traits and template args packing/unpacking
+- [ ] Basic questions on std containers, ie cache locality of vectors/arrays vs lists, how unordered_map and map ordering schemes are implemented under the hood, growth cost of vector, etc
+- [ ] Object model of classes in the C++ runtime
+- [ ] Naive implementations of shared ptr, unique ptr, tuples
+- [ ] Smart pointers (especially unique pointers), constexpr and std::array are quite low hanging fruits.
+- [ ] <https://www.learncpp.com/>
+- [ ] <https://www.youtube.com/watch?v=NH1Tta7purM&list=WL&index=1&ab_channel=CppCon>
+
+HFT
+- [ ] Refresh on Operating Systems
 - [ ] <https://www.mavensecurities.com/maven-interview-question-revealed>
 - [ ] <https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
 - [ ] <https://www.mavensecurities.com/maven-interview-question-revealed>
 - [ ] <https://www.mavensecurities.com/revisiting-interview-questions-at-maven>
 
 
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#how-to-approach-a-system-design-interview-question>
+- [x] Learn how to do a system design question
+- [x] <https://bytebytego.com/courses/system-design-interview/a-framework-for-system-design-interviews>
+- [x] <https://gist.github.com/vasanthk/485d1c25737e8e72759f>
+- [x] <https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery>
