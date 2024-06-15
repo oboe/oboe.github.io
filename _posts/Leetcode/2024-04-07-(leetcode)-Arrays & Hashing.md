@@ -259,4 +259,31 @@ public:
 
 <https://leetcode.com/problems/longest-consecutive-sequence>
 Naive
-- hashmap
+- 1 pass dump into hashmap
+- 1 pass find all mins
+- for each min, climb up the numbers
+
+```cpp
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> s;
+        for(int i : nums){
+            s.insert(i);
+        }
+        vector<int> mins;
+        for(int i : s){
+            if(!s.count(i-1)) mins.push_back(i);
+        }
+        int best = 0;
+        for(int i : mins){
+            int len = 1;
+            while(s.count(i+len)){
+                len++;
+            }
+            best = max(best,len);
+        }
+        return best;
+    }
+};
+```

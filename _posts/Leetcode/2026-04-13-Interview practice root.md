@@ -1,22 +1,16 @@
-
 Leetcode
-- <https://neetcode.io/roadmap>
-- [ ] Advanced graphs
-- [ ] Bit Manipulation
-- [ ] Math & Geometry
 
 Behavioural+
-- [ ] (2hr) Polish CV:
+- [x] (2hr) Polish CV:
 	- [ ]<https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edi>
 	- [ ]<https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edi>
-	- [ ] Ping friend for feedback
+	- [x] Ping friend for feedback
 	- [ ] Include the java and python cdk skills into the top my current experience section
 - [ ] (2hr) Re create the behavioural interview grid STAR for things on my CV
 - [ ] Whats me 20 second intro pitch
 
 System Design
-- [ ] <https://www.techinterviewhandbook.org/system-design/>
-- <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#index-of-system-design-topics>
+<https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#index-of-system-design-topics>
 - [ ] What is the CAP theorem?
 - [ ] What is consistency?
 - [ ] How does DNS work?
@@ -62,21 +56,17 @@ System Design
 - [ ] circular array
 <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#additional-system-design-interview-questions>
 
-### Appendix
+## Appendix
 
 Misc: self intro, Cover letters
 - [ ] self intro: <https://www.techinterviewhandbook.org/self-introduction/>
 - [ ] cover letter: <https://www.techinterviewhandbook.org/resume/ >
 - [ ] final questions: <https://www.techinterviewhandbook.org/final-questions/>
 
-General strategy
-- [x] Add more roles from linekdin, like optiver and github
-- [x] Interview with less desirable places first to prep
-- [ ] <https://www.techinterviewhandbook.org/software-engineering-interview-guide/>
-
 Leetcode
 - [ ] <https://github.com/rgbedin/interview-prep/blob/main/algo-sheet.md>
 - [ ] <https://labuladong.gitbook.io/algo-en>
+- [ ] <https://github.com/hxu296/leetcode-company-wise-problems-2022?tab=readme-ov-file>
 
 System design content
 - <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#study-guide>
@@ -105,3 +95,8 @@ HFT
 - [x] <https://bytebytego.com/courses/system-design-interview/a-framework-for-system-design-interviews>
 - [x] <https://gist.github.com/vasanthk/485d1c25737e8e72759f>
 - [x] <https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery>
+
+General strategy
+- [x] Add more roles from linekdin, like optiver and github
+- [x] Interview with less desirable places first to prep
+- [x] <https://www.techinterviewhandbook.org/software-engineering-interview-guide/>
