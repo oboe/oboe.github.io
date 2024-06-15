@@ -258,7 +258,7 @@ public:
 
 <https://leetcode.com/problems/largest-rectangle-in-histogram/description>
 Naive
-- nested for loop, start and end pos of rectangle: n^2, 1 space
-
+- Just pick an a and b pos and pass through to calc max height and use that to calc histogram size
+- That's n^2 which isn't an option
 Good
-- 10^5 meaning that nlogn solution, possible sorting is required?
+- monotonically increasing stack question
