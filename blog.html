@@ -4,13 +4,91 @@ title: Blog
 ---
 <h2>Archive</h2>
 
+<!-- Add tag filter buttons -->
+<div class="tag-filter">
+  <div class="tag-buttons">
+    <button class="tag-button active" data-tag="">All tags</button>
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      <button class="tag-button" data-tag="{{ tag[0] }}">{{ tag[0] }}</button>
+    {% endfor %}
+  </div>
+</div>
+
 <div class="archive">
   {% for post in site.posts %} 
-    <div class="archive-item">
+    <div class="archive-item" data-tags="{{ post.tags | join: ',' }}">
       <div class="archive-item-title">
         <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
       </div>
+    <div>
       <span class="archive-date">{{ post.date | date: "%b %Y" }}</span>
+    </div>
     </div>
   {% endfor %}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tagButtons = document.querySelectorAll('.tag-button');
+    const archiveItems = document.querySelectorAll('.archive-item');
+  
+    tagButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const selectedTag = this.dataset.tag;
+        
+        // Update active button
+        tagButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter posts
+        archiveItems.forEach(function(item) {
+          const itemTags = item.dataset.tags.split(',');
+          if (selectedTag === '' || itemTags.includes(selectedTag)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+  </script>
+
+<style>
+  .tag-filter {
+    margin-bottom: 20px;
+  }
+  
+  .tag-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .tag-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tag-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .tag-button.active {
+    background-color: #000000;
+    color: white;
+  }
+  
+  .tag {
+    background-color: #f1f1f1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+  </style>

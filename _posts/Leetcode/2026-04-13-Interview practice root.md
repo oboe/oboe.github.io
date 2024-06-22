@@ -1,11 +1,13 @@
 Leetcode
+- [ ] <https://leetcode.com/problems/median-of-two-sorted-arrays/description/>
+- [ ] <https://leetcode.com/problems/serialize-and-deserialize-binary-tree/>
+- [ ] <https://leetcode.com/problems/meeting-rooms/description/>
+- [ ] <https://leetcode.com/problems/meeting-rooms-ii/description/>
+- [ ] <https://leetcode.com/problems/minimum-interval-to-include-each-query/description/>
+- [ ] <https://leetcode.com/problems/burst-balloons/description/>
+- [ ] <https://leetcode.com/problems/regular-expression-matching/description/>
 
 Behavioural+
-- [x] (2hr) Polish CV:
-	- [ ]<https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edi>
-	- [ ]<https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edi>
-	- [x] Ping friend for feedback
-	- [ ] Include the java and python cdk skills into the top my current experience section
 - [ ] (2hr) Re create the behavioural interview grid STAR for things on my CV
 - [ ] Whats me 20 second intro pitch
 
@@ -100,3 +102,9 @@ General strategy
 - [x] Add more roles from linekdin, like optiver and github
 - [x] Interview with less desirable places first to prep
 - [x] <https://www.techinterviewhandbook.org/software-engineering-interview-guide/>
+
+- [x] (2hr) Polish CV:
+	- [ ]<https://docs.google.com/document/d/1zEt77qV4kA3bACRb7ckDu522gXC_LaZaJu-Bc5NhwiA/edi>
+	- [ ]<https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edi>
+	- [x] Ping friend for feedback
+	- [x] Include the java and python cdk skills into the top my current experience section
