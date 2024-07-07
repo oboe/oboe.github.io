@@ -1,3 +1,7 @@
+Python
+- [[2024-07-01-Python]]
+
+
 Leetcode
 - [ ] <https://leetcode.com/problems/median-of-two-sorted-arrays/description/>
 - [ ] <https://leetcode.com/problems/serialize-and-deserialize-binary-tree/>
@@ -6,10 +10,6 @@ Leetcode
 - [ ] <https://leetcode.com/problems/minimum-interval-to-include-each-query/description/>
 - [ ] <https://leetcode.com/problems/burst-balloons/description/>
 - [ ] <https://leetcode.com/problems/regular-expression-matching/description/>
-
-Behavioural+
-- [ ] (2hr) Re create the behavioural interview grid STAR for things on my CV
-- [ ] Whats me 20 second intro pitch
 
 System Design
 <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#index-of-system-design-topics>
@@ -108,3 +108,7 @@ General strategy
 	- [ ]<https://docs.google.com/document/d/1TKrjtob6MOqPSV9UE90LqEFuMms49IvT4xF0mX1FNtY/edi>
 	- [x] Ping friend for feedback
 	- [x] Include the java and python cdk skills into the top my current experience section
+
+Behavioural+ (pull from cracking the coding interview)
+- [x] (2hr) Re create the behavioural interview grid STAR for things on my CV
+- [x] Whats me 20 second intro pitch

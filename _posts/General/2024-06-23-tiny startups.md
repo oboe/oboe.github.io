@@ -1,4 +1,4 @@
-With the advancement of dev tooling and LLMs, there's a growing consensus that we'll witness a proliferation of smaller tiny companies. These micro-teams will be capable of building products and services that once required thousands of employees to develop and maintain.
+With the advancement of dev tooling and LLMs, there's a growing consensus that we'll witness a proliferation of even more tiny companies. These micro-teams will be capable of building products and services that once required thousands of employees to develop and maintain.
 
 As the barriers to entry plummet, several second-order effects may emerge:
 - Reduced reliance on venture capital
