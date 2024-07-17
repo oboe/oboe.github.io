@@ -1,6 +1,9 @@
 Python
 - [[2024-07-01-Python]]
+- <https://fastapi.tiangolo.com/async/?fbclid=IwZXh0bgNhZW0CMTEAAR1ppjUyy1PLfZgYNiVrB8zKGhxCkr5100dzNaHV9flbjqvubPkeGsBwphg_aem_RRVUoyWDtrepjbPwF6Qnhg>
 
+Apply to amsterdam areas as well
+- [ ] <https://www.levels.fyi/t/software-engineer/locations/greater-amsterdam-area?sortBy=total_compensation&sortOrder=DESC&offset=0&yoeChoice=mid>
 
 Leetcode
 - [ ] <https://leetcode.com/problems/median-of-two-sorted-arrays/description/>
