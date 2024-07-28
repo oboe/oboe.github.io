@@ -1,7 +1,9 @@
+
 ### Stock trading thing
 
 #### 1 Order book simple market and limits
 - Log(n) each order, so o(nlogn)
+
 ```cpp
 class OrderBook {
 public:
@@ -159,6 +161,7 @@ void limitBasic(){
 
 #### 2 Order book more complex, trigger orders
 - Just have another heap you maintain for both the trigger orders
+
 ```cpp
 #include <iostream>
 #include <queue>
@@ -387,6 +390,7 @@ int main(){
 ```
 
 #### 3 Order book final, cancel orders
+
 
 ```cpp
 #include <iostream>
