@@ -1,6 +1,6 @@
 ### Stock trading thing
 
-#### Order book simple market and limits
+#### 1 Order book simple market and limits
 - Log(n) each order, so o(nlogn)
 ```cpp
 class OrderBook {
@@ -157,7 +157,7 @@ void limitBasic(){
 };
 ```
 
-#### Order book more complex, trigger orders
+#### 2 Order book more complex, trigger orders
 - Just have another heap you maintain for both the trigger orders
 ```cpp
 #include <iostream>
@@ -386,10 +386,328 @@ int main(){
 
 ```
 
-#### Order book final, cancel orders
-<https://www.youtube.com/watch?v=nmYx6tQxtSs&ab_channel=Jordanhasnolife >
+#### 3 Order book final, cancel orders
 
+```cpp
+#include <iostream>
+#include <queue>
+#include <list>
 
+using namespace std;
+
+class OrderQueue {
+public:
+    float value;
+    list<float> lst;
+    OrderQueue(float v){
+        value = v;
+    }
+};
+struct OrderQueueGreater {
+    bool operator()(OrderQueue* a, OrderQueue* b){
+        return (a->value > b->value);
+    }
+};
+struct OrderQueueLesser {
+    bool operator()(OrderQueue* a, OrderQueue* b){
+        return (a->value < b->value);
+    }
+};
+class OrderBook {
+public:
+    //max heap
+    priority_queue<OrderQueue*,vector<OrderQueue*>,OrderQueueLesser> buys;
+    unordered_map<float, OrderQueue*> buyPriceToQueue;
+    //min heap
+    priority_queue<OrderQueue*,vector<OrderQueue*>,OrderQueueGreater> sells;
+    unordered_map<float, OrderQueue*> sellPriceToQueue;
+
+    OrderBook(){}
+
+    void pp(float vol, float price){
+        cout << "MATCHED " << vol << " at $" << price << "\n";
+    }
+
+    //market order o(logn)
+    void buy(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            OrderQueue* q = sells.top();
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    pp(poppedAmount, q->value);
+                    remaining -= poppedAmount;
+                }else {
+                    pp(remaining, q->value);
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+            if(q->lst.size() == 0){
+                sellPriceToQueue.erase(q->value);
+                sells.pop();
+            }
+        }
+    }
+
+    //limit order o(logn)
+    void buy(float amount, float value){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            OrderQueue* q = sells.top();
+            if(q->value > value){
+                break;
+            }
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    pp(poppedAmount, q->value);
+                    remaining -= poppedAmount;
+                }else {
+                    pp(remaining, q->value);
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+            if(q->lst.size() == 0){
+                sellPriceToQueue.erase(q->value);
+                sells.pop();
+            }
+        }
+        if(remaining > 0){
+            if(buyPriceToQueue.count(value)){
+                buyPriceToQueue[value]->lst.push_back(remaining);
+            } else {
+                OrderQueue* q = new OrderQueue(value);
+                q->lst.push_back(remaining);
+                buyPriceToQueue[value] = q;
+                buys.push(q);
+            }
+        }
+    }
+
+    void cancelBuy(float amount, float value){
+        float remaining  = amount;
+        if(buyPriceToQueue.count(value)){
+            OrderQueue* q = buyPriceToQueue[value];
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    cout << "CANCEL buy " << poppedAmount << " at " << q->value << "\n"; 
+                    remaining -= poppedAmount;
+                }else {
+                    cout << "CANCEL buy " << remaining << " at " << q->value << "\n"; 
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+        }
+    }
+
+    //market order o(logn)
+    void sell(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && buys.size() > 0){
+            OrderQueue* q = buys.top();
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    pp(poppedAmount, q->value);
+                    remaining -= poppedAmount;
+                }else {
+                    pp(remaining, q->value);
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+            if(q->lst.size() == 0){
+                buyPriceToQueue.erase(q->value);
+                buys.pop();
+            }
+        }
+    }
+    //limit order o(logn)
+    void sell(float amount, float value){
+        float remaining  = amount;
+        while(remaining > 0 && buys.size() > 0){
+            OrderQueue* q = buys.top();
+            if(q->value < value){
+                break;
+            }
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    pp(poppedAmount, q->value);
+                    remaining -= poppedAmount;
+                }else {
+                    pp(remaining, q->value);
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+            if(q->lst.size() == 0){
+                buyPriceToQueue.erase(q->value);
+                buys.pop();
+            }
+        }
+        if(remaining > 0){
+            if(sellPriceToQueue.count(value)){
+                sellPriceToQueue[value]->lst.push_back(remaining);
+            } else {
+                OrderQueue* q = new OrderQueue(value);
+                q->lst.push_back(remaining);
+                sellPriceToQueue[value] = q;
+                sells.push(q);
+            }
+        }
+    }
+
+    void cancelSell(float amount, float value){
+        float remaining  = amount;
+        if(sellPriceToQueue.count(value)){
+            OrderQueue* q = sellPriceToQueue[value];
+            while(remaining > 0 && q->lst.size() > 0){
+                float poppedAmount = q->lst.front();
+                q->lst.pop_front();
+                if(poppedAmount <= remaining){
+                    cout << "CANCEL sell " << poppedAmount << " at " << q->value << "\n"; 
+                    remaining -= poppedAmount;
+                }else {
+                    cout << "CANCEL sell " << remaining << " at " << q->value << "\n"; 
+                    poppedAmount -= remaining;
+                    q->lst.push_front(poppedAmount);
+                    remaining = 0;
+                }
+            }
+        }
+    }
+};
+
+void parseInput(string s, OrderBook* ob){
+    cout << s << "\n";
+    vector<string> line;
+    line.push_back("");
+    for(char c : s){
+        if(c == ' '){
+            line.push_back("");
+        } else {
+            line[line.size()-1] += c;
+        }
+    }
+    string type = line[0];
+    string bs = line[1];
+    if(type == "limit"){
+        float volume = stof(line[2]);
+        float price = stof(line[3]);
+        if (bs =="buy"){
+            ob->buy(volume, price);
+        } else {
+            ob->sell(volume, price);
+        }
+    } else if (type =="market"){
+        float volume = stof(line[2]);
+        if (bs =="buy"){
+            ob->buy(volume);
+        } else {
+            ob->sell(volume);
+        }
+    }else if (type =="stop"){
+        // float volume = stof(line[2]);
+        // float price = stof(line[3]);
+        // if (bs =="buy"){
+        //     ob->buyStopOrder(volume,price);
+        // } else {
+        //     ob->sellStopOrder(volume,price);
+        // }
+    }else {// cancel?
+        float volume = stof(line[2]);
+        float price = stof(line[3]);
+        if (bs =="buy"){
+            ob->cancelBuy(volume, price);
+        } else {
+            ob->cancelSell(volume, price);
+        }
+    }
+}
+
+void basic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 5 10",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("market sell 10",book);
+    parseInput("market sell 5",book);
+};
+
+/**
+ * ❯ g++ main.cpp -Wall -std=c++20 && ./a.out
+limit buy 10 10
+limit buy 5 5
+limit sell 5 5
+5
+MATCHED 5 at $10
+limit sell 5 5
+5
+MATCHED 5 at $10
+ */
+void limitBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 10 10",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("limit sell 5 5",book);
+    parseInput("limit sell 5 5",book);
+};
+
+/**
+stop buy 1 1
+limit buy 5 5
+limit sell 5 5
+MATCHED 5 at $5
+limit sell 1 1
+MATCHED 1 at $1
+ */
+void stopBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("stop buy 1 1",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("limit sell 5 5",book);
+    parseInput("limit sell 1 1",book);
+};
+
+/**
+❯ g++ main.cpp -Wall -std=c++20 && ./a.out
+limit buy 5 5
+limit buy 5 5
+cancel buy 6 5
+CANCEL buy 5 at 5
+CANCEL buy 1 at 5
+limit sell 5 5
+MATCHED 4 at $5
+ */
+void cancelBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 5 5",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("cancel buy 6 5",book);
+    parseInput("limit sell 5 5",book);
+};
+
+int main(){
+    cancelBasic();
+    return 0;
+}
+
+```
 ### Calculator
 
 <https://leetcode.com/problems/basic-calculator/description/>
