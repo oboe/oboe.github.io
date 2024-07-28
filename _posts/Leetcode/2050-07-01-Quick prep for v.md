@@ -1,3 +1,411 @@
+### Stock trading thing
+
+#### Order book simple market and limits
+- Log(n) each order, so o(nlogn)
+```cpp
+class OrderBook {
+public:
+    //max heap
+    priority_queue<pair<float,float>> buys;
+    //min heap
+    priority_queue<pair<float,float>,vector<pair<float,float>>,greater<pair<float,float>>> sells;
+
+    OrderBook(){}
+
+    void pp(float vol, float price){
+        cout << "MATCHED " << vol << " at $" << price << "\n";
+    }
+
+    //market order o(logn)
+    void buy(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            pair<float,float> popped = sells.top();
+            sells.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                sells.push(popped);
+                remaining = 0;
+            }
+        }
+    }
+
+    //limit order o(logn)
+    void buy(float amount, float value){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            pair<float,float> popped = sells.top();
+            if(popped.first > value) {
+                break;
+            }
+            sells.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                sells.push(popped);
+                remaining = 0;
+            }
+        }
+        if(remaining > 0){
+            buys.push({value,remaining});
+        }
+    }
+
+    //market order o(logn)
+    void sell(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && buys.size() > 0){
+            pair<float,float> popped = buys.top();
+            buys.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                buys.push(popped);
+                remaining = 0;
+            }
+        }
+    }
+    //limit order o(logn)
+    void sell(float amount, float value){
+        float remaining = amount;
+        while(remaining > 0 && buys.size() > 0){
+            cout << remaining << "\n";
+            pair<float,float> popped = buys.top();
+            if(popped.first < value) {
+                break;
+            }
+            buys.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                buys.push(popped);
+                remaining = 0;
+            }
+        }
+        if(remaining > 0){
+            sells.push({value,remaining});
+        }
+    }
+
+};
+
+void parseInput(string s, OrderBook* ob){
+    cout << s << "\n";
+    vector<string> line;
+    line.push_back("");
+    for(char c : s){
+        if(c == ' '){
+            line.push_back("");
+        } else {
+            line[line.size()-1] += c;
+        }
+    }
+    string type = line[0];
+    string bs = line[1];
+    if(type == "limit"){
+        float volume = stof(line[2]);
+        float price = stof(line[3]);
+        if (bs =="buy"){
+            ob->buy(volume, price);
+        } else {
+            ob->sell(volume, price);
+        }
+    } else if (type =="market"){
+        float volume = stof(line[2]);
+        if (bs =="buy"){
+            ob->buy(volume);
+        } else {
+            ob->sell(volume);
+        }
+    }else if (type =="stop"){
+        
+    }else {// cancel?
+
+    }
+}
+
+/**
+ * ❯ g++ main.cpp -Wall -std=c++20 && ./a.out
+limit buy 10 10
+limit buy 5 5
+limit sell 5 5
+5
+MATCHED 5 at $10
+limit sell 5 5
+5
+MATCHED 5 at $10
+ */
+void limitBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 10 10",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("limit sell 5 5",book);
+    parseInput("limit sell 5 5",book);
+};
+```
+
+#### Order book more complex, trigger orders
+- Just have another heap you maintain for both the trigger orders
+```cpp
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+class OrderBook {
+public:
+    //max heap
+    priority_queue<pair<float,float>> buys;
+    priority_queue<pair<float,float>> stopBuys; //first price is the trigger for stop heaps
+    //min heap
+    priority_queue<pair<float,float>,vector<pair<float,float>>,greater<pair<float,float>>> sells;
+    priority_queue<pair<float,float>,vector<pair<float,float>>,greater<pair<float,float>>> stopSells;
+
+    OrderBook(){}
+
+    void pp(float vol, float price){
+        cout << "MATCHED " << vol << " at $" << price << "\n";
+    }
+
+    //market order o(logn)
+    void buy(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            pair<float,float> popped = sells.top();
+            sells.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                sells.push(popped);
+                remaining = 0;
+            }
+        }
+        triggerStopOrders();
+    }
+
+    //limit order o(logn)
+    void buy(float amount, float value){
+        float remaining  = amount;
+        while(remaining > 0 && sells.size() > 0){
+            pair<float,float> popped = sells.top();
+            if(popped.first > value) {
+                break;
+            }
+            sells.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                sells.push(popped);
+                remaining = 0;
+            }
+        }
+        if(remaining > 0){
+            buys.push({value,remaining});
+        }
+        triggerStopOrders();
+    }
+
+    void buyStopOrder(float amount, float value){
+        stopBuys.push({value,amount});
+    }
+
+    //market order o(logn)
+    void sell(float amount){
+        float remaining  = amount;
+        while(remaining > 0 && buys.size() > 0){
+            pair<float,float> popped = buys.top();
+            buys.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                buys.push(popped);
+                remaining = 0;
+            }
+        }
+        triggerStopOrders();
+    }
+    //limit order o(logn)
+    void sell(float amount, float value){
+        float remaining = amount;
+        while(remaining > 0 && buys.size() > 0){
+            pair<float,float> popped = buys.top();
+            if(popped.first < value) {
+                break;
+            }
+            buys.pop();
+            if(popped.second <= remaining){
+                pp(popped.second, popped.first);
+                remaining -= popped.second;
+            }else {
+                pp(remaining, popped.first);
+                popped.second -= remaining;
+                buys.push(popped);
+                remaining = 0;
+            }
+        }
+        if(remaining > 0){
+            sells.push({value,remaining});
+        }
+        triggerStopOrders();
+    }
+
+    void sellStopOrder(float amount, float value){
+        stopSells.push({value,amount});
+    }
+
+    void triggerStopOrders(){
+        if(!sells.empty()){
+            float sellTop = sells.top().first;
+            while(stopBuys.size() > 0 && stopBuys.top().first >= sellTop ){
+                pair<float,float> curr = stopBuys.top();
+                stopBuys.pop();
+                buy(curr.second);
+            }
+        }
+        if(!buys.empty()){
+            float buyTop = buys.top().first;
+            while(stopSells.size() > 0 && stopSells.top().first >= buyTop ){
+                pair<float,float> curr = stopSells.top();
+                stopSells.pop();
+                sell(curr.second);
+            }
+        }
+    }
+};
+
+void parseInput(string s, OrderBook* ob){
+    cout << s << "\n";
+    vector<string> line;
+    line.push_back("");
+    for(char c : s){
+        if(c == ' '){
+            line.push_back("");
+        } else {
+            line[line.size()-1] += c;
+        }
+    }
+    string type = line[0];
+    string bs = line[1];
+    if(type == "limit"){
+        float volume = stof(line[2]);
+        float price = stof(line[3]);
+        if (bs =="buy"){
+            ob->buy(volume, price);
+        } else {
+            ob->sell(volume, price);
+        }
+    } else if (type =="market"){
+        float volume = stof(line[2]);
+        if (bs =="buy"){
+            ob->buy(volume);
+        } else {
+            ob->sell(volume);
+        }
+    }else if (type =="stop"){
+        float volume = stof(line[2]);
+        float price = stof(line[3]);
+        if (bs =="buy"){
+            ob->buyStopOrder(volume,price);
+        } else {
+            ob->sellStopOrder(volume,price);
+        }
+    }else {// cancel?
+
+    }
+}
+
+void basic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 5 10",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("market sell 10",book);
+    parseInput("market sell 5",book);
+};
+
+/**
+ * ❯ g++ main.cpp -Wall -std=c++20 && ./a.out
+limit buy 10 10
+limit buy 5 5
+limit sell 5 5
+5
+MATCHED 5 at $10
+limit sell 5 5
+5
+MATCHED 5 at $10
+ */
+void limitBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("limit buy 10 10",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("limit sell 5 5",book);
+    parseInput("limit sell 5 5",book);
+};
+
+/**
+stop buy 1 1
+limit buy 5 5
+limit sell 5 5
+MATCHED 5 at $5
+limit sell 1 1
+MATCHED 1 at $1
+ */
+void stopBasic(){
+    OrderBook* book = new OrderBook();
+    parseInput("stop buy 1 1",book);
+    parseInput("limit buy 5 5",book);
+    parseInput("limit sell 5 5",book);
+    parseInput("limit sell 1 1",book);
+};
+
+int main(){
+    stopBasic();
+    return 0;
+}
+
+```
+
+#### Order book final, cancel orders
+<https://www.youtube.com/watch?v=nmYx6tQxtSs&ab_channel=Jordanhasnolife >
+
+
+### Calculator
+
+<https://leetcode.com/problems/basic-calculator/description/>
+
+<https://leetcode.com/problems/broken-calculator/description/>
+
+<https://leetcode.com/problems/basic-calculator-ii/description/>
+- This seems to be one of the questions
+
+<https://leetcode.com/problems/basic-calculator-iii/>
+- seems to be a followup
+
+<https://leetcode.com/problems/basic-calculator-iv/description/>
+
+<https://leetcode.com/discuss/interview-question/850974/hackerrank-online-assessment-roblox-new-grad-how-to-solve-this>
+
 <https://leetcode.com/problems/implement-trie-ii-prefix-tree/description/>
 Naive
 - standard implement a trie structure
@@ -369,16 +777,4 @@ Naive
 - of course we can just cache these intermediate results, between trees
 - now we can notice that this caching is actually just computing suffixes of the two strings. So we only need to know the i,j values to cache
 - We can actually store these results in a 2d grid and compute it bottom up. Lets us avoid dealing with stack limits
-- 
-
-
-<https://leetcode.com/problems/basic-calculator/description/>
-
-<https://leetcode.com/problems/broken-calculator/description/>
-
-<https://leetcode.com/problems/basic-calculator-ii/description/>
-
-<https://leetcode.com/problems/basic-calculator-iii/>
-
-<https://leetcode.com/problems/basic-calculator-iv/description/>
 

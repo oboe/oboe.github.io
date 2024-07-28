@@ -27,7 +27,7 @@ System Design
 - [ ] Caching strategies
 - [ ] Async workflows
 - [ ] Communication, HTTP, TCP, UDP, RPC, REST
-
+- <https://www.karanpratapsingh.com/courses/system-design>
 <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#system-design-interview-questions-with-solutions>
 - [ ] Create a design pastebin post (with interview structure)
 - [ ] Twitter timeline and search <https://www.hiredintech.com/system-design/the-twitter-problem/ >
