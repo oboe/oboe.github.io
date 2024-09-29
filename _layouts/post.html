@@ -108,19 +108,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const headings = postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
   const tocSidebar = document.getElementById('tocSidebar');
   
-  // Generate table of contents
-  const toc = generateTOC(headings);
-  tocNav.innerHTML = toc;
-  
-  // Smooth scroll to heading when TOC link is clicked
-  tocNav.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A') {
-      e.preventDefault();
-      const targetId = e.target.getAttribute('href').slice(1);
-      const targetElement = document.getElementById(targetId);
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  if (headings.length > 0) {
+    // Generate table of contents
+    const toc = generateTOC(headings);
+    tocNav.innerHTML = toc;
+
+    tocSidebar.style.display = 'block';
+    
+    // Smooth scroll to heading when TOC link is clicked
+    tocNav.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').slice(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  } else {
+    tocSidebar.style.display = 'none';
+  }
   
   function generateTOC(headings) {
     let toc = '<ul>';
