@@ -44,21 +44,29 @@
     height: auto;
     max-height: 80vh;
     background: transparent;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     z-index: 1000;
     overflow: hidden;
   }
-  .toc-sidebar:hover {
+  .toc-sidebar.expanded {
     width: 250px;
     background: rgba(248, 248, 248, 0.95);
   }
   .toc-nav {
     padding: 20px 15px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transform: translateX(-220px);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    max-width: 220px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: calc(80vh - 40px);
+    pointer-events: none;
   }
-  .toc-sidebar:hover .toc-nav {
+  .toc-sidebar.expanded .toc-nav {
     opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
   .toc-nav ul {
     list-style-type: none;
@@ -67,12 +75,24 @@
   }
   .toc-nav ul li {
     margin-bottom: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .toc-sidebar.expanded .toc-nav ul li {
+    opacity: 1;
+    transform: translateX(0);
   }
   .toc-nav a {
     color: #333;
     text-decoration: none;
     font-size: 14px;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: block;
+    line-height: 1.4;
   }
   .toc-nav a:hover {
     color: #007bff;
@@ -88,6 +108,11 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .toc-sidebar.expanded .toc-toggle {
+    opacity: 0;
+    pointer-events: none;
   }
   @media (max-width: 768px) {
     .toc-sidebar {
@@ -104,16 +129,40 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const tocNav = document.getElementById('toc');
+  const tocSidebar = document.querySelector('.toc-sidebar');
   const postContent = document.querySelector('.post-content');
   const headings = postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  const tocSidebar = document.getElementById('tocSidebar');
   
+  let timeoutId;
+
+  function expandTOC() {
+    clearTimeout(timeoutId);
+    tocSidebar.classList.add('expanded');
+  }
+
+  function collapseTOC() {
+    timeoutId = setTimeout(() => {
+      tocSidebar.classList.remove('expanded');
+    }, 300); // 300ms delay before closing
+  }
+
+  tocSidebar.addEventListener('mouseenter', expandTOC);
+  tocSidebar.addEventListener('mouseleave', collapseTOC);
+  
+  // Check if there are any headings
   if (headings.length > 0) {
     // Generate table of contents
     const toc = generateTOC(headings);
     tocNav.innerHTML = toc;
-
+    
+    // Show the TOC sidebar
     tocSidebar.style.display = 'block';
+    
+    // Add staggered animation to TOC items
+    const tocItems = tocNav.querySelectorAll('li');
+    tocItems.forEach((item, index) => {
+      item.style.transitionDelay = `${index * 50}ms`;
+    });
     
     // Smooth scroll to heading when TOC link is clicked
     tocNav.addEventListener('click', function(e) {
@@ -125,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   } else {
+    // Hide the TOC sidebar if there are no headings
     tocSidebar.style.display = 'none';
   }
   

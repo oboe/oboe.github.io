@@ -16,12 +16,21 @@ h6 {
   margin-bottom: 3px;
 }
 
-ol,
-ul {
-  margin-top: 0px;
+p + ul,
+p + ol {
+  margin-top: 0rem; /* Reduce space between text and the list */
 }
 
+ul,
+ol {
+  margin-top: 0px; /* Remove default top margin */
+  margin-bottom: 1rem; /* Adjust bottom margin if necessary */
+  padding-left: 20px; /* Optional: adjust padding for indentation */
+}
 
+p {
+  margin-bottom: 0.3rem; /* Adjust this value to reduce space between paragraphs */
+}
 
 blockquote {
   border-left: .25rem solid grey;
