@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Cpp
+---
 <https://www.youtube.com/watch?v=BxfT9fiUsZ4&list=WL&index=2&ab_channel=Pacific%2B%2B>
 
 Need to think about hotpath/fastpath that is only exercised 0.01% of the time that executes the trade. Any jitter is unacceptable. OS, network, hardware are all forgotten about this code, they all work in fair ways which ignore this code. 

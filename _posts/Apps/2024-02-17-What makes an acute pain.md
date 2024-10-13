@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 After building 7 apps I've realised that all my successful apps fall into one category and all the unsuccessful ones fall into another. The successful apps all solve an acute pain and the unsuccessful ones don't. 
 ### What is an acute pain?
 An acute pain is a problem the user has and wants to solve immediately. The app should resolve the problem within a minute of the user opening your app.

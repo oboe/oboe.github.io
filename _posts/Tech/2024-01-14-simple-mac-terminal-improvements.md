@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Productivity
+---
 Here's a ultra quick minimalist collections of plugins/programs which will help you become more productive on the mac terminal. (Without doing anything complicated)
 ### 1. Install homebrew
 <https://brew.sh>

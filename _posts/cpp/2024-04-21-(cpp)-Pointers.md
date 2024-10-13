@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Cpp
+---
 ### What are pointers?
 Pointers, point to memory addresses, pretty self explanatory.
 1. Declare them with `int *ptr;`

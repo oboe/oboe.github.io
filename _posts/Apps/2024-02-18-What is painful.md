@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 Something I've been thinking about is what is pain and what is painful. As the more painful a problem is the better the app is which solves that pain.
 
 I've settled on few pains.

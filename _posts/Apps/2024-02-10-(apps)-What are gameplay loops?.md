@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 Something to deeply focus on when developing apps is what the core interaction loops is.
 ### What are gameplay loops?
 The core heartbeat of your app. A series of actions that is repeated over and over and produces the maximum value for your users.

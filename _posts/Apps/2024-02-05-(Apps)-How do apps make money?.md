@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 Something you should think about when developing apps is how you want to monetise it.
 
 Theres two main families of app monetisation: IAP and Ads.

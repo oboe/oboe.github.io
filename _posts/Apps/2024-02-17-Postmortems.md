@@ -1,3 +1,8 @@
+---
+tags:
+  - Apps
+layout: post
+---
 Here's a collection of brief app postmortems I've learnt and collected. The data presented will be stale quickly but I hope the lessons learnt will still be useful.
 ### App 1: Workout Tracker
 ```

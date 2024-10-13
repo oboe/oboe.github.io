@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 What tactics can you employ to increase app retention?
 ### 1. Reward the user
 Incentivise the user to stay and retain. Usually this can be simple in game currency and upgrades. Try to trigger this reward at a point during the onboarding flow.

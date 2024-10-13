@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 This is a follow up post to my 24 apps goal post.
 
 So to build 24 apps I need to be ruthless with the investment of my time. Here's a collection of app requirements I've settled on to help my be focused in my app ideas.

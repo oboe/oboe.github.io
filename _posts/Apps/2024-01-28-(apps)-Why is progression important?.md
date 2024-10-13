@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 Something I've come to notice when designing consumer software is that humans love seeing numbers go up.
 
 One of the best examples of this are idle games like cookie clicker, adventure capitalist or egg inc. All carefully designed to carefully harvest as much "I am making progress" dopamine as possible.

@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 So whats the game, app developers play when trying to acquire users?
 
 Pretty much the game is all about having a clear vision of your users and their life time value and trying to acquire these users cheaper than the profit you stand to gain. Simple.

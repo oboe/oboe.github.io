@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Java
+---
 I've always relied on these cool snazzy dashboarding and metric services like Cloudwatch and Grafana to do all the heavy lifting of knowing what the hell is happening to my hosts. Now when I don't have any of these tools setup I'm fucked. This post aims to help make me less fucked.
 
 My high level mental model is that ideally we can solve all our issues at the application level (Java). Before I start having to dip into OS.

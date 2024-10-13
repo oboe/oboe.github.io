@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Apps
+---
 Here's some data on what mobile app (CPIs) cost per installs look like. 
 
 In general CPI looks like: (theres huge variations)
