@@ -4,7 +4,7 @@ title: Home
 ---
 
 ## About
-Distingushed L9 Principal Engineer at Albertsons.
+Distingushed L9 Principal Engineer at Albertsons, certified Agile Scrum-Grandmaster.
 
 I love building random things I think are cool. Surprisingly people are also willing to pay for these random things.
 
