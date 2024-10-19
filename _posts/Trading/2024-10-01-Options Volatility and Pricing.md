@@ -15,6 +15,7 @@ Premium: options price, split into below.
 How does the market not let people wiggle out of options contracts?
 - Buyers and sellers must have clearing firms that will fulfil any obligations
 - Traders will need to deposit some margin, so clearing firm and house is happy
+
 ## Basic strategies
 Ignore that there is optionality to trigger the option early, what do you think the price of the underlying will be at expiration and just calculate off that.
 - Main call out being that you get the options chart, where you can choose to have unlimited potential reward and fixed guaranteed downside/risk, or the reverse.
@@ -22,6 +23,7 @@ Ignore that there is optionality to trigger the option early, what do you think 
 You can visualise this stuff with expiration graphs
 - x axis is underlying price
 - y axis is profit
+
 ## Pricing models
 Traders of underlying only need to care about the direction. Options need to care about when this directional move will happen.
 - This is such a pain in the ass that some ignore this directional movement and create compound options to trade on the when a directional move will happen.
@@ -38,7 +40,42 @@ So basically just
 
 Black-Scholes model is most widely used simple option pricing model!
 ## Volatility
-51
+To make money as an options trader we need to care about the speed of the market as well as the direction. We care about volatility because its a measurement of this speed.
+
+To think about price we previously:
+1. thought about for every infinite price, have a probability of that, then using all those infinite price probabilities you could price your option.
+2. This sucks, as it's using an infinite amount of values
+3. But you can use a normal distribution to short cut it
+4. With normal distributions you can easily do calculations, like finding probabilities at points and finding areas under distributions!
+5. awesome!
+
+Normal distributions also can be explained with just two numbers!
+- The mean and the standard deviation
+
+So the underlying price is the mean and volatility is standard deviation
+- More specifically, volatility is one standard deviation price change, in percentage, at end of one year period.
+- So 20% vol on 100, means that in a year it'll be between 80 and 120 68% of time
+
+Theres a few issues with just using a normal distribution to model price
+1. You can't really get negative cost securities, which is assumed to exist in normal distribution
+2. Theres not percent based compounding, much of finance is on rate of return, and how something will grow at a fixed percentage, this is ignored if you use a normal distribution.
+
+Whats the fix?
+1. Model the percent of change with a normal distribution
+2. So you're using a log normal distribution to model securities!
+
+Estimating shorter time volatility
+- Year volatility is proportional to square root of time
+- So divide 20% by 16 to get the daily volatility
+- This means that getting the every day settlement diffs you can guesstimate back up to yearly volatility
+- e.g +1, -0.5, +1.2, +0.2, -3
+
+Theres a few types of volatility to think about
+1. Future volatility: what is the actual volatility, that you can use to determine the value of an option
+2. Historical volatility: what is volatility based on past data
+3. Forecast volatility: what is guess volatility in the future
+4. Implied volatility: just recalc using black scholes using existing priced options on the market to figure out what other people think is the volatility. 
+ 
 ## Option theoretical value
 81
 ## Option values and changing market conditions
