@@ -16,6 +16,12 @@
 - [ ] Implement an IPC lock free ring buffer (also on Github). Using shared mem and understand the cache coherency traffic.
 - [ ] What is zero-copy data proxy
 - [ ] What is SIMD?
+- [ ] Experience with x86 hardware
+Experience with performance engineering
+Understanding of Intel Xeon pipelining and cache behavior
+Experience with the TCP networking stack
+Experience optimizing Linux kernels / using kernel-bypass networking
+Experience leveraging AWS or similar cloud infrastructure
 
 ## Appendix
 <https://docs.google.com/spreadsheets/d/1EKx2EDRyNxdVoRrUljeKKdG0G-XeJiR9xMb4Xa-ernk/edit?gid=0#gid=0 >

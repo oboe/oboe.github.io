@@ -78,6 +78,8 @@ Theres a few types of volatility to think about
  
 ## Option theoretical value
 81
+
+
 ## Option values and changing market conditions
 95
 ## Spreading
