@@ -76,9 +76,21 @@ Theres a few types of volatility to think about
 3. Forecast volatility: what is guess volatility in the future
 4. Implied volatility: just recalc using black scholes using existing priced options on the market to figure out what other people think is the volatility. 
  
-## Option theoretical value
-81
+## Using the options theoretical value
+What is delta?
+- The rate of change in option price for every 1 change in underlying price
+- So by being delta neutral you are unaffected by the price movements of a security
 
+So you've noticed a mis-priced option, now you can
+1. Purchase (sell) undervalued (overvalued) options
+2. Establish a delta neutral hedge
+3. Adjust hedge at regular intervals to keep being delta neutral
+
+But it's not that easy as theres these other things you gotta consider!
+1. You can freely buy and sell the contract (e.g short selling rules)
+2. All traders borrow and lend at the same rate
+3. Transaction costs are zero
+4. There are no tax considerations
 
 ## Option values and changing market conditions
 95
