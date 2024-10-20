@@ -93,9 +93,34 @@ But it's not that easy as theres these other things you gotta consider!
 4. There are no tax considerations
 
 ## Option values and changing market conditions
-95
+Another way to think about delta as the probability that an option will be in the money.
+- An option at the money will have a delta of 0.5, aka half of the time it's worthless, so it's half as directionally sensitive than the underlying.
+
+Cool so we have this delta thing that quantifies our directional exposure. But if my stock moves, my option delta also moves. Need something to quantify that.
+1. So we have Gamma, the rate of delta change, per 1 point of price change.
+2. Helps us avoid issues like the COMEX spring 1985 collapse, where people who thought they were delta neutral, quickly saw their position explode into a heavily directional position.
+
+We also have
+1. Theta: the rate at which option value decreases as time passes.
+2. As expiration approaches for an at the money call, theta will skyrocket!
+3. Vega/Kappa: rate at which price changes with respect to one percentage point change in volatility
+4. Rho: sensitivity of option value to change in interest rates
+
 ## Spreading
-127
+One way to make money is by scalping.
+- You buy at bid price and try to sell at offer price as often as possible
+
+Another is by speculating
+- You think its gonna move, and so you buy in that direction
+
+And the one we'll focus on is spread trading
+- We want to avoid market risk while im doing my nice options trading
+- So we take opposing positions in different instruments at the same time.
+- We expect the two instruments to have a constant price relationship
+- When they start to differ, we long the underpriced and short the overpriced.
+- And we hope to profit when they return
+
+The key thing is making trades which reduce the short term risk of trades!
 ## Volatility spreads
 137
 ## Risk considerations
