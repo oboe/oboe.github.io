@@ -20,7 +20,7 @@ title: Blog
   {% for post in site.posts %} 
     <div class="archive-item" data-tags="{{ post.tags | join: ',' }}">
       <div class="archive-item-title">
-        <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
+        <a href="{{ post.url | relative_url }}?{{ site.time | date: '%s%N' }}" class="archive-title">{{ post.title }}</a>
       </div>
     <div>
       <span class="archive-date">{{ post.date | date: "%b %Y" }}</span>
