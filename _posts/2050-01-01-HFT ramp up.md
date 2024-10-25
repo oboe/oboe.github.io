@@ -1,5 +1,6 @@
 ### Finance
 - [ ] **Options Volatility and Pricing**
+
 ### Computers
 - [ ] **Inside the machine** 1-4 7,9,11
 - [ ] **TCP/IP Illustrated <https://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf>

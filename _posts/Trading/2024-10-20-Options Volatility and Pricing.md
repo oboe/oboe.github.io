@@ -122,7 +122,13 @@ And the one we'll focus on is spread trading
 
 The key thing is making trades which reduce the short term risk of trades!
 ## Volatility spreads
-137
+You're keeping delta neutral but you want to make market bets. There's four main categories of spreads you can do here.
+1. Backspread
+2. Ratio vertical spread
+3. long time spread
+4. short time spread
+
+
 ## Risk considerations
 173
 ## Bull and bear spreads

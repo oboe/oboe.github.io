@@ -4,6 +4,7 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: "CMU-Serif", Georgia, Times New Roman, Times, serif;
+  background-color: #fefdf1;
 }
 
 h1,
@@ -79,7 +80,25 @@ a {
   margin-top:auto;
   margin-left: 0px;
   margin-bottom: 15px;
-  //padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 40px 0px 20px 20px;
+}
+
+.bouncing-ball {
+  position: absolute;
+  animation: bounce 1000s ease-in-out infinite;
+  padding-left: 10px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    left: 0;
+    transform: translateY(0);
+  }
+  50% {
+    left: calc(100% - 100px);
+  }
 }
 
 .header {
@@ -196,6 +215,7 @@ code {
   border: $thin-gray-line;
   border-radius: 4px;
   padding : 3px 3px 1px;
+  background-color: #fefdf1;
 }
 pre {
   margin-top: ($baseline * 3) - 5px;
