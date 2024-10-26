@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Feed
+title: Oboe
 ---
 
 {% for post in site.posts limit: 100 %} 
