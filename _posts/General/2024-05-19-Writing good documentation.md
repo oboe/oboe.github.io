@@ -15,6 +15,7 @@ They each resolve a different problem.
 2. How to guides: show how to solve a problem
 3. Reference: succinctly describes the machinery
 4. Explanation: allows deep users to understand the machinery
+
 ## How to write tutorials (onboarding)
 Tutorials are lessons that take the reader through a series of steps to complete a project. They should show to a beginner that they can achieve something with it.
 
@@ -24,6 +25,7 @@ Here are things to consider:
 3. Ensure that the user can see results immediately
 4. Have concrete actionable steps
 5. Don't explain anything unnecessary
+
 ## How to write "How to guides" (how)
 These are specifically goal oriented. Think of it like a recipe. They're different to tutorials:
 1. Tutorials focus on what you want the beginner to know
@@ -33,6 +35,7 @@ Heres what to consider:
 1. Must resolve the problem
 2. Don't explain concepts
 3. Well named
+
 ## How to write references (what)
 These have a single purpose: to describe. So just describe and be accurate.
 ## How to write explanations (why)
@@ -41,5 +44,6 @@ These focus on helping users understand. What is the bigger picture?
 Here's what to consider
 1. What is the context? The why?
 2. Don't instruct. Just discuss and explain.
+
 ## What makes documentation good?
 Focusing on the user and their problem. Work back to resolve the user story problem.
