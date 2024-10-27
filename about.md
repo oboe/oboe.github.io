@@ -15,7 +15,7 @@ In my life there are two major themes I believe in:
 From these themes I try to live my life with these ideas in my mind:
 1. Optimising for iteration speed: I'm stupid therefore I must learn often
 2. Living life with blistering intensity: I'm stupid therefore I must take large steps in my learning
-3. Optimising for observability: I'm stupid therefore must know about what the gradient looks like
+3. Optimising for observability: I'm stupid therefore I must know about what the gradient looks like
 
 And finally here's a comic that summarizes my beliefs.
 ![image](https://preview.redd.it/jrb4e1wr9ll31.png?width=640&crop=smart&auto=webp&s=1436f4821e9d8023e0e514e56196358c4ed45736)
