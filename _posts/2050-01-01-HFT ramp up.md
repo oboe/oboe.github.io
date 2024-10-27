@@ -23,6 +23,8 @@ Understanding of Intel Xeon pipelining and cache behavior
 Experience with the TCP networking stack
 Experience optimizing Linux kernels / using kernel-bypass networking
 Experience leveraging AWS or similar cloud infrastructure
+Linux processor affinity, NUMA
+Clock synchonization
 
 ## Appendix
 <https://docs.google.com/spreadsheets/d/1EKx2EDRyNxdVoRrUljeKKdG0G-XeJiR9xMb4Xa-ernk/edit?gid=0#gid=0 >
@@ -45,3 +47,5 @@ Experience leveraging AWS or similar cloud infrastructure
 
 - [ ] Network <https://beej.us/guide/bgnet/html/split/ >
 - [ ] How do it know? <https://www.nipccd.nic.in/uploads/report/EBMIfKpdf-1bc3ceafe870f0bf95edccb7a38d63ee.pdf>
+
+- [ ] Stats <https://blog.headlandstech.com/2022/02/ >

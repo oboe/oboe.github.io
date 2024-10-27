@@ -6,13 +6,19 @@ title: About
 ## About
 Distingushed L9 Principal Engineer at Albertsons, certified Agile Scrum-Grandmaster.
 
-I love building random things I think are cool. Surprisingly people are also willing to pay for these random things.
+I love building random things I think are cool. Surprisingly people are also willing to pay for these things.
 
-I've built this site for two main reasons:
-1. I want to build and share stronger opinions on what the future might look like.
-2. I want to write more.
+In my life there are two major themes I believe in:
+1. We are extremely stupid (including myself)
+2. We should make our lives better by [climbing gradients](https://en.wikipedia.org/wiki/Gradient_descent)
 
-Lets hope that works :)
+From these themes I try to live my life with these ideas in my mind:
+1. Optimising for iteration speed: I'm stupid therefore I must learn often
+2. Living life with blistering intensity: I'm stupid therefore I must take large steps in my learning
+3. Optimising for observability: I'm stupid therefore must know about what the gradient looks like
+
+And finally here's a comic that summarizes my beliefs.
+![image](https://preview.redd.it/jrb4e1wr9ll31.png?width=640&crop=smart&auto=webp&s=1436f4821e9d8023e0e514e56196358c4ed45736)
 
 ## About the site
 This is the 3rd or 4th site I've made for myself. 
