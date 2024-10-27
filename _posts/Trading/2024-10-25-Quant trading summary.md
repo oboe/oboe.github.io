@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Trading
+---
 <https://blog.headlandstech.com/2017/08/>
 
 Companies are usually split into
