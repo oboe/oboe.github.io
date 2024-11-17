@@ -1,5 +1,5 @@
 ### Finance
-- [ ] **Options Volatility and Pricing**
+- [ ] **Options Volatility and Pricing** [[2024-10-27-Options Volatility and Pricing]]
 
 ### Computers
 - [ ] **Inside the machine** 1-4 7,9,11
@@ -9,7 +9,7 @@
 - [ ] **learn cpp <https://www.learncpp.com/*>* 
 - [ ] **Cpp concurrency in action Anthony Williams <https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf*>* 
 ### Blog posts
-- [ ] FIX protocol
+- [ ] What is FIX protocol
 - [ ] What is kernel bypassing
 - [ ] What is LMAX disruptor? <https://lmax-exchange.github.io/disruptor/disruptor.html >
 - [ ] Distributed deterministic state machines using event sourcing is an important architecture used by exchanges and other critical low level order routing infrastructure. Have a look at real logics Aeron. <https://github.com/real-logic/aeron?tab=readme-ov-file >
@@ -18,13 +18,17 @@
 - [ ] What is zero-copy data proxy
 - [ ] What is SIMD?
 - [ ] Experience with x86 hardware
-Experience with performance engineering
+- [ ] How does profiling work?
+- [ ] What is IP multicast, What is gap-fillers, what is snapshot servers 
+	- [ ] <https://blog.janestreet.com/what-the-interns-have-wrought-2017/ >
+- [ ] What is TPC/IP, what is user space, what are networking APIs, what is a frame oriented API
 Understanding of Intel Xeon pipelining and cache behavior
 Experience with the TCP networking stack
 Experience optimizing Linux kernels / using kernel-bypass networking
 Experience leveraging AWS or similar cloud infrastructure
 Linux processor affinity, NUMA
 Clock synchonization
+- [ ] <https://www.kaggle.com/competitions/jane-street-real-time-market-data-forecasting/data >
 
 ## Appendix
 <https://docs.google.com/spreadsheets/d/1EKx2EDRyNxdVoRrUljeKKdG0G-XeJiR9xMb4Xa-ernk/edit?gid=0#gid=0 >
