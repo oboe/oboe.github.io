@@ -2,12 +2,12 @@
 - [ ] **Options Volatility and Pricing** [[2024-10-27-Options Volatility and Pricing]]
 
 ### Computers
-- [ ] **Inside the machine** 1-4 7,9,11
-- [ ] **TCP/IP Illustrated <https://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf>
-- [ ] **Operating Systems three easy pieces <https://pages.cs.wisc.edu/~remzi/OSTEP/>
+- [ ] **Inside the machine** 1-4 7,9,11 [[2024-10-28-Inside the Machine]]
+- [ ] **TCP/IP Illustrated [[2024-11-11-TPC IP Illustrated]]
+- [ ] **Operating Systems three easy pieces [[2024-11-25-Operating systems in three easy pieces]]
 ### CPP
-- [ ] **learn cpp <https://www.learncpp.com/*>* 
-- [ ] **Cpp concurrency in action Anthony Williams <https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf*>* 
+- [ ] **learn cpp [[2024-12-09-learncpp]]
+- [ ] **Cpp concurrency in action Anthony Williams [[2024-12-23-cpp concurrency in action]]
 ### Blog posts
 - [ ] What is FIX protocol
 - [ ] What is kernel bypassing
@@ -22,26 +22,25 @@
 - [ ] What is IP multicast, What is gap-fillers, what is snapshot servers 
 	- [ ] <https://blog.janestreet.com/what-the-interns-have-wrought-2017/ >
 - [ ] What is TPC/IP, what is user space, what are networking APIs, what is a frame oriented API
-Understanding of Intel Xeon pipelining and cache behavior
-Experience with the TCP networking stack
-Experience optimizing Linux kernels / using kernel-bypass networking
-Experience leveraging AWS or similar cloud infrastructure
-Linux processor affinity, NUMA
-Clock synchonization
+- [ ] Understanding of Intel Xeon pipelining and cache behavior
+- [ ] Experience optimizing Linux kernels / using kernel-bypass networking
+- [ ] Linux processor affinity, NUMA
+- [ ] Clock synchonization
 - [ ] <https://www.kaggle.com/competitions/jane-street-real-time-market-data-forecasting/data >
+- [ ] Explain cpp compiler optimisations with godbolt
+
+## Programming projects?
+- [ ] Redis
+- [ ] Http server, throughput, latency, fast.
+- [ ] <https://github.com/codecrafters-io/build-your-own-x?tab=readme-ov-file#build-your-own-network-stack>
+- [ ] Cpp cli thing to present volatility cones?
 
 ## Appendix
 <https://docs.google.com/spreadsheets/d/1EKx2EDRyNxdVoRrUljeKKdG0G-XeJiR9xMb4Xa-ernk/edit?gid=0#gid=0 >
 
-- [ ] Redis
-- [ ] Http server, throughput, latency, fast.
-- [ ] <https://github.com/codecrafters-io/build-your-own-x?tab=readme-ov-file#build-your-own-network-stack>
-
+Possibly next highest priority
 - [ ] Python for data analysis by Wes McKinney
 
-- [ ] Dynamic Hedging, Taleb
-- [ ] Advances in active portfolio management
-- [ ] Energy Trading and Risk Management
 
 - [ ] Effective modern cpp
 - [ ] Modern Cpp design
@@ -53,3 +52,7 @@ Clock synchonization
 - [ ] How do it know? <https://www.nipccd.nic.in/uploads/report/EBMIfKpdf-1bc3ceafe870f0bf95edccb7a38d63ee.pdf>
 
 - [ ] Stats <https://blog.headlandstech.com/2022/02/ >
+
+- [ ] Dynamic Hedging, Taleb
+- [ ] Advances in active portfolio management
+- [ ] Energy Trading and Risk Management
