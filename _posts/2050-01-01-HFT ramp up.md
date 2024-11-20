@@ -6,7 +6,7 @@
 - [ ] **TCP/IP Illustrated [[2024-12-14-TPC IP Illustrated]]
 - [ ] **Operating Systems three easy pieces [[2024-12-4-Operating systems in three easy pieces]]
 ### CPP
-- [ ] **learn cpp [[2024-11-19-learncpp]]
+- [ ] **learn cpp [[2024-11-19-learn-cpp]]
 - [ ] **Cpp concurrency in action Anthony Williams [[2024-12-23-cpp concurrency in action]]
 ### Blog posts
 - [ ] What is FIX protocol
