@@ -2,11 +2,11 @@
 - [ ] **Options Volatility and Pricing** [[2024-10-27-Options Volatility and Pricing]]
 
 ### Computers
-- [ ] **Inside the machine** 1-4 7,9,11 [[2024-10-28-Inside the Machine]]
-- [ ] **TCP/IP Illustrated [[2024-11-11-TPC IP Illustrated]]
-- [ ] **Operating Systems three easy pieces [[2024-11-25-Operating systems in three easy pieces]]
+- [ ] **Inside the machine** 1-4 7,9,11 [[2024-11-27-Inside the Machine]]
+- [ ] **TCP/IP Illustrated [[2024-12-14-TPC IP Illustrated]]
+- [ ] **Operating Systems three easy pieces [[2024-12-4-Operating systems in three easy pieces]]
 ### CPP
-- [ ] **learn cpp [[2024-12-09-learncpp]]
+- [ ] **learn cpp [[2024-11-19-learncpp]]
 - [ ] **Cpp concurrency in action Anthony Williams [[2024-12-23-cpp concurrency in action]]
 ### Blog posts
 - [ ] What is FIX protocol
