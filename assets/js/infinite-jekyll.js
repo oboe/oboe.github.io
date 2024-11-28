@@ -27,7 +27,7 @@ $(function() {
       });
   }
 
-  var postsToLoad = $(".tag-master:not(.hidden) .post-list").children().length,
+  var postsToLoad = 1,
       loadNewPostsThreshold = 10;
 
   console.log('Initial posts to load:', postsToLoad);
