@@ -28,7 +28,7 @@ $(function() {
   }
 
   var postsToLoad = 1,
-      loadNewPostsThreshold = 10;
+      loadNewPostsThreshold = 50;
 
   console.log('Initial posts to load:', postsToLoad);
   console.log($(".tag-master:not(.hidden) .post-list").children())
