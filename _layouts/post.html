@@ -8,27 +8,48 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css?{{ site.time | date: '%s%N' }}">
     <link href="{{ site.baseurl }}/assets/css/syntax.css?{{ site.time | date: '%s%N' }}" rel="stylesheet" >
     {% include analytics.html %}
+    <style>
+      .hidden {
+        display:none;
+      }
+    </style>
   </head>
-  <div class="container">
-    {% include header-muted.html %}
-    <body>
-      <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-date">
-        {{ page.date | date_to_string }}
-      </p>
-      <div class="post-container">
-        
-        <div class="toc-sidebar">
-          <div class="toc-toggle">☰</div>
-          <nav id="toc" class="toc-nav"></nav>
+  <section class="hidden">
+    <div class="post">
+          <body>
+            <h1>
+              <a href="{{ page.url }}" class="post-list-title">{{ page.title }}</a>
+            </h1>
+            <p class="post-date">
+              {{ page.date | date_to_string }}
+            </p>
+            <div class="post-container">
+              {{ content }}
+            </div>
+          </body>
+          <hr style="width:100%;text-align:left;margin-left:0;border-width:0;height:2px;color:lightgray;background-color:lightgray;">
+    </div>
+  </section>
+    <div class="container">
+      {% include header-muted.html %}
+      <body>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-date">
+          {{ page.date | date_to_string }}
+        </p>
+        <div class="post-container">
+          
+          <div class="toc-sidebar">
+            <div class="toc-toggle">☰</div>
+            <nav id="toc" class="toc-nav"></nav>
+          </div>
+          <div class="post-content">
+            {{ content }}
+          </div>
         </div>
-        <div class="post-content">
-          {{ content }}
-        </div>
-      </div>
-    </body>
-    {% include footer.html %}
-  </div>
+      </body>
+      {% include footer.html %}
+    </div>
 </html>
 
 <style>
@@ -125,10 +146,11 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  updateHiddenHeaderIds();
   const tocNav = document.getElementById('toc');
   const tocSidebar = document.querySelector('.toc-sidebar');
   const postContent = document.querySelector('.post-content');
-  const headings = postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+  const headings = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
   
   let timeoutId;
 
@@ -140,28 +162,23 @@ document.addEventListener('DOMContentLoaded', function() {
   function collapseTOC() {
     timeoutId = setTimeout(() => {
       tocSidebar.classList.remove('expanded');
-    }, 300); // 300ms delay before closing
+    }, 300);
   }
 
   tocSidebar.addEventListener('mouseenter', expandTOC);
   tocSidebar.addEventListener('mouseleave', collapseTOC);
   
-  // Check if there are any headings
   if (headings.length > 0) {
-    // Generate table of contents
     const toc = generateTOC(headings);
     tocNav.innerHTML = toc;
     
-    // Show the TOC sidebar
     tocSidebar.style.display = 'block';
     
-    // Add staggered animation to TOC items
     const tocItems = tocNav.querySelectorAll('li');
     tocItems.forEach((item, index) => {
       item.style.transitionDelay = `${index * 50}ms`;
     });
     
-    // Smooth scroll to heading when TOC link is clicked
     tocNav.addEventListener('click', function(e) {
       if (e.target.tagName === 'A') {
         e.preventDefault();
@@ -171,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   } else {
-    // Hide the TOC sidebar if there are no headings
     tocSidebar.style.display = 'none';
   }
   
@@ -199,6 +215,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     toc += '</ul>'.repeat(prevLevel);
     return toc;
+  }
+
+  function updateHiddenHeaderIds() {
+  const config = {
+    // Prefix to add to new header IDs
+    prefix: 'hidden-header-',
+    // Whether to replace existing IDs or only add for headers without IDs
+    replaceExisting: true,
+    // Optional custom ID generator function
+    idGenerator: null
+  };
+
+  const hiddenSections = document.querySelectorAll('.hidden');
+
+  hiddenSections.forEach((section, sectionIndex) => {
+    const headers = section.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    console.log("onumshin debug", headers)
+
+    headers.forEach((header, headerIndex) => {
+      let newId = `${config.prefix}${sectionIndex + 1}-${header.tagName.toLowerCase()}-${headerIndex + 1}`;
+      if (config.replaceExisting || !header.id) {
+        header.id = newId;
+      }
+    });
+  });
   }
 });
 </script>

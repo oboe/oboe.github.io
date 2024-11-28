@@ -77,28 +77,12 @@ a {
 
 .footer {
   color: darkgrey;
-  margin-top:auto;
+  margin-top:10px;
   margin-left: 0px;
   margin-bottom: 15px;
   white-space: nowrap;
   overflow: hidden;
-  padding: 40px 0px 20px 20px;
-}
-
-.bouncing-ball {
-  position: absolute;
-  animation: bounce 10000s ease-in-out infinite;
-  padding-left: 10px;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    left: 0;
-    transform: translateY(0);
-  }
-  50% {
-    left: calc(100% - 100px);
-  }
+  //padding: 40px 0px 20px 20px;
 }
 
 .header {
@@ -229,4 +213,20 @@ pre {
     padding : 4px 6px;
     line-height: 1.5rem;
   }
+}
+
+@keyframes infinite-spinner {
+  to {transform: rotate(360deg);}
+}
+
+.infinite-spinner:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  margin: 60px auto;
+  border: 2px solid #ccc;
+  border-top-color: #000;
+  animation: infinite-spinner .9s linear infinite;
 }
