@@ -38,20 +38,27 @@ $(function() {
   if ($(".infinite-spinner").length < 1)
     shouldFetchPosts = false;
 
-  // Are we close to the end of the page? If we are, load more posts
+  delay(100).then(() => triggerUpdate());
+  delay(200).then(() => triggerUpdate());
   $(window).scroll(function(e){
-    if (!shouldFetchPosts || isFetchingPosts) return;
+    triggerUpdate()
+  });
 
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+  function triggerUpdate() {
+    if (!shouldFetchPosts || isFetchingPosts) return;
     var windowHeight = $(window).height(),
         windowScrollPosition = $(window).scrollTop(),
         bottomScrollPosition = windowHeight + windowScrollPosition,
         documentHeight = $(document).height();
-
-    // If we've scrolled past the loadNewPostsThreshold, fetch posts
-    if ((documentHeight - loadNewPostsThreshold) < bottomScrollPosition) {
+    if ((documentHeight - loadNewPostsThreshold) <= bottomScrollPosition) {
+      console.log("fetching posts");
       fetchPosts();
-    }
-  });
+    } 
+  }
 
   // Fetch a chunk of posts
   function fetchPosts() {

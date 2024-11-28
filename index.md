@@ -5,7 +5,7 @@ title: Oboe
 
 <div class="archive tag-master">
 	<div class="post-list">
-	{% for post in site.posts limit: 4 %}
+	{% for post in site.posts limit: 2 %}
     <div class="post">
         <body>
             <h1>
