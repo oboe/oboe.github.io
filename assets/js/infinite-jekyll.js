@@ -28,7 +28,7 @@ $(function() {
   }
 
   var postsToLoad = 1,
-      loadNewPostsThreshold = 50;
+      loadNewPostsThreshold = 1000;
 
   console.log('Initial posts to load:', postsToLoad);
   console.log($(".tag-master:not(.hidden) .post-list").children())
@@ -54,6 +54,7 @@ $(function() {
         windowScrollPosition = $(window).scrollTop(),
         bottomScrollPosition = windowHeight + windowScrollPosition,
         documentHeight = $(document).height();
+    console.log(windowHeight,",",windowScrollPosition, "|", documentHeight,"-",loadNewPostsThreshold,"<=",bottomScrollPosition)
     if ((documentHeight - loadNewPostsThreshold) <= bottomScrollPosition) {
       console.log("Hit loading spinner");
       fetchPosts();
