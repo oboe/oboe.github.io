@@ -90,13 +90,37 @@ $(function() {
     fetchPostWithIndex(postCount + loadedPosts, callback);
   }
 
-  function fetchPostWithIndex(index, callback) {
-    var postURL = postURLs[index];
+  // function fetchPostWithIndex(index, callback) {
+  //   var postURL = postURLs[index];
 
-    $.get(postURL, function(data) {
-      $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
-      callback();
-    });
+  //   $.get(postURL, function(data) {
+  //     $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
+  //     callback();
+  //   });
+  // }
+
+  function fetchPostWithIndex(index, callback, retries = 3, delay = 100) {
+    var postURL = postURLs[index];
+    
+    function attemptFetch(remainingRetries) {
+      $.get(postURL)
+        .done(function(data) {
+          $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
+          callback();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          if (remainingRetries > 0) {
+            console.warn(`Fetch failed for URL: ${postURL}. Retrying... (${remainingRetries} attempts left)`);
+            setTimeout(function() {
+              attemptFetch(remainingRetries - 1);
+            }, delay);
+          } else {
+            console.error(`Failed to fetch post from ${postURL} after multiple attempts`);
+          }
+        });
+    }
+    
+    attemptFetch(retries);
   }
   
   function disableFetching() {
