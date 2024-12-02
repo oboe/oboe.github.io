@@ -90,15 +90,6 @@ $(function() {
     fetchPostWithIndex(postCount + loadedPosts, callback);
   }
 
-  // function fetchPostWithIndex(index, callback) {
-  //   var postURL = postURLs[index];
-
-  //   $.get(postURL, function(data) {
-  //     $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
-  //     callback();
-  //   });
-  // }
-
   function fetchPostWithIndex(index, callback, retries = 3, delay = 100) {
     var postURL = postURLs[index];
     
