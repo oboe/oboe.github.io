@@ -55,7 +55,7 @@ $(function() {
         bottomScrollPosition = windowHeight + windowScrollPosition,
         documentHeight = $(document).height();
     if ((documentHeight - loadNewPostsThreshold) <= bottomScrollPosition) {
-      console.log("fetching posts");
+      console.log("Hit loading spinner");
       fetchPosts();
     } 
   }
@@ -94,6 +94,7 @@ $(function() {
     var postURL = postURLs[index];
     
     function attemptFetch(remainingRetries) {
+      console.info(`Fetching ${postURL}`)
       $.get(postURL)
         .done(function(data) {
           $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
