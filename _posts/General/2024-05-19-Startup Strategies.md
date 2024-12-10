@@ -23,6 +23,7 @@ In general the following strategies have strong value capture
 2. Value capture on hosting (ex. Vercel, Confluence, Redis)
 3. Value capture on enterprise grade features (ex. Hasura Cloud, Auth0)
 4. Services to support complex integrations
+
 ## Markets
 The cookie cutter network effect thesis.
 #### What is a marketplace?
@@ -34,5 +35,6 @@ Marketplaces are created by using a common set of supply levers. New marketplace
 3. Market awareness of supply
 4. Supply diversity
 5. Supply discoverability
+
 #### How can you create supply?
 One way is to create tooling to help users create supply and then use this to make a platform play in the future. Substack creating membership tooling for email newsletters, classic social medias creating easy tooling to create content.

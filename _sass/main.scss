@@ -50,19 +50,20 @@ blockquote {
 
 a {
   text-decoration: none;
-  color: black; //rgb(17, 138, 132);
+  color: black;
   font-weight: bold;
   &:hover {
     text-decoration:underline;
   }
   &:visited,:active {
     text-decoration: none;
-    color: black; //rgb(17, 138, 132);
+    color: black;
   }
+  word-wrap:break-word;
 }
 
 .container {
-  max-width: 756px;//756px;
+  max-width: 80%;//756px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -72,6 +73,9 @@ a {
 
   .post-date {
     color: grey;
+  }
+  @media (min-width: 600px) {
+    max-width: 900px;
   }
 }
 
@@ -229,4 +233,47 @@ pre {
   border: 2px solid #ccc;
   border-top-color: #000;
   animation: infinite-spinner .9s linear infinite;
+}
+
+.wrapper {
+  overflow: scroll;
+}
+
+table {
+  border-style: hidden;
+  border-collapse: collapse;
+  width: max(30rem, 100%);
+  table-layout: fixed;
+  overflow: scroll;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+th,
+caption {
+  text-align: start;
+}
+
+caption {
+  margin-block: 0.75rem;
+}
+
+thead th,
+td {
+  text-align: end;
+}
+
+thead {
+  border-block-end: 2px solid;
+}
+
+tfoot {
+  border-block-end: 2px solid;
+}
+
+th,
+td {
+  border: 2px solid;
+  padding: 0.25rem 0.75rem;
+  vertical-align: baseline;
 }
