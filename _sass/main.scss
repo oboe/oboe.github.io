@@ -86,7 +86,6 @@ a {
   margin-bottom: 15px;
   white-space: nowrap;
   overflow: hidden;
-  //padding: 40px 0px 20px 20px;
 }
 
 .header {
@@ -126,16 +125,11 @@ a {
     text-decoration:none;
     border: 5px solid transparent;
     padding: 1px;
-    //padding-right: 0px;
-    //padding-left: 4.2px;
-    //padding-top: 1px;
-    //padding-bottom:0.4px ;
     display: flex;
     justify-content: center;
     float: left;
     border-radius: 15px;
     &:hover {
-      //border: 5px solid whitesmoke;
       background-color: whitesmoke;
     }
   }
@@ -144,16 +138,11 @@ a {
     text-decoration:none;
     border: 5px solid transparent;
     padding: 1px;
-    //padding-right: 4.8px;
-    //padding-left: 4.8px;
-    //padding-top: 1.2px;
-    //padding-bottom:0.7px;
     display: flex;
     justify-content: center;
     float: left;
     border-radius: 15px;
     &:hover {
-      //border: 5px solid whitesmoke;
       background-color: whitesmoke;
     }
   }
@@ -203,7 +192,7 @@ code {
   border: $thin-gray-line;
   border-radius: 4px;
   padding : 3px 3px 1px;
-  background-color: #fefdf1;
+  background-color: whitesmoke;
 }
 pre {
   margin-top: ($baseline * 3) - 5px;
@@ -230,7 +219,7 @@ pre {
   height: 20px;
   border-radius: 50px;
   margin: 60px auto;
-  border: 2px solid #ccc;
+  border: 2px solid whitesmoke;
   border-top-color: #000;
   animation: infinite-spinner .9s linear infinite;
 }
@@ -264,16 +253,21 @@ td {
 }
 
 thead {
-  border-block-end: 2px solid;
+  //border-block-end: 2px solid;
+  background-color: whitesmoke;
 }
 
-tfoot {
-  border-block-end: 2px solid;
-}
+// tfoot {
+//   border-block-end: 2px solid;
+// }
 
 th,
 td {
-  border: 2px solid;
+  //border: 2px solid;
   padding: 0.25rem 0.75rem;
   vertical-align: baseline;
+}
+
+tr:nth-child(even) {
+  background-color: whitesmoke;
 }
