@@ -21,6 +21,7 @@ Don't use a memory location of type T, that contains type U.
 Basically 
 - Don't use static cast downcasts, use dynamic casts.
 - Use static cast pretty much otherwise.
+
 ### Bound safety
 Don't access beyond the bounds of allocation.
 
