@@ -43,6 +43,11 @@ How might the stack look?
 3. converted to talk to
 4. Any same architecture hardware
 
+In these ISA, Intel added new cool stuff to do faster processing.
+1. MMX (multimedia extensions)
+2. SSE, SSE2 (streaming SIMD extensions)
+3. SIMD = Single Instruction Multiple Data
+
 But unsurprisingly superscalar design, processing multiple instructions at once, isn't a free lunch, theres some complexity
 1. data hazards: oh no one of our instruction depend on the other: just try to merge/ forward the result directly
 2. structural hazards: oh no the processor doesn't have enough capacity to handle these instructions: just have a fat register files with enough ports (an array)
