@@ -53,6 +53,7 @@ But unsurprisingly superscalar design, processing multiple instructions at once,
 2. structural hazards: oh no the processor doesn't have enough capacity to handle these instructions: just have a fat register files with enough ports (an array)
 3. control hazards: oh no we need to wait for conditional branches: just prefetch/ predict those branches
 
+It's shocking that vectorised perf is equivalent to scalar instructions on modern processors.
 ## Intel Pentium 4 vs Motorola G4e
 The key design differences are
 - Intel pushing for clock speed and deeper pipelines, leads to higher risk of bubbles clogging up the pipeline
@@ -60,7 +61,7 @@ The key design differences are
 
 Something that is talked about a lot is the pain of branch prediction and how necessary it is. It's so expensive to just wait for many cycles waiting to get something from non L1 cache, so lot of work is put into predicting. Such as compiler hints and Intels trace cache, just speculatively inlining branch instructions out.
 ## 64-Bit Computing and x86-64
-Intel wasn't good enough so AMD beat them with creating a more popular Instruction Set Architecture called x86-64
+Intel wasn't good enough so AMD beat them with creating a more popular Instruction Set Architecture called x86-64.
 ## Caching and Performance
 
 | Level       | Time    | Size  | Tech     | Managed By |
