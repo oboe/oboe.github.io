@@ -42,8 +42,30 @@ Luckily smart dude Corbato figured out you can just combine all these scheduling
 5. Eventually we reset to reshuffle everything: this is to prevent low priority jobs from never being touched
 
 ## Lottery scheduling
+Theres a bunch of other more practical ways to do scheduling.
+1. Lottery scheduling is one, where each process has a number of tickets which can be randomly chosen
+2. Another is stride scheduling where each process has a stride, and when a process is assigned it will take a stride, and the next process with the lowest stride is chosen
+3. Finally we have the Linux Completely Fair Scheduler, which I'll talk more on below.
+
+Linux Completely Fair Scheduler (CFS).
+- Counts a number for each process as it runs.
+- Every `sched_latency` time, is separated into n partitions, one for each process and the process is allocated between them at the interval times
+- To avoid too many context switches, we have a `min_granularity` that specifies how small a window can be
+- Finally we also want prioritisation between processes, so we can assign weights to them. `niceness`
+- Additionally to avoid sleep processes hogging resources as they'll have a low stride, they are reset to the lowest stride of other processes.
+
 ## Multi-CPU scheduling
-## Virtualisation summary
+The key problem with multi CPU scheduling is that each CPU has it's own cache. This means that poor scheduling will cause each process having a lot of initial cache misses, and everything being terrible. This is the problem of **cache coherence**.
+
+To mitigate some of the funkyness of these caches, caches can snoop on the data bus to see what other caches are doing, and if they see the data they are holding being edited, they can invalidate their cache.
+
+**Cache affinity** is also a related concept, self explanatory, you want to run processes that run on a CPU on the same CPU so it can reuse the stuff it cached.
+
+Linux has a bunch of multiprocessor schedulers.
+1. O(1)
+2. Brain Fuck Scheduler
+3. Completely Fair Scheduler
+
 ## Address spaces
 ## Memory API
 ## Address translation
