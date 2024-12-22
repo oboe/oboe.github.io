@@ -24,9 +24,23 @@ Process API has
 2. `exec()`: run a different program
 3. `wait()`
 
-## Direct execution
+## Limited Direct execution
+One of the key problems OS needs to solve is how does it actually manage the CPU resource? It does this with system calls and working with hardware. The key idea is that when a program is running, it runs in user privileges and the software can invoke system calls which periodically passes the potato back to the OS to do high privilege kernel mode stuff. This is called a trap and when the computer boots the OS rushes to stuff this trap table with all the OS code places each trap should call.
+
+The simple solution above makes sense, but what if the program knows that and never hands over control back to the OS, hogging up all the resources? Solution was to just have a timed trap calling mechanism on a timer. Which **Interrupts** your program.
 ## CPU scheduling
+So how can we fairly schedule stuff to finish quickly? These ideas are actually opposing.
+1. Round robin: super fair, but terrible turnaround time.
+2. Shortest job first: super unfair, but great turnaround time.
+
 ## Multi-level feedback
+Luckily smart dude Corbato figured out you can just combine all these scheduling ideas and have a bunch of parameters you can tune.
+1. Have a bunch of priorities, and run those with higher priority
+2. If multiple things have same priority run round robin: this is to keep things fair
+3. When you have new job it starts highest priority
+4. Over time each job will be demoted a priority: this is to prioritise short jobs, as short jobs will complete before they are demoted
+5. Eventually we reset to reshuffle everything: this is to prevent low priority jobs from never being touched
+
 ## Lottery scheduling
 ## Multi-CPU scheduling
 ## Virtualisation summary
