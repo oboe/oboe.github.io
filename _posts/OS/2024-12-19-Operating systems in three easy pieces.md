@@ -140,7 +140,21 @@ Unsurprisingly an array that maps every virtual page number to a physical page i
 - We could also just store an unused page into disk, this is **swapping!**
 
 ## Swapping: mechanisms
+Lets go deeper into the idea of moving some of our pages into disk to save space.
+1. We reserve some disk and call this **swap space**
+2. We tag all our pages with a **present bit**, is it present in memory
+3. If on lookup a page isn't there, (**page fault**) we go grab it from disk. Grabbing anything from disk is mega slow!
+
+Use `vm_stat` on mac to have a look at all this paging info!
 ## Swapping: policies
+How do we choose which pages to swap?
+
+Theres three types of cache misses!
+1. **Compulsory**: this is the first read of this item, expected to not exist
+2. **Capacity**: cache doesn't have enough space, so we evicted what we needed
+3. **Conflict**: about set associativity, and how we can have a non associative cache which restricts which items can be cached where, and this means that if we have a hot partition we can evict a needed item from the cache, even when the rest of the cache is free.
+
+Usually we use an edited LRU policy, main callout here is that raw LRU has an issue with some cyclic workloads, patching this is called **scan resistance**.
 ## Complete VM systems
 ## Concurrency intro
 ## Concurrency and threads
