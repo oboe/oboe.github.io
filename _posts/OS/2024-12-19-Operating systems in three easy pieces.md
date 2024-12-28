@@ -67,13 +67,78 @@ Linux has a bunch of multiprocessor schedulers.
 3. Completely Fair Scheduler
 
 ## Address spaces
+Now lets focus on virtualising memory. We have this large block of physical memory, how do we provide many processes access to it? We provide each program a chunk of it, this is called **address space**. 
+
+Most basic address space looks like:
+1. Program code
+2. Heap
+3. Stack
+
 ## Memory API
+So what is the API for allocating stuff on the heap and the stack?
+1. Stack: automatic allocation, with variable initialisation.
+2. Heap: non automatic allocation, with malloc and new.
+
+`malloc()`: gets you a pointer
+
+`free()`: give it a pointer and it'll free the memory
 ## Address translation
+You might notice that with all these virtual addresses, its nice for the user but on every memory access we are performing an address translation to get the real physical address. How do we do this well and efficiently.
+
+Iteration 1: base and bounds relocation
+- Just store a base register you add to the virtual address to get the physical address
+- Also store a bounds register that you use to check if the calculated physical address is valid.
+
+Because this is such a frequent thing to happen, theres a CPU construct called the **memory management unit** that computes this quickly.
+
+Now theres also the sharp edge with how the OS needs to think about setting up these base and bounds for a new process. This is usually done with a free list, which lets the OS scan memory for space.
+
+Theres two concepts I'll flag here on some problems we have right now with this basic iteration.
+1. Internal segmentation: within each process memory, we have this huge space between the stack and heap that is wasted.
+2. External segmentation: within our physical memory, we have a bunch of space between processes that is wasted.
+
 ## Segmentation
+So lets solve this issue of internal segmentation (the chasm between the heap and stack). The idea is to have a base and bounds for each **segment**. And have these segments grow.
+- This is where the term **segmentation fault** comes from, you're accessing outside the bounds of the segment!
+
+With these segments you can do some cool stuff. Like sharing code segments between processes. Ain't that cool!
+
+**External framentation**: when you have lots of small holes of free space across your memory after a while, making it hard to allocate more segments efficiently.
 ## Free space management
+Lets have a step back and think about how to do this free space management efficiently.
+
+One way is to partition this memory into fixed size portions and just scan and return the first free **page**.
+
+An alternative is to instead have variable sizes, so you're more efficient but run into external fragmentation. You have a bunch of non useful holes now. So what are the ways to tackle this issue?
+1. Compaction: when releasing memory, you should combine adjacent frees in your free list!
+2. Having multiple free lists for different sizes: stops small allocations from littering large allocation space.
+3. Caching: common objects are placed in these segregated free lists, faster access!
+4. Binary buddy allocator: split portions into 1/2, 1/4, 1/8 partitions. Then on free you can immediately coalesce buddy portions together recursively.
+
+Something to note is that `free()` only gets the pointer, not the size of the memory, that's because in memory theres a header portion with the size of the memory portion.
 ## Intro to paging
+The other side to this variable allocation of segments is **paging** the act of separating space into **fixed size** pieces. The key idea is that we now view physical memory as this array of **page frames**. Now that we have programs where all there stuff is in pages, we need a way to track how to translate their virtual addresses into physical addresses. The solution is to maintain a **page table** for each process that tracks where all the pages we are using are.
+
+The page table also encodes a bunch of other useful info
+1. valid bit: indicating if virtual page is valid
+2. protection bit: indicating the permissions
+3. present bit: where is it, is it on disk?
+4. dirty bit: has it been modified
+5. ref bit: has it been accessed? Good for eviction policies.
+
+Unsurprisingly this initial start of a page table sucks, for any virtual address we need to do another memory lookup at this page table to be able to decipher the first virtual address.
 ## Translation look aside buffers
+The solution to this giga slow paging is to cache recently used page numbers in this hardware called the **Translation Look-aside Buffer**. This lets us skip looking at the page table. Nice!
+
+The beauty of this solution is why contiguous memory access is fast. The VPN (virtual page number) is already cached so all subsequent reads can immediately calculate the physical address. (Some programs even configure to use super large pages, so they can always get quick reads, DBMS).
+
+TLB is just a fully associative cache. Also has a process ID, so it can avoid serving other process addresses to the wrong processes.
 ## Advanced page tables
+Unsurprisingly an array that maps every virtual page number to a physical page is huge. How can we make this smaller?
+- One way is only tracking utilised pages, so like a free list for pages. Saves a significant amount of space!
+- Another way is creating a page table tree. So have a top level page table that points to other page tables. (This slows down reads, as we need to do a second lookup, but saves space)
+- We could also just store an unused page into disk, this is **swapping!**
+
 ## Swapping: mechanisms
 ## Swapping: policies
 ## Complete VM systems
