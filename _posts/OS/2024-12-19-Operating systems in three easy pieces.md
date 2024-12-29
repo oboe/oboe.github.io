@@ -156,14 +156,92 @@ Theres three types of cache misses!
 
 Usually we use an edited LRU policy, main callout here is that raw LRU has an issue with some cyclic workloads, patching this is called **scan resistance**.
 ## Complete VM systems
-## Concurrency intro
+What other ideas exist in OS outside of the cpu and memory virtualisation tricks we've talked about above?
+1. Lazy zeroing: when we get memory, usually these bytes are zeroed so people can't just read other peoples data, we can actually do this lazily so that when this memory isn't ever accessed we can save some cycles
+2. Lazy COW (copy on write): When we need to copy a page from one address to another, we can just initially not do the copy just add a handle so we can continue reading from the copy, and only perform the actual copy on write.
+3. 4 level page tables on Linux 64bit, where the virtual address is partitioned into 4 sections of bits deciding page table info, and the last bits deciding the offset
+4. Linux huge pages: you can even have 1GB pages, better TLB perf.
+5. Linux page cache: cache stuff well in memory, eviction policy is done with 2 queues, to avoid cycling LRU issue.
+6. Linux address space layout randomisation: randomise heap, stack, code placement location so it's hard for hackers to perform return overwriting attacks.
+
 ## Concurrency and threads
+The key idea with threads is that they are like processes with their own registers and stack, but they run on the same address space, accessing the same data and memory. Has a simple and almost identical API as python.
+
+```cpp
+#include <stdio.h>
+#include <pthread.h>
+#include "common_threads.h"
+
+void *mythread(void *arg) {
+    long long int value = (long long int) arg;
+    printf("%lld\n", value);
+    return (void *) (value + 1);
+}
+
+int main(int argc, char *argv[]) {
+    pthread_t p;
+    long long int rvalue;
+    Pthread_create(&p, NULL, mythread, (void *) 100);
+    Pthread_join(p, (void **) &rvalue);
+    printf("returned %lld\n", rvalue);
+    return 0;
+}
+```
+
+Theres two major sharp edges with threads:
+1. Handling shared data: how can we mutate shared data correctly?
+2. Efficient hot potatoing: how can we unblock each others threads without spin locking and wasting all my precious CPU cycles?
+
 ## Thread API
+**Threads**
+`pthread_create()`: to create a thread, with your thread pointer and thing you want to execute
+
+`pthread_join()`: to wait for a thread and collect your return value
+
+**Locks**
+`pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER`: to initialise a lock
+
+`pthread_lock() pthread_unlock()` to lock and unlock
+
+**Condition vars**
+`pthread_cond_wait()`: sleep current thread and wait for a signal
+
+`pthread_cond_signal()`: to signal, and wake up the other thread
 ## Locks
+Theres three ideas to care about on locking:
+1. Does it work?
+2. Is it fair between threads?
+3. Is it efficient?
+
+How locks are implemented is by conditionally waiting on a variable, and updating this variable with a atomic instruction. Such as test-and-set, compare-and-swap, fetch-and-add and (load-linked + store-conditional (just optimistic concurrency))
+
+Just having a while loop with these atomic operations is hella slow, how can we fix this?
+1. Just `yield()` sounds good to handover control, but we still do a ton of needless context switches here. This sucks.
+2. Just use a queue, and dequeue a thread when we've unlocked. (Linux supports this with futexes)
+
 ## Locked data structures
+Theres a few concurrent data structure ideas which are floating around
+1. concurrent counter: (Approximate counter) have a counter for each CPU and a global counter that is periodically updated with the per CPU counters. Lock every counter.
+2. concurrent linked list: (Hand over hand locking) lock every node, and sequentially lock and unlock as you traverse the list, lets you append from both sides, kinda cool.
+3. concurrent queue: lock head and tail.
+4. concurrent hash table: lock every hash partition (or bucket).
+
 ## Condition variables
+Why are these even needed? 
+
+The key benefit is an easy to use higher level API for sleeping threads. Underneath they are just mutexes and sys calls to move from WAITING to READY and back. The key nice bit is the atomic handle of mutex and addition to sleep queue.
 ## Semaphores
+Why are these also needed?
+
+These are another construct built on an atomic hardware op like test-and-set or compare-and-swap. But exposes a nice counter interface instead. `sem_wait() and sem_post()`. They're nice when you're handling multiples of things, such as a reader writer lock.
 ## Concurrency bugs
+Theres three common styles of bugs here
+1. Deadlocks: enforce a strong lock ordering
+2. Atomicity violations: just add a mutex
+3. Order violations: just add a condition var
+
 ## Event based concurrency
-## Concurrency summary
+Just have a main which gets all events and processes each event quickly. `select() and poll()` are the two IO sys calls which let you get events you care about.
+
+Main sharp edge is avoiding blocking calls as this means the entire system grinds to a halt. We can just use async APIs to do this. 
 
