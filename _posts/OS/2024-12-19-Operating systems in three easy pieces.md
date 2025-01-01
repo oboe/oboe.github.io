@@ -194,19 +194,17 @@ Theres two major sharp edges with threads:
 
 ## Thread API
 **Threads**
-`pthread_create()`: to create a thread, with your thread pointer and thing you want to execute
-
-`pthread_join()`: to wait for a thread and collect your return value
+- `pthread_create()`: to create a thread, with your thread pointer and thing you want to execute
+- `pthread_join()`: to wait for a thread and collect your return value
 
 **Locks**
-`pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER`: to initialise a lock
-
-`pthread_lock() pthread_unlock()` to lock and unlock
+- `pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER`: to initialise a lock
+- `pthread_lock() pthread_unlock()` to lock and unlock
 
 **Condition vars**
-`pthread_cond_wait()`: sleep current thread and wait for a signal
+- `pthread_cond_wait()`: sleep current thread and wait for a signal
+- `pthread_cond_signal()`: to signal, and wake up the other thread
 
-`pthread_cond_signal()`: to signal, and wake up the other thread
 ## Locks
 Theres three ideas to care about on locking:
 1. Does it work?
