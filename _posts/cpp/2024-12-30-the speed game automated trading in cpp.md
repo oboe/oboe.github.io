@@ -39,7 +39,7 @@ On cpp techniques
 5. Cache locality
 6. Compile time dispatch
 7. Constexpr
-8. Varadic templates: you can do a nice compile time recuse with varadic templates resulting in the evaluation of an overloaded base case, pretty nice <https://github.com/maciekgajewski/Fast-Log >https://github.com/carlcook/variadicLogging/blob/master/main.cc 
+8. Varadic templates: you can do a nice compile time recuse with varadic templates resulting in the evaluation of an overloaded base case, pretty nice <https://github.com/maciekgajewski/Fast-Log ><https://github.com/carlcook/variadicLogging/blob/master/main.cc >
 9. Loop unrolling
 10. Expression short circuiting: move expensive checks to the top
 11. Signed, unsigned comparisons
