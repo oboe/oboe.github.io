@@ -75,7 +75,7 @@ WiFi frames are fairly similar to ethernet frames. One key difference is the add
 2. Control Frames: For control flow and acknowledgement of frames. WiFi is less reliable than cable so we resend packets if we don't get an ACK.
 3. Data Frames: Pretty self explanatory, but you can also combine and separate frames into more easily transmittable chunks.
 
-## Internet Protocol (IP)
+## L3 Internet Protocol (IP)
 #### Intro
 IP datagrams deliver all the TCP, UDP, ICMP, IGMP data. 
 - It's all best effort does not give a shit to redeliver or handle failures.
@@ -140,6 +140,7 @@ Another problem is that IPv4 addresses are running out and they're getting quite
 Two types:
 1. Proxy firewalls: Application layer gateway, terminating connections and creating internal only connections. SOCKS, HTTP proxy are examples.
 2. Packet filtering firewalls: drops IP datagrams, acts as a router. Use filters and ACLs to control.
+
 #### Network Address Translation
 NAT needs to consume all ingoing and outgoing datagrams so it can rewrite the addresses and fix checksums.
 
@@ -155,33 +156,53 @@ Theres a bunch of cool strategies that exist with NAT
 
 ## Broadcasting and Local Multicasting (ICMP and MLD)
 #### Intro
+There are 4 kinds of IP addresses
+1. Unicast
+2. Anycast
+3. Multicast
+4. Broadcast (No IPv6)
 
+The key purpose of multicast and broadcast is to deliver packets to multiple places and to discover servers or clients.
+
+How does L2 link layers efficiently to multicast and broadcast?
+
+The main difference between multicast and broadcast is that, multicast only involves those that support a specific service or protocol.
+
+Usually only UDP does multicasting. TPC is for connections.
 #### Broadcasting
-
+Routers simply forward data to all receivers. The all 1 bit address is the broadcast address (or just the last address in a subnet).
 #### Multicasting
+Instead of sending data to all people, lets just send data to anyone who is interested in it. Hosts and routers maintain state on if they're interested.
+1. People join a group, sending IGMP message to a router
+2. When router gets a multicast address (224.0.0.0 > 239.255.255.255 or 00:00:5e address)
+3. It will blast it to any subscribed people
 
+Use `netstat -rn` to view your routing table.
 ## User Datagram Protocol (UDP) and IP Fragmentation
 #### Intro
-#### UDP header
+UDP provides, datagram oriented, L4 transport layer protocol, preserving message boundaries and checksums. Does not provide, error correction, sequencing, duplicate elimination, flow or congestion control.
+
+The UDP datagram look like, UDP stuff and header is stuffed into the data slot.
+1. IPv4 header
+2. UDP header
+	1. Source port number
+	2. Destination port number
+	3. Length
+	4. Checksum
+3. UDP data
 
 #### UDP checksum
-#### Examples
-
+The checksum is computed over the UDP data and UDP header, and some of the IPv4 header. This is why NAT gateways need to edit at the L3 IP layer but also the L4 transport layer as well, so it can update this checksum. 
 #### UDP and IPv6
-
-#### UDP Lite
+There exists a teredo project to tunnel IPv6 on IPv4, because of the lack of quick support of IPv6.
 #### IP fragmentation
+When package is too big IP protocol will fragment it into smaller pieces. IPv4 this can happen at source or any intermediate routers, IPv6 this happens only at source. A major issue of this, with UDP is that datagrams can be lost and you can't reassemble them at all then! 
 #### Path MTU Discovery with UDP
-
-#### Interaction between IP fragmentation and ARP/ND
-#### Maximum UDP datagram size
-
+Use Internet Control Messaging Protocol, ICMP, thats just a message a router will send back to you to tell u stuff like your package is too big or I can't get to the destination.
 #### UDP server design
-
-#### Translating UDP/IPv4 and UDP/IPv6 datagrams
-
+Something to note is that the server is primitively handed the UDP data block, the IP and UDP headers are stripped often. So if you need them you'll need to keep that in mind.
 #### UDP in the internet
-
+UDP looks to account for 10 - 40% of internet traffic. And looks like much of use is in media playing and tunneling use cases.
 ## Name resolution and Domain Name System (DNS)
 #### Intro
 #### DNS name space
