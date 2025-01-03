@@ -77,12 +77,59 @@ WiFi frames are fairly similar to ethernet frames. One key difference is the add
 
 ## Internet Protocol (IP)
 #### Intro
+IP datagrams deliver all the TCP, UDP, ICMP, IGMP data. 
+- It's all best effort does not give a shit to redeliver or handle failures.
+- It maintain no connection state.
+- It can duplicate or fail to deliver its datagrams, it does not care lmao.
 
 #### IPv4, IPv6 headers
+It's 20 bytes contains all the expected metadata like version, checksum, TTL, source and destination etc.
 
+| Header (IPv4)                           | What is it?                                                                                                                                                           |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version                                 | Main call out is that version field is identical, but everything else is different in IPv4 and IPv6, a host handling both is where the name **dual stack** come from. |
+| IHL (Internet Header Length)            | Just the number of 32 bit words are in the header                                                                                                                     |
+| DSField (Differentiated Services Field) | To help with network congestion, set by routers. How much priority should I get?                                                                                      |
+| ECN (Explicit Congestion Notification)  | To help with network congestion as well, set by routers.                                                                                                              |
+| Total Length                            | Total length of the IPv4 datagram, 16 bits so max IPv4 datagram size is 65k bytes                                                                                     |
+| Id                                      | Unique field, don't mix up fragmented datagrams                                                                                                                       |
+| Flags                                   | 🤔<br>                                                                                                                                                                |
+| Fragment Offset                         | 🤔<br>                                                                                                                                                                |
+| Time to live                            | Actually a hop limit, no one actually asserts on the time                                                                                                             |
+| Protocol                                | Whats the protocol type of data are we carrying?                                                                                                                      |
+| Header checksum                         | Self explanatory (Not CRC, it's a more simple internet checksum)                                                                                                      |
+| Source IP address                       | 32 bit IP addresses                                                                                                                                                   |
+| Destination IP address                  | 32 bit IP address                                                                                                                                                     |
+| Options                                 | All proposed IPv4 options are basically not used. IPv6 has a bunch more useful ones: like Jumbo payload, padding, tunnel limits, etc.                                 |
+| IP data                                 | The meat and potatoes!                                                                                                                                                |
+
+**MTU, maximum transmission unit**: self explanatory, whats the max packet which can be sent over a network without needing to break it down.
 #### IPv6 extension headers
+IPv6 has a bunch of additions to the IPv4 heading structure.
+
+| Header (IPv6)   | What is it?                                                                                                                                                         |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Routing Header  | You can specify nodes you want your datagram to visit before it reaches its end goal. Works by overwriting the destination IP address as you visit o journey nodes. |
+| Fragment Header | Just IPv4 with a larger identification bit.                                                                                                                         |
 
 #### IP forwarding
+General ordering of handling all this IP stuff is
+1. I get an IP datagram, from another protocol or network interface
+2. I check if I'm the destination IP
+3. I open up my routing table, to find the corresponding IP
+4. I crack open the header for the protocol or next header field
+5. I blast the datagram to the next routing node, with that protocol
+6. If I can't find it in my routing table, I either discard or send it back?
+
+So what does this routing table look like?
+1. Destination
+2. Mask: 32 bit (IPv4) to scope down the destination to compare with where you need to go
+3. Next hop: contains IP address of next IP entity you need to send to
+4. Interface: What is the network interface I actually need to send stuff into to for this destination
+
+How does it work? We just pick the matching masked destination with the most bits.
+
+View hops with `> traceroute -n google.com`
 
 ## Firewalls and Network Address Translation (NAT)
 #### Intro
