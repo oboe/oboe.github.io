@@ -205,11 +205,38 @@ Something to note is that the server is primitively handed the UDP data block, t
 UDP looks to account for 10 - 40% of internet traffic. And looks like much of use is in media playing and tunneling use cases.
 ## Name resolution and Domain Name System (DNS)
 #### Intro
+Remembering IP addresses sounds awful, so we have a big hierarchical database that maps host names to IP addresses.
 #### DNS name space
+DNS names are organised in a namespace. Top level domains, subdomains and URL labels.
 #### Name servers and zones
-
+So what if you're managing a portion of name space? You need some **name servers**, for your "zone". And will have delegation records to handover smaller subtree zones to other name servers.
 #### Caching
+Most name servers, outside of some root TLD servers will cache zone info as they learn, with a TTL eviction policy. Each DNS record, name to IP address mapping has a TTL.
 #### DNS protocol
+Two sides to the protocol
+1. Hitting the DNS: standard requests
+2. Controlling DNS: zone transfers, DNS notify.
+
+
+
+| Resource Record | What is it?                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------- |
+| A, AAAA         | Address Record, map a name to a IP                                                                            |
+| NS              |                                                                                                               |
+| CNAME           | Canonical Name records, these are aliases to point to other resource records!                                 |
+| SOA             | Authority Records, Start of Authority, point to other name servers which are the authority of certain domains |
+| PTR             | Reverse DNS lookup queries, Pointer queries. Lets you do a reverse lookup.                                    |
+| MX              | Mail exchanger records: not super widely used now                                                             |
+| TXT             | any text, such as anti spam proof                                                                             |
+| SRV             | Service Records, like a general MX, you can specify what kind of protocol, ports a service supports           |
+| NAPTR           | Name authority pointer records,                                                                               |
+| OPT             | 🤔                                                                                                            |
+| AXFR            |                                                                                                               |
+| ANY             |                                                                                                               |
+
+Query DNS with `dig`
+
+
 ## Transmission Control Protocol (TCP) basics
 #### Intro
 
