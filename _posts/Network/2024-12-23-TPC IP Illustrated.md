@@ -222,21 +222,17 @@ Two sides to the protocol
 | Resource Record | What is it?                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------- |
 | A, AAAA         | Address Record, map a name to a IP                                                                            |
-| NS              |                                                                                                               |
+| NS              | Name server, what are the authoritative name servers for a domain                                             |
 | CNAME           | Canonical Name records, these are aliases to point to other resource records!                                 |
 | SOA             | Authority Records, Start of Authority, point to other name servers which are the authority of certain domains |
 | PTR             | Reverse DNS lookup queries, Pointer queries. Lets you do a reverse lookup.                                    |
 | MX              | Mail exchanger records: not super widely used now                                                             |
-| TXT             | any text, such as anti spam proof                                                                             |
+| TXT             | any text, such as anti spam for email, or verifying ownership                                                 |
 | SRV             | Service Records, like a general MX, you can specify what kind of protocol, ports a service supports           |
-| NAPTR           | Name authority pointer records,                                                                               |
-| OPT             | 🤔                                                                                                            |
-| AXFR            |                                                                                                               |
-| ANY             |                                                                                                               |
+| NAPTR           | Name authority pointer records, more complex mappings                                                         |
+| OPT             | Allows extra features                                                                                         |
 
 Query DNS with `dig`
-
-
 ## Transmission Control Protocol (TCP) basics
 #### Intro
 
