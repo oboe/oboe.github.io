@@ -133,12 +133,26 @@ View hops with `> traceroute -n google.com`
 
 ## Firewalls and Network Address Translation (NAT)
 #### Intro
+One problem internet had was a lot of cyber attacks, to mitigate this we have: **Firewalls** are just routers that restricts what type of traffic it forwards.
 
+Another problem is that IPv4 addresses are running out and they're getting quite expensive, to mitigate this we have: **NAT network address translation** gateways, they're just things which allow duplicate addresses to be used within a gated network.
 #### Firewalls
-
+Two types:
+1. Proxy firewalls: Application layer gateway, terminating connections and creating internal only connections. SOCKS, HTTP proxy are examples.
+2. Packet filtering firewalls: drops IP datagrams, acts as a router. Use filters and ACLs to control.
 #### Network Address Translation
+NAT needs to consume all ingoing and outgoing datagrams so it can rewrite the addresses and fix checksums.
 
+For TCP, theres the **three way handshake of SYN, SYN-ACK, ACK,** on NATs on first SYN we'll forward it to a random internal IP and add this to our mapping table, if we do't get a SYN-ACK back we can remove the entry as a connection wasn't established. Or when we receive a FIN we can clear it up.
+
+Instead for UDP that doesn't have a handshake or closing, we can just have a time based eviction policy to clean up our table.
 #### NAT Traversal
+Theres a bunch of cool strategies that exist with NAT
+- Hairpinning/ NAT loopback: on a private to private connection just do no additional work and just continue to map private to private
+- Pinhole/ Hole punching: establish a private to public connection, and then with the new info, establish a public to public connection directly. Skype does this! STUN protocol helps with this.
+- TURN (traversal using relays around NAT): just give up going through NAT and just go through a third party server.
+- ICE (Interactive Connectivity Establishment): P2P, establish connections
+
 ## Broadcasting and Local Multicasting (ICMP and MLD)
 #### Intro
 
