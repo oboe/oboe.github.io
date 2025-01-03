@@ -217,8 +217,6 @@ Two sides to the protocol
 1. Hitting the DNS: standard requests
 2. Controlling DNS: zone transfers, DNS notify.
 
-
-
 | Resource Record | What is it?                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------- |
 | A, AAAA         | Address Record, map a name to a IP                                                                            |
@@ -235,11 +233,44 @@ Two sides to the protocol
 Query DNS with `dig`
 ## Transmission Control Protocol (TCP) basics
 #### Intro
+IP and UDP do no error correction.
 
+Theres four categories of communication failures
+1. Packet bit errors: fixed with error correcting codes
+2. Packet reordering: fixed with sequence numbers
+3. Packet duplication: fixed with sequence numbers
+4. Packet erasure: retry based on an estimate of round trip time
 #### Intro to TCP
+UDP provides a package sending interface, TCP instead provides a **connection oriented** interface, you send and get byte streams.
+- TCP breaks up this byte stream into packets
+- Numbers these packets
+- Wraps these packets (segments) in IP datagrams
+- And repackages these at the other side back into a byte stream
+- TCP waits for acknowledgement of packets, and if it doesn't get it it'll retransmit the packages.
 
 #### TCP header and encapsulation
-#### Summary
+Unsurprisingly TCP has a header that wraps its TCP data in each IP datagram.
+
+| Header                 | What is it?                                                                                           |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| Source port            | just a port                                                                                           |
+| Destination port       | just a port or "socket"                                                                               |
+| Sequence number        | What number segment is this in the stream                                                             |
+| Acknowledgement Number | Number the sender expects to receive next                                                             |
+| Header Length          |                                                                                                       |
+| Resv                   |                                                                                                       |
+| CWR                    | Theres a bunch of bit fields defined in TCP. This is the congestion window reduced: slow down pls bit |
+| ECE                    | Echo: sender received an earlier congestion notification                                              |
+| URG                    | Urgent: urgent pointer field is valid                                                                 |
+| ACK                    | on when a connection is established                                                                   |
+| PSH                    | receiver should push this data asap                                                                   |
+| RST                    | reset the connection                                                                                  |
+| SYN                    | synchronise sequence numbers to initiate a connection                                                 |
+| FIN                    | Ive finished sending all my data                                                                      |
+| Window Size            | This is the sliding window thats filled as we send back ACKs                                          |
+| TCP checksum           | Similar to UDP, spans TCP header, data and some IP headers                                            |
+| Urgent Pointer         | not used much                                                                                         |
+| Options                | 🤔                                                                                                    |
 
 ## TCP connection management
 #### Intro
