@@ -327,20 +327,36 @@ The retransmission timeout is the timeout before a device will resend its segmen
 This is when the receiver indicates that it has a hole and we gotta fill it in ASAP, using a SACK segment.
 ## TCP data flow and window management
 #### Intro
-
+Users have a variety of needs for interactive uses, we want segments to be emitted immediately with poor space usage, for large data transfer uses we'd want the opposite. How does TCP handle this stuff?
 #### Interactive communication
+TCP handles both of these types of data with the same protocol but with different algos
+1. **interactive data**: 10s of bytes
+2. **bulk data**: 1k bytes
 
+Interactive communication such as ssh, is quite surprising and the client sends a packet for every keystroke!
 #### Delayed acknowledgements
-
+With these interactive uses its kind of a waste to send an equivalent ACK for every keystroke segment, so TCP will patch these and send an ACK for multiple segments. This is often called **piggybacking**.
 #### Nagle algorithm
+Nagle algo is a way of self regulating the amount of mini segments you send depending on the network you're on, (the trip time!).
 
+Works by just waiting/queueing until all previously dispatched segments are ACKed.
+
+This can be an issue if the server also has a delaying algo which means that you can have car crashes where both the server and client are waiting pointlessly. Use `TCP_NODELAY` to stop it.
 #### Flow control and window management
-
+TCP flow control is done by the receiver advertising in each segment how much window space it has left. A sharp edge here is that if the receiver window is constantly close to fully filled each time the server sends a segment to fill it, this segment will be comically small, a poor spend of bandwidth.
 ## TCP congestion control
 #### Intro
+How does TCP prevent the network from being overwhelmed when making large bulk data transfers? The main fix is slowing down, but how do we recognise when we should do that and when we can start sending normally again.
 
+The main problem with detecting this is that theres no explicit signal to detect network congestion. We need to extrapolate from e.g a spike in package loss.
 #### Standard algorithms
+The basic strategy is that you have an advertised window size from the receiver, but you can have a congestion window size on the sender side which you optimise and you just use the min between the two.
 
+To get this sender side window estimate, basic strategy is start low and slowly ratchet up the window until you see packet loss. (exponentially increase)
+
+After you've found an initial estimate we usually move to steady state operation where we very incrementally increase the window based on successfully sent data. (incrementally adjust)
 ## TCP keep alive
 #### Intro
-#### Description
+Funnily TCP has no polling, so an idle connection can just exist forever lmao.
+
+TCP keepalive is this probing functionality, that has been jammed into TCP. Helpful for detecting dead clients and removing any held resources. You send a keepalive probe and the other device ACKs your probe. Done.
