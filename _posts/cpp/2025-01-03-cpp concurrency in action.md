@@ -96,10 +96,12 @@ Same idea as distributed systems, read after write consistency ideas. You can sp
 
 There exists `std::atomic_thread_fence` to create memory barriers, places where certain operations can't cross to help you do ordering.
 ## Designing lock based concurrent data structures
-#### Guidelines
-#### Lock based concurrent data structures
+Try to keep locking to the finest granularity and to the lowest necessary type (reader, writer).
+
+The classic reader writer lock per hash table bucket is a great example.
 ## Designing lock free concurrent data structures
 #### Lock free meaning
+
 #### Lock free data structures
 #### Guidelines
 ## Designing concurrent code
