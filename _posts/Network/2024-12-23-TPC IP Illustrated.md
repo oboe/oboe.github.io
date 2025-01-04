@@ -315,17 +315,16 @@ Usual is TCP connection request arrives at a server, server accepts connection a
 Usually berkeley socket API is used and this has queues per endpoint of connections that are about to be established. Main call out is that application API already has the three way handshake abstracted over already.
 ## TCP timeout and retransmission
 #### Intro
-#### Simple timeout and retransmission example
+How does TCP retransmit data? It does this with two main strategies.
+1. Timeout based retransmission: correcting against basic packet loss
+2. Fast retransmission: correcting against an old packets being lost and need to quickly send those before sending any new ones
 
 #### Setting the retransmission timeout
+The retransmission timeout is the timeout before a device will resend its segment as it hasn't received an ACK. Theres a bunch of ways to estimate whats a good number here using the round trip time estimate (and derivations such as a smoothed metric and a variance metric).
+ - One sharp edge here is that if you've resent a segment theres no way to figure out if a returning ACK is for the first or second package you've sent.
 
-#### Timer based retransmission
 #### Fast retransmit
-
-#### Retransmission with selective acknowledgements
-
-#### Spurious timeouts and retransmissions
-
+This is when the receiver indicates that it has a hole and we gotta fill it in ASAP, using a SACK segment.
 ## TCP data flow and window management
 #### Intro
 
