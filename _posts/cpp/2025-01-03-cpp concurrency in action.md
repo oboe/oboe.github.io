@@ -74,14 +74,43 @@ And finally you can also use `std::promise` to have constructs to have an explic
 
 Huh theres a cool `std::partition` function that partitions a range depending on a condition. Thats pretty cool.
 ## The cpp memory model and operations on atomic types
-103
+#### The cpp memory model
+**Objects** are a region of storage and in cpp everything is an object with a virtual memory location. You can touch the same object at the same time with atomic operations.
+#### Atomic operations
+Atomic operations are done or not done.
+
+Cpp stores all the atomic stuff in `<atomic>`. Get them with `atomic_type or std::atomic<bool>`
+
+`atomic_flag` needs to be initialised with `ATOMIC_FLAG_INIT`
+
+`atomic<T>` have a bunch of atomic functions, notable ones being:
+1. `compare_exchange_weak()`: can fail (return false) just because of an interrupt or something
+2. `compare_exchange_strong()`: will only fail if the condition is false.
+#### Synchronising operations and enforcing ordering
+Same idea as distributed systems, read after write consistency ideas. You can specify memory ordering options for atomic operations to declare what ordering rules you need upheld.
+1. `memory_order_relaxed`: No ordering requirement!
+2. `memory_order_acquire`: when you want to do a consistent read
+3. `memory_order_release`: when you want to do a consistent write
+4. `memory_order_acq_rel`: when you want to do a consistent read and write
+5. `memory_order_seq_cst`: (sequentially consistent) Ensure global ordering across threads! Slow af as we need to synchronise between all threads.
+
+There exists `std::atomic_thread_fence` to create memory barriers, places where certain operations can't cross to help you do ordering.
 ## Designing lock based concurrent data structures
-148
+#### Guidelines
+#### Lock based concurrent data structures
 ## Designing lock free concurrent data structures
-180
+#### Lock free meaning
+#### Lock free data structures
+#### Guidelines
 ## Designing concurrent code
-224
+#### How to divide work between threads
+#### How does performance work?
+#### How to design performant data structures
+#### Considerations
+#### In practice ideas
 ## Advanced thread management
-273
+#### Thread pools
+#### Interrupting threads
 ## Testing and debugging multithreaded applications
-300
+#### Types of bugs
+#### Debugging
