@@ -42,7 +42,37 @@ Specifically for readonly constructs theres a nice `std::call_once` function tha
 
 cpp17 finally has a reader writer lock,  the `std::shared_mutex`, nice!
 ## Synchronising concurrent operations
+How can we wait for certain events in between threads, just spin locking seems terribly inefficient, what are the alternatives?  The solutions are **conditional variables** and **futures**!
 
+The simplest solution is just sleeping and checking periodically with `std::this_thread::sleep_for()`.
+
+The way you should do it is with `std::conditional_variable` which you call `wait()` and `notify_one()` on to use.
+
+So these conditional variables, work, why do we need futures? Futures are used for **one off events**.  You can do this with `unique_future and shared_future`. One way to create a future by calling `std::async` like below.
+```cpp
+#include <future>
+#include <iostream>
+int find_the_answer_to_ltuae()
+{
+    return 42;
+}
+
+void do_other_stuff()
+{}
+
+int main()
+{
+    std::future<int> the_answer=std::async(find_the_answer_to_ltuae);
+    do_other_stuff();
+    std::cout<<"The answer is "<<the_answer.get()<<std::endl;
+}
+```
+
+If you want to manage the execution of the async task use `std::packaged_task`!
+
+And finally you can also use `std::promise` to have constructs to have an explicit contract between threads that means that a thread can wait on this promise until another thread fulfils the promise of some sort of data!
+
+Huh theres a cool `std::partition` function that partitions a range depending on a condition. Thats pretty cool.
 ## The cpp memory model and operations on atomic types
 103
 ## Designing lock based concurrent data structures
