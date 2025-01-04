@@ -240,6 +240,7 @@ Theres four categories of communication failures
 2. Packet reordering: fixed with sequence numbers
 3. Packet duplication: fixed with sequence numbers
 4. Packet erasure: retry based on an estimate of round trip time
+
 #### Intro to TCP
 UDP provides a package sending interface, TCP instead provides a **connection oriented** interface, you send and get byte streams.
 - TCP breaks up this byte stream into packets
@@ -274,14 +275,44 @@ Unsurprisingly TCP has a header that wraps its TCP data in each IP datagram.
 
 ## TCP connection management
 #### Intro
+UDP is connectionless protocol.
+
+TCP is a connection protocol. TCP will detect and repair all data transfer problems, like packet loss, duplication and errors.
 #### TCP connection establishment and termination
+TCP connection is between a pair of IP and port.
+
+TCP has three phases
+1. Setup a connection
+	1. Client sends a SYN segment with port it wants to connect to and clients initial sequence number
+	2. Server sends SYN segment and its own sequence number. AND it ACKs the clients message, by returning clients ISN + 1.
+	3. Client ACKs the servers segment, by returning servers ISN + 1.
+2. Transfer of data
+3. Closing a connection
+	1. Client sends a FIN segment.
+	2. Server ACKs the clients FIN segment by returning clients ISN + 1.
+	3. Server sends a FIN.
+	4. Client ACKs the FIN.
+
+When TCP gets a segment there are two things it requires
+1. Valid checksum
+2. But also a ISN (sequence number) that is within its sliding window
+
+**ARP**: address resolution protocol maps IP addresses to MAC addresses. It's a L2 link layer protocol. Works by broadcasting "who has the MAC for this IP", getting a response, and done.
 #### TCP options
-#### Path MTU discovery with TCP
+TCP has a bunch of options, here's some
+1. Max Segment Size: yup its written on the tin
+2. Selective Acknowledgement: by default you need to receive segments sequentially so when you have holes its a problem, you can send a SACK segment to indicate 3 holes you want to patch.
+3. Window Scale: Lets us increase our sliding window
+4. Timestamp options: lets you add some telemetry info of timestamps to get the round trip time. And avoid crappy issues with sequence numbers wrapping around.
+5. User timeout: lets you tell the other guy your timeouts.
+6. Auth: lets you authenticate TCP segments with hashes.
 
-#### TCP state transitions
-#### Reset segments
 #### TCP server operation
+How does a TCP server usually operate?
 
+Usual is TCP connection request arrives at a server, server accepts connection and hands over the connection to a new process or thread to handle the client.
+
+Usually berkeley socket API is used and this has queues per endpoint of connections that are about to be established. Main call out is that application API already has the three way handshake abstracted over already.
 ## TCP timeout and retransmission
 #### Intro
 #### Simple timeout and retransmission example
