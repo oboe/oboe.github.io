@@ -24,9 +24,14 @@ p + ol {
 
 ul,
 ol {
-  margin-top: 0px; /* Remove default top margin */
-  margin-bottom: 1rem; /* Adjust bottom margin if necessary */
-  padding-left: 20px; /* Optional: adjust padding for indentation */
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  padding-left: 20px;
+}
+
+ul ul, ul ol,
+ol ul, ol ol {
+  margin-bottom: 0rem;
 }
 
 p {
