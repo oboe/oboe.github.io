@@ -101,18 +101,45 @@ Try to keep locking to the finest granularity and to the lowest necessary type (
 The classic reader writer lock per hash table bucket is a great example.
 ## Designing lock free concurrent data structures
 #### Lock free meaning
+A lock free data structure allows more than one thread to access the data concurrently.
 
-#### Lock free data structures
+A wait free data structure is a lock free structure  that doesn't have any spin loops, or retries to pause one thread.
+
+Writing these are a pain in the ass.
 #### Guidelines
+1. Start with the strongest memory ordering! `memory_order_seq_cst` Then relax the constraints.
+2. Use a lock free memory reclamation scheme, kinda feels like you're doing GC manually. Using hazard pointers to see if anything is access it and reference counts to see any outstanding references.
+3. Be careful with ABA problem. This is an ordering issue and can be mitigated with an atomic counter to verify ordering of mutations.
+4. Take note of busy wait loops!
+
 ## Designing concurrent code
 #### How to divide work between threads
+A key insight is that you can either have generalist or specialist threads. Do you want threads to do any work or each thread to do a specific task?
+
+You can partition the tasks and distribute those partitions between threads.
+
+You can assign recursive subsections to each thread.
+
+You can partition based on task type and assign task types to each thread, running in an event loop.
 #### How does performance work?
+Theres a ton of considerations to how stuff actually works in the real world.
+1. Number of processors and what other stuff is put on the processors.
+2. Cache ping pong, memory is giga slow, don't rewrite your processor caches by jumping between threads often.
+3. False sharing, processors work with cache lines and adjacent data might be in the same cache line (thread A will write to a variable close to thread Bs variable and this will tag the cache line as dirty, needing a refresh) and therefore need to be cache ping ponged between two threads.
+4. Just having too many context switches between threads.
+
 #### How to design performant data structures
-#### Considerations
-#### In practice ideas
+The big three things to consider are
+1. Contention: try to minimise the amount of data required by any thread
+2. False sharing: Try to ensure data accessed by separate threads is sufficiently far apart.
+3. Data proximity: Try to adjust data distribution between threads so that data thats close is worked on by the same thread. Better cache hits.
+
+You can add `char padding[100000]` to test for false sharing.
 ## Advanced thread management
 #### Thread pools
-#### Interrupting threads
+Have a task queue, and a pool of worker threads that poll from the task queue.
 ## Testing and debugging multithreaded applications
 #### Types of bugs
-#### Debugging
+Typically theres two categories
+1. Unwanted blocking: deadlock, livelock, blocking on I/O
+2. Race conditions: data races, broken invariants, lifetime issues
