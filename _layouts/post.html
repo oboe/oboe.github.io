@@ -12,6 +12,24 @@
       .hidden {
         display:none;
       }
+      .collapsible-header {
+        cursor: pointer;
+      }
+      .collapsible-content {
+        overflow: hidden;
+        transition: height 0.3s ease;
+      }
+      .collapsible-header.collapsed h1::after,
+      .collapsible-header.collapsed h2::after,
+      .collapsible-header.collapsed h3::after,
+      .collapsible-header.collapsed h4::after,
+      .collapsible-header.collapsed h5::after,
+      .collapsible-header.collapsed h6::after {
+        content: "...";
+        opacity: 0.4;
+        margin-left: 0.3em;
+        font-weight: normal;
+      }
     </style>
   </head>
   <section class="hidden">
@@ -427,5 +445,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   }
+
+  function makeHeadersCollapsible() {
+    const headers = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
+    
+    headers.forEach(header => {
+      const level = parseInt(header.tagName.charAt(1));
+      let content = [];
+      let next = header.nextElementSibling;
+      
+      while (next && !next.matches(`h${level}`)) {
+        content.push(next);
+        next = next.nextElementSibling;
+      }
+      
+      if (content.length) {
+        const headerWrapper = document.createElement('div');
+        headerWrapper.className = 'collapsible-header';
+        
+        const contentWrapper = document.createElement('div');
+        contentWrapper.className = 'collapsible-content';
+        contentWrapper.style.height = 'auto';
+        
+        header.parentNode.insertBefore(headerWrapper, header);
+        headerWrapper.appendChild(header);
+        headerWrapper.after(contentWrapper);
+        
+        content.forEach(el => contentWrapper.appendChild(el));
+        
+        headerWrapper.addEventListener('click', () => {
+          headerWrapper.classList.toggle('collapsed');
+          contentWrapper.style.height = headerWrapper.classList.contains('collapsed') ? '0' : 'auto';
+        });
+      }
+    });
+  }
+  
+  makeHeadersCollapsible();
 });
 </script>
