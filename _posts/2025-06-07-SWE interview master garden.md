@@ -3,7 +3,7 @@ layout: post
 tags:
   - Leetcode
 ---
-After getting 11 interviews, here's what I did and would do again if I needed to get a SWE job again.
+After getting a few offers, here's what I did and would do again if I needed to get a SWE job again.
 
 The legs of the SWE interview chair are:
 1. Coding
