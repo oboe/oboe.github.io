@@ -28,6 +28,8 @@ Concepts:
 -  <https://www.hellointerview.com/learn/system-design/in-a-hurry/core-concepts>
 -  <https://www.hellointerview.com/learn/system-design/in-a-hurry/key-technologies>
 -  <https://github.com/donnemartin/system-design-primer >
+- <https://www.karanpratapsingh.com/courses/system-design>
+- <https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#index-of-system-design-topics>
 
 How to answer a system design question:
 - In the end I've come to the FNEHDS acronym. Functional requirements, non functional requirements, estimates, high level design, deep dives, scaling.
