@@ -84,6 +84,9 @@ Why you're the goat fit:
 Final questions:
 -  <https://www.techinterviewhandbook.org/final-questions/>
 
+## Finance
+Wow a surprise section, some smaller companies such as those in finance will ask more specific questions to hire for spikes. Usually this means knowing a specific language or knowing some sort of CS better, most likely operating systems. Usually they can't actually ask you some real in-depth stuff so just reading the language docs or resources is pretty sufficient.
+
 ## Closing
 With this process the main thing to note is that your goal is to hold an auction for your time with as many companies as possible. You want to get as many offers at possible at the same time. To do this when you get one offer, let every other company know and that you want to accelerate the process with them because you love their company.
 
