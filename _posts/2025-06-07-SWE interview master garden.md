@@ -37,7 +37,7 @@ How to answer a system design question:
 -  <https://gist.github.com/vasanthk/485d1c25737e8e72759f>
 -  <https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery>
 
-Questions:
+Questions (DONT CHEAT AND READ THE LINKS, JUST READ THE CONSTRAINTS AND DO THE QUESTION ALONE FIRST):
 -  Create a design pastebin post <https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md >
 -  Twitter timeline and search <https://www.hiredintech.com/system-design/the-twitter-problem/ > <https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/twitter/README.md >
 -  tweet search <https://www.hellointerview.com/learn/system-design/answer-keys/tweet-search>
