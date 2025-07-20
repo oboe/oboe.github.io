@@ -28,6 +28,11 @@ def fix_links_in_file(filepath):
         return image_embeds[idx]
     final_content = re.sub(r'__IMAGE_EMBED_(\d+)__', restore_image_embed, new_temp_content)
 
+    # Safety: never write if '__IMAGE_EMBED_' is present in the final content
+    if '__IMAGE_EMBED_' in final_content:
+        print(f"[WARNING] Skipping write for {filepath} due to leftover IMAGE_EMBED placeholder.")
+        return
+
     if final_content != content:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(final_content)
