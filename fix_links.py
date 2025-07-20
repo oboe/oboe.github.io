@@ -9,6 +9,7 @@ IMAGE_EMBED_REGEX = re.compile(r'!\[[^\]]*\]\([^\)]*\)')
 
 
 def fix_links_in_file(filepath):
+    print(f"Fixing links in {filepath}")
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
