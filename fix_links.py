@@ -9,7 +9,6 @@ IMAGE_EMBED_REGEX = re.compile(r'!\[[^\]]*\]\([^\)]*\)')
 
 
 def fix_links_in_file(filepath):
-    print(f"Fixing links in {filepath}")
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -40,6 +39,8 @@ def main():
     post_dir = sys.argv[1]
     for root, _, files in os.walk(post_dir):
         for file in files:
+            if not file.lower().endswith('.md'):
+                continue
             filepath = os.path.join(root, file)
             fix_links_in_file(filepath)
 
