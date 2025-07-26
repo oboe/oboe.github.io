@@ -3,7 +3,8 @@ import re
 import os
 
 # Regex to match bare URLs not inside <...>
-URL_REGEX = re.compile(r'(^|[^<])(https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]+\.([a-zA-Z]{2,6})([-a-zA-Z0-9()@:%_\+.~#?&/=]*))([^>])')
+# Updated to use word boundaries and avoid capturing whitespace
+URL_REGEX = re.compile(r'(?<!<)(https?://(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]+\.(?:[a-zA-Z]{2,6})(?:[-a-zA-Z0-9()@:%_\+.~#?&/=]*))(?![^<]*>)')
 # Regex to match Markdown image embeds ![](url)
 IMAGE_EMBED_REGEX = re.compile(r'!\[[^\]]*\]\([^\)]*\)')
 
@@ -20,7 +21,12 @@ def fix_links_in_file(filepath):
     temp_content = IMAGE_EMBED_REGEX.sub(image_embed_replacer, content)
 
     # Apply URL regex to the rest of the content
-    new_temp_content = URL_REGEX.sub(r'\1<\2\6>', temp_content)
+    # Use a function to handle the replacement more carefully
+    def url_replacer(match):
+        url = match.group(1)
+        return f'<{url}>'
+    
+    new_temp_content = URL_REGEX.sub(url_replacer, temp_content)
 
     # Restore image embeds
     def restore_image_embed(match):

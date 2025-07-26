@@ -109,13 +109,18 @@ General idea is to do something like this
 
 And to place color on
 - Is it blocking?
-
-On bikeshedding, the idea that reviewers will spend most of the time on unimportant tasks. What is actually important. 
+- So they don't waste time on bikesheds!
 
 Something to consider is labelling comment severity
 1. Nit: This is minor
 2. Optional: I think this may be a good idea
 3. FYI: Could be interesting
+
+Additional principles
+- Never say the word **you** in a code review: never attack the author, say **WE**!
+- Use the passive voice. **Only ask questions**, What about renaming this variable?
+- You aren't commanding them, you're suggesting ideas to make this code better.
+- Tie your feedback to principles.
 
 ## And finally on the other side, what should you consider as the author
 
@@ -138,13 +143,15 @@ So how can you split up a change?
 
 ## Appendix
 <https://github.com/google/eng-practices/blob/master/review/index.md
->
+
 <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/code-review-antipatterns/
->
+
 <https://philbooth.me/blog/the-art-of-good-code-review
->
+
 <https://bitfieldconsulting.com/posts/code-review
->
+
 <https://lindbakk.com/blog/code-reviews-easy-in-theory-difficult-in-practice
->
+
 <https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/>
+
+<https://mtlynch.io/human-code-reviews-1/#start-reviewing-immediately>
