@@ -155,3 +155,5 @@ So how can you split up a change?
 <https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/>
 
 <https://mtlynch.io/human-code-reviews-1/#start-reviewing-immediately>
+
+<https://mtlynch.io/code-review-love/>
