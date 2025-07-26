@@ -77,7 +77,7 @@ title: Posts
     color: rgba(0, 0, 0, 0.75);
     text-decoration: none;
     border-radius: 4px;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
     font-weight: normal;
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -88,6 +88,8 @@ title: Posts
   .tag-button:hover {
     background: rgba(0, 0, 0, 0.05);
     color: rgba(0, 0, 0, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
   
   .tag-button.active {
