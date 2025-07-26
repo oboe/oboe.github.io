@@ -125,7 +125,10 @@ Additional principles
 ## And finally on the other side, what should you consider as the author
 
 A pretty fun graphic from cisco code reviews shows that at most 400 lines of code, the amount of issues you can notice significantly diminish. So try to split it up!
+
+
 ![](https://static1.smartbear.co/smartbear/media/images/product/collaborator/code-review-best-practices-figure-01.gif)
+
 
 What makes a code review small?
 - It does one thing
@@ -138,8 +141,6 @@ So how can you split up a change?
 - Split horizontally: design your code in such a way that you can easily cut multiple code reviews without them interfering
 - Split by intent/ logical change
 - Split out refactors
-
-
 
 ## Appendix
 <https://github.com/google/eng-practices/blob/master/review/index.md>
