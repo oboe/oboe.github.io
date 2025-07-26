@@ -142,15 +142,15 @@ So how can you split up a change?
 
 
 ## Appendix
-<https://github.com/google/eng-practices/blob/master/review/index.md
+<https://github.com/google/eng-practices/blob/master/review/index.md>
 
-<https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/code-review-antipatterns/
+<https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/code-review-antipatterns/>
 
-<https://philbooth.me/blog/the-art-of-good-code-review
+<https://philbooth.me/blog/the-art-of-good-code-review>
 
-<https://bitfieldconsulting.com/posts/code-review
+<https://bitfieldconsulting.com/posts/code-review>
 
-<https://lindbakk.com/blog/code-reviews-easy-in-theory-difficult-in-practice
+<https://lindbakk.com/blog/code-reviews-easy-in-theory-difficult-in-practice>
 
 <https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/>
 
