@@ -1,3 +1,8 @@
+---
+layout: post
+tags:
+  - Software
+---
 Working at a place that is dominantly online and not in office I've come to realise that a large proportion of the value we produce is not in the code you write but in the code you review as well.
 
 If this is true, it makes a lot of sense to invest in the skill of reviewing code as much as I have already invested into the art of coding.
