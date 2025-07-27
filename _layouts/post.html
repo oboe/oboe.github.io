@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const listItems = tocNav.querySelectorAll('li');
     listItems.forEach((item, index) => {
       item.style.setProperty('--li-index', index);
-      item.style.transitionDelay = `${index * 0.02}s`;
+      item.style.transitionDelay = `${index * 0.01}s`;
     });
   }
 
