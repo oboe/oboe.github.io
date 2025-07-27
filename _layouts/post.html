@@ -133,7 +133,7 @@
     height: auto;
     max-height: 90vh;
     background: transparent;
-    transition: width 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     overflow: visible;
     font-family: "CMU-Serif", Georgia, Times New Roman, Times, serif;
@@ -142,12 +142,13 @@
   .toc-sidebar.expanded {
     width: 280px;
     border-radius: 4px;
+    transform: translateY(-50%) scale(1.02);
   }
   .toc-nav {
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(0.8);
     padding: 25px 20px;
     opacity: 0;
     visibility: hidden;
@@ -158,8 +159,8 @@
     max-height: 90vh;
     overflow-y: auto;
     pointer-events: none;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    will-change: opacity, visibility;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, visibility, transform;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
@@ -178,6 +179,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(-50%) scale(1);
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
@@ -190,8 +192,8 @@
   .toc-nav ul li {
     margin-bottom: 12px;
     opacity: 0;
-    transform: translateY(5px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(5px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity, transform;
     line-height: 1.4;
   }
@@ -211,7 +213,7 @@
   }
   .toc-sidebar.expanded .toc-nav ul li {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   .toc-nav a {
     color: rgba(0, 0, 0, 0.75);
@@ -239,8 +241,8 @@
     position: absolute;
     left: 8px;
     top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.2s ease;
+    transform: translateY(-50%) scale(1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
@@ -256,23 +258,57 @@
   .toc-sidebar.expanded .toc-toggle {
     opacity: 0;
     pointer-events: none;
+    transform: translateY(-50%) scale(0.8);
   }
   @media (max-width: 768px) {
     .toc-sidebar {
       top: 10px;
       transform: none;
+      width: 24px;
+    }
+    .toc-sidebar.expanded {
+      width: 90vw;
+      max-width: 320px;
+      transform: none;
     }
     .toc-nav {
       top: 0;
-      transform: none;
-      max-height: 80vh;
+      transform: translateY(0) scale(0.8);
+      max-height: 70vh;
+      width: calc(90vw - 24px);
+      max-width: 296px;
+      padding: 20px 16px;
+      border-radius: 4px;
+    }
+    .toc-sidebar.expanded .toc-nav {
+      transform: translateY(0) scale(1);
     }
     .toc-toggle {
-      left: 4px;
-      width: 28px;
-      height: 28px;
+      left: 2px;
+      width: 24px;
+      height: 24px;
+      font-size: 11px;
+      padding: 4px 6px;
+      transform: translateY(0) scale(1);
+    }
+    .toc-sidebar.expanded .toc-toggle {
+      transform: translateY(0) scale(0.8);
+    }
+    .toc-nav ul li {
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .toc-nav ul ul li {
       font-size: 12px;
-      padding: 6px 8px;
+      margin-bottom: 5px;
+    }
+    .toc-nav ul ul ul li {
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+    .toc-nav a {
+      font-size: 13px;
+      padding: 1px 0;
     }
   }
 
@@ -354,6 +390,24 @@
       padding: 0.8em;
     }
   }
+  
+  /* Disable hover effects on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .toc-sidebar:hover {
+      width: 28px;
+    }
+    .toc-sidebar:hover .toc-nav {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-50%) scale(0.8);
+    }
+    .toc-sidebar:hover .toc-toggle {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-50%) scale(1);
+    }
+  }
 </style>
 
 <script>
@@ -375,17 +429,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const listItems = tocNav.querySelectorAll('li');
     listItems.forEach((item, index) => {
       item.style.setProperty('--li-index', index);
+      item.style.transitionDelay = `${index * 0.02}s`;
     });
   }
 
   function collapseTOC() {
     timeoutId = setTimeout(() => {
       tocSidebar.classList.remove('expanded');
+      const listItems = tocNav.querySelectorAll('li');
+      listItems.forEach((item) => {
+        item.style.transitionDelay = '0s';
+      });
     }, 300);
   }
 
+  // Desktop hover interactions
   tocSidebar.addEventListener('mouseenter', expandTOC);
   tocSidebar.addEventListener('mouseleave', collapseTOC);
+  
+  // Mobile touch interactions
+  let touchStartTime = 0;
+  let touchTimeout = null;
+  
+  tocSidebar.addEventListener('touchstart', function(e) {
+    touchStartTime = Date.now();
+    e.preventDefault();
+  });
+  
+  tocSidebar.addEventListener('touchend', function(e) {
+    const touchDuration = Date.now() - touchStartTime;
+    e.preventDefault();
+    
+    if (touchDuration < 300) { // Short tap
+      if (tocSidebar.classList.contains('expanded')) {
+        collapseTOC();
+      } else {
+        expandTOC();
+      }
+    }
+  });
   
   if (headings.length > 0) {
     const toc = generateTOC(headings);
@@ -404,19 +486,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Auto-open TOC for 1 second on first load (only if 4+ headings) ---
     if (!autoOpened && headings.length >= 4) {
-      tocSidebar.classList.add('expanded');
-      autoOpened = true;
-      // If user interacts, don't auto-collapse
-      tocSidebar.addEventListener('mouseenter', function handler() {
-        userInteracted = true;
-        clearTimeout(timeoutId);
-        tocSidebar.removeEventListener('mouseenter', handler);
-      });
-      timeoutId = setTimeout(function() {
-        if (!userInteracted) {
-          tocSidebar.classList.remove('expanded');
-        }
-      }, 1000);
+      // Only auto-open on desktop, not mobile
+      if (window.innerWidth > 768) {
+        tocSidebar.classList.add('expanded');
+        autoOpened = true;
+        // If user interacts, don't auto-collapse
+        tocSidebar.addEventListener('mouseenter', function handler() {
+          userInteracted = true;
+          clearTimeout(timeoutId);
+          tocSidebar.removeEventListener('mouseenter', handler);
+        });
+        timeoutId = setTimeout(function() {
+          if (!userInteracted) {
+            tocSidebar.classList.remove('expanded');
+          }
+        }, 1000);
+      }
     }
     // --- End auto-open logic ---
 
