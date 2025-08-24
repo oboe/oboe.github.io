@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css?{{ site.time | date: '%s%N' }}">
     <link href="{{ site.baseurl }}/assets/css/syntax.css?{{ site.time | date: '%s%N' }}" rel="stylesheet" >
     {% include analytics.html %}
+    <script src="{{ site.baseurl }}/assets/js/svg-patterns.js"></script>
     <style>
       .hidden {
         display:none;
@@ -50,6 +51,7 @@
   </section>
     <div class="container">
       {% include header-muted.html %}
+      
       <body>
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-date">
@@ -380,6 +382,13 @@
     font-size: 0.9em;
     color: rgba(0, 0, 0, 0.5);
   }
+
+
+
+
+
+
+
 
   @media (max-width: 768px) {
     .suggested-posts-grid {

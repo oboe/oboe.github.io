@@ -98,7 +98,7 @@ a {
   margin-left: 0;
   margin-right: 0;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -151,6 +151,28 @@ a {
     &:hover {
       background-color: #F2F0E5;
     }
+  }
+  
+  /* SVG Pattern Container Styles */
+  .svg-pattern-wrapper {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .svg-pattern-container {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .svg-pattern-container svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 }
 
