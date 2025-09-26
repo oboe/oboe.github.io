@@ -9,6 +9,8 @@ URL_REGEX = re.compile(r'(?<!<)(https?://(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]+\.(?:[
 IMAGE_EMBED_REGEX = re.compile(r'!\[[^\]]*\]\([^\)]*\)')
 # Regex to match Markdown links [text](url)
 MD_LINK_REGEX = re.compile(r'\[[^\]]*\]\([^\)]*\)')
+# Regex to repair malformed markdown links like [](\<url)> -> [](url)
+MALFORMED_MD_LINK_ANGLE = re.compile(r'\[([^\]]*)\]\(<([^)>]+)\)>')
 
 
 def fix_links_in_text(content):
@@ -18,6 +20,9 @@ def fix_links_in_text(content):
     This function contains the core logic and can be used for testing by
     providing plain strings without touching the filesystem.
     """
+    # Repair malformed markdown links with stray '>' after the parenthesis
+    content = MALFORMED_MD_LINK_ANGLE.sub(r'[\1](\2)', content)
+
     # Find all image embeds and replace them with placeholders
     image_embeds = []
     def image_embed_replacer(match):
@@ -117,6 +122,11 @@ def _run_internal_asserts():
     assert once == twice, (
         f"idempotence failed.\nExpected (once):\n{once}\nActual (twice):\n{twice}"
     )
+
+    # malformed markdown link with angle-bracketed URL should be repaired
+    malformed_in = "[](<https://example.com)>"
+    repaired_out = "[](https://example.com)"
+    _assert_eq(malformed_in, repaired_out, "repair-malformed-md-link-angle")
 
     print("[SELF-TEST] All assertions passed.")
 
