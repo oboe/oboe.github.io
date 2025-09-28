@@ -10,7 +10,7 @@ vendor/
 pub.sh
 2050-*
 
-_posts/*
-!_posts/*/
+
+_posts/*.md
 _posts/.obsidian/
 _posts/_drafts/
