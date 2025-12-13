@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: "CMU-Serif", Georgia, Times New Roman, Times, serif;
+  font-family: Garamond, serif, RobotoLight, "CMU-Serif", Georgia, Times New Roman, Times, serif;
   background-color: #FFFCF0;
 }
 
@@ -85,6 +85,16 @@ a {
   }
 }
 
+.container-stripes {
+  background-image: repeating-linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.03) 1px,transparent 0,transparent 30px);
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
 .footer {
   color: #878580;
   margin-top:10px;
@@ -151,28 +161,6 @@ a {
     &:hover {
       background-color: #F2F0E5;
     }
-  }
-  
-  /* SVG Pattern Container Styles */
-  .svg-pattern-wrapper {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .svg-pattern-container {
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .svg-pattern-container svg {
-    width: 100%;
-    height: 100%;
-    display: block;
   }
 }
 

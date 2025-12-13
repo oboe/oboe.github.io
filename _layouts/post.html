@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css?{{ site.time | date: '%s%N' }}">
     <link href="{{ site.baseurl }}/assets/css/syntax.css?{{ site.time | date: '%s%N' }}" rel="stylesheet" >
     {% include analytics.html %}
-    <script src="{{ site.baseurl }}/assets/js/svg-patterns.js"></script>
     <style>
       .hidden {
         display:none;
@@ -50,6 +49,7 @@
     </div>
   </section>
     <div class="container">
+      <div class="container-stripes"></div>
       {% include header-muted.html %}
       
       <body>
@@ -492,28 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
         targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     });
-
-    // --- Auto-open TOC for 1 second on first load (only if 4+ headings) ---
-    if (!autoOpened && headings.length >= 4) {
-      // Only auto-open on desktop, not mobile
-      if (window.innerWidth > 768) {
-        tocSidebar.classList.add('expanded');
-        autoOpened = true;
-        // If user interacts, don't auto-collapse
-        tocSidebar.addEventListener('mouseenter', function handler() {
-          userInteracted = true;
-          clearTimeout(timeoutId);
-          tocSidebar.removeEventListener('mouseenter', handler);
-        });
-        timeoutId = setTimeout(function() {
-          if (!userInteracted) {
-            tocSidebar.classList.remove('expanded');
-          }
-        }, 1000);
-      }
-    }
-    // --- End auto-open logic ---
-
   } else {
     tocSidebar.style.display = 'none';
   }
