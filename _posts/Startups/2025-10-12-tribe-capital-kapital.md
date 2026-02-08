@@ -1,3 +1,8 @@
+---
+tags:
+  - Startups
+layout: post
+---
 <https://tribecap.co/kapital-thriving-in-a-desert/>
 
 An analysis on Kapital, the company.
