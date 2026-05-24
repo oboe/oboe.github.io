@@ -172,6 +172,7 @@ Do the following for better auto vectorisation
 1. When accessing through pointers, tell the compiler explicitly that the pointers do not alias, with `__restrict or __restrict__` keyword.
 2. Use less restrictive floating point operations. `-02 -fno-trapping-math -fno-math-errno -fno-signed-zeros -ffast-math`
 3. 
+
 ### AVX instruction set and YMM registers
 ### AVX512 instruction set and ZMM registers
 ### Automatic vectorisation

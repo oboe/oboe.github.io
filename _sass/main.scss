@@ -196,7 +196,7 @@ $thin-black-line: 1px solid #100F0F;
 $thin-gray-line: 1px solid #878580;
 
 pre > code {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 // General code element style preferences
@@ -214,9 +214,10 @@ pre {
     display: block;
     border: $thin-black-line;
     border-radius: 4px;
-    margin: -5px 0;
+    margin: 0;
     padding : 4px 6px;
     line-height: 1.5rem;
+    background-color: transparent;
   }
 }
 

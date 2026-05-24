@@ -18,5 +18,6 @@ Ads usually come in three flavours.
 1. Banner ads: the least profit
 2. Interstitial ads: the middle profit
 3. Video ads: the most profit
+
 ## Which one should you choose?
 One of the main things to consider is that to make ads worthwhile you need scale. Another thing to consider is how painful of a problem you are solving for the user. Is this something they're willing to pay a lot for or are you just solving their temporary boredom.

@@ -86,6 +86,7 @@ Cpp stores all the atomic stuff in `<atomic>`. Get them with `atomic_type or std
 `atomic<T>` have a bunch of atomic functions, notable ones being:
 1. `compare_exchange_weak()`: can fail (return false) just because of an interrupt or something
 2. `compare_exchange_strong()`: will only fail if the condition is false.
+
 #### Synchronising operations and enforcing ordering
 Same idea as distributed systems, read after write consistency ideas. You can specify memory ordering options for atomic operations to declare what ordering rules you need upheld.
 1. `memory_order_relaxed`: No ordering requirement!

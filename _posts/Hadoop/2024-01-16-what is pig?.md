@@ -14,6 +14,7 @@ Kinda looks like SQL. Just simple verb commands. Also provides an illustrate com
 Pig is a data flow language not a declarative programming language. 
 - Hive is more like RDBMs than pig. It has a query lang called HiveQL.
 - Hive also needs all data to be stored in tables with schema under its management.
+
 #### Pig Latin
 Provides a bunch of statement operators! ngl makes it so much easier to do mapreduce.
 #### User-Defined Functions
