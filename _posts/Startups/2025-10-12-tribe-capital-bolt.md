@@ -3,7 +3,7 @@ tags:
   - Startups
 layout: post
 ---
-<https://tribecap.co/bolt-perfecting-the-checkout-experience/>
+[tribecap.co/bolt-perfecting-the-checkout-experience](https://tribecap.co/bolt-perfecting-the-checkout-experience/)
 
 Bolt initially has two products
 1. A streamlined online checkout, amazon like experience

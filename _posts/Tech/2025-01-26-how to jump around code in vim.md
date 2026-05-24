@@ -30,4 +30,4 @@ Killing window
 ## Things I still want
 Still can't trivially get universal jump, being able to jump into libraries and decompiled dependencies. This is super useful and is a shame that it's not easily accessible.
 ## Appendix
-<https://kulkarniamit.github.io/whatwhyhow/howto/use-vim-ctags.html>
+[kulkarniamit.github.io/whatwhyhow/howto/use-vim-ctags](https://kulkarniamit.github.io/whatwhyhow/howto/use-vim-ctags.html)

@@ -48,6 +48,6 @@ Removing the copy itself is always better than a move. A move is still a cheaper
 #### Moving `std::array`
 Lmao, this guy is moving std arrays, don't you know that moving that still copies all underlying elements. A `std::array` is still a trivial type and therefore copied.
 ## Appendix
-<https://mbevin.wordpress.com/2012/11/20/move-semantics/ >
-<https://www.nutrient.io/blog/when-cpp-doesnt-move/>
-<https://subscription.packtpub.com/book/programming/9781839216541/2/ch02lvl1sec08/move-semantics-explained>
+[mbevin.wordpress.com/2012/11/20/move-semantics/ ](https://mbevin.wordpress.com/2012/11/20/move-semantics/ )
+[nutrient.io/blog/when-cpp-doesnt-move](https://www.nutrient.io/blog/when-cpp-doesnt-move/)
+[subscription.packtpub.com/book/programming/9781839216541/2/ch02lvl1sec08/move-semantics-explained](https://subscription.packtpub.com/book/programming/9781839216541/2/ch02lvl1sec08/move-semantics-explained)

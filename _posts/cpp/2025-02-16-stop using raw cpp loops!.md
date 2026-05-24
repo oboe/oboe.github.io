@@ -3,7 +3,7 @@ layout: post
 tags:
   - Cpp
 ---
-<https://www.youtube.com/watch?v=qH6sSOr-yk8&ab_channel=PauloPortela>
+[youtube.com/watch](https://www.youtube.com/watch?v=qH6sSOr-yk8&ab_channel=PauloPortela)
 
 ## **NO RAW LOOPS!**
 - causes boundary access errors
@@ -23,7 +23,7 @@ int main(){
      std::rotate(v.begin(), v.begin() +1,  v.end());
      print("rotaed ", v);
 
-     std::stable_partition(v.begin(), v.end(),  [](int n) { return n % 2 == 0;});
+     std::stable_partition(v.begin(), v.end(),  [int n](int n) { return n % 2 == 0;});
      print("partitioned ", v);
  }
 ```

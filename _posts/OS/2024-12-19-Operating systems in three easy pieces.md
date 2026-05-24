@@ -3,8 +3,8 @@ layout: post
 tags:
   - OS
 ---
-<https://pages.cs.wisc.edu/~remzi/OSTEP/>
-<https://github.com/remzi-arpacidusseau/ostep-code>
+[pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+[github.com/remzi-arpacidusseau/ostep-code](https://github.com/remzi-arpacidusseau/ostep-code)
 ## Intro
 Processors, fetch, decode and execute. The purpose of the OS is to make sure the hardware operates and is easy to use. We make it seem like theres an infinite amount of CPUs to run your shit, we make it seem like we have an infinite amount of memory to run your shit and instead of writing bytes directly into your disk you can use a nice file system api to interact with it.
 ## Processes

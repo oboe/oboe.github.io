@@ -3,17 +3,17 @@ layout: post
 tags:
   - Cpp
 ---
-<https://www.youtube.com/watch?v=BxfT9fiUsZ4&list=WL&index=2&ab_channel=Pacific%2B%2B>
+[youtube.com/watch](https://www.youtube.com/watch?v=BxfT9fiUsZ4&list=WL&index=2&ab_channel=Pacific%2B%2B)
 
 Need to think about hotpath/fastpath that is only exercised 0.01% of the time that executes the trade. Any jitter is unacceptable. OS, network, hardware are all forgotten about this code, they all work in fair ways which ignore this code. 
 
 Wire to wire time is seeing order from exchange to making your order. Usually you have 1 microsecond to do all your compute. Thats about 3k CPU cycles. Game over if you go to main memory.
 
 Can view a compiled code with this site
-- <https://godbolt.org/>
+- [godbolt.org](https://godbolt.org/)
 
 Easily benchmark code with google benchmark
-- <https://github.com/google/benchmark>
+- [github.com/google/benchmark](https://github.com/google/benchmark)
 
 You need to tune the hardware to even get to a level playing field. e.g removing hyperthreading to avoid your cache getting messed up.
 

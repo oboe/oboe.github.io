@@ -3,7 +3,7 @@ tags:
   - Startups
 layout: post
 ---
-https://tribecap.co/the-hive-is-the-new-network/
+[tribecap.co/the-hive-is-the-new-network](https://tribecap.co/the-hive-is-the-new-network/)
 
 A simple callout that networks become more valuable as their connections have:
 1. more frequency

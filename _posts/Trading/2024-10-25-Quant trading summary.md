@@ -3,7 +3,7 @@ layout: post
 tags:
   - Trading
 ---
-<https://blog.headlandstech.com/2017/08/>
+[blog.headlandstech.com/2017/08](https://blog.headlandstech.com/2017/08/)
 
 Companies are usually split into
 1. Strategy research: programming, stats, trading intuition

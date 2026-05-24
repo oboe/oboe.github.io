@@ -10,4 +10,4 @@ tags:
 ## What are the best practices
 
 ## Appendix
-<https://en.cppreference.com/w/cpp/language/template_argument_deduction>
+[en.cppreference.com/w/cpp/language/template_argument_deduction](https://en.cppreference.com/w/cpp/language/template_argument_deduction)

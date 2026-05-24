@@ -7,7 +7,7 @@
 
 
 ## Appendix
-<https://interviewing.io/blog/sabotage-salary-negotiation-before-even-start >
+[interviewing.io/blog/sabotage-salary-negotiation-before-even-start ](https://interviewing.io/blog/sabotage-salary-negotiation-before-even-start )
 
-<https://haseebq.com/my-ten-rules-for-negotiating-a-job-offer/>
+[haseebq.com/my-ten-rules-for-negotiating-a-job-offer](https://haseebq.com/my-ten-rules-for-negotiating-a-job-offer/)
 

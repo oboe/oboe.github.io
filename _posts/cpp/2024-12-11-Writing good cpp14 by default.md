@@ -3,11 +3,11 @@ layout: post
 tags:
   - Cpp
 ---
-<https://www.youtube.com/watch?v=hEx5DNLWGgA&list=WL&index=1&ab_channel=CppCon>
-<https://www.youtube.com/watch?v=xnqTKD8uD64&list=WL&index=1&ab_channel=CppCon>
+[youtube.com/watch](https://www.youtube.com/watch?v=hEx5DNLWGgA&list=WL&index=1&ab_channel=CppCon)
+[youtube.com/watch](https://www.youtube.com/watch?v=xnqTKD8uD64&list=WL&index=1&ab_channel=CppCon)
 
 Guidelines
-- <https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md>
+- [github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md)
 
 How can we add guidelines that prevent default usage of grenades in cpp? Theres three main grenades we want to tackle.
 1. Type safety

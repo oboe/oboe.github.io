@@ -3,7 +3,7 @@ layout: post
 tags:
   - Perf
 ---
-<https://www.youtube.com/watch?v=I_TtMk5z0O0&ab_channel=JaneStreet>
+[youtube.com/watch](https://www.youtube.com/watch?v=I_TtMk5z0O0&ab_channel=JaneStreet)
 
 Perf investigation
 1. Plot your latency histograms!

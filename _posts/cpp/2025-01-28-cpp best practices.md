@@ -25,7 +25,7 @@ Avoid single parameter constructors, add `explicit` keyword, as they can be appl
 Const as much as possible!
 
 For return values, theres no real reason to return a reference to avoid a copy because copy ellison done by the compiler will try to remove needless copies here, so just return a value in most cases!
-- <https://github.com/cpp-best-practices/cppbestpractices/issues/21#issuecomment-133760481>
+- [github.com/cpp-best-practices/cppbestpractices/issues/21](https://github.com/cpp-best-practices/cppbestpractices/issues/21#issuecomment-133760481)
 
 Don't use new and delete to manage memory. Just use pointer handles to handle this memory!
 
@@ -64,4 +64,4 @@ Just use lambas not binds!
 
 For utility functions you can directly indicate inplace initialisation with `std::in_place`
 ## Appendix
-<https://lefticus.gitbooks.io/cpp-best-practices/content/>
+[lefticus.gitbooks.io/cpp-best-practices/content](https://lefticus.gitbooks.io/cpp-best-practices/content/)

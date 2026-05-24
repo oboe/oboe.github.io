@@ -3,7 +3,7 @@ tags:
   - AI
 layout: post
 ---
-<https://brooker.co.za/blog/2026/02/07/you-are-here.html>
+[brooker.co.za/blog/2026/02/07/you-are-here](https://brooker.co.za/blog/2026/02/07/you-are-here.html)
 
 1. The cost of turning business logic into code has dropped to zero
 2. The cost of integrating services and plumbing has dropped to zero

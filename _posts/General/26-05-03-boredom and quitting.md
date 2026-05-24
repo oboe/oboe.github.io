@@ -1,4 +1,4 @@
-[randsinrepose.com](https://randsinrepose.com/archives/bored-people-quit/)
+[randsinrepose.com/archives/bored-people-quit](https://randsinrepose.com/archives/bored-people-quit/)
 
 This article nicely talks about an effect ive also noticed in workplaces is that the lack of constant work is often one of the main causes for people to quit.
 

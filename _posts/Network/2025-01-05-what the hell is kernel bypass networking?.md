@@ -25,23 +25,23 @@ What is a DMA address?
 - This is the memory area we provide to these APIs which they can write to. (Direct Memory Access)
 
 So how can you measure and debug network perf?
-- <https://docs.amd.com/r/en-US/ug1586-onload-user/sfnt-pingpong>
-- <https://github.com/HewlettPackard/netperf>
+- [docs.amd.com/r/en-US/ug1586-onload-user/sfnt-pingpong](https://docs.amd.com/r/en-US/ug1586-onload-user/sfnt-pingpong)
+- [github.com/HewlettPackard/netperf](https://github.com/HewlettPackard/netperf)
 
 ## Appendix
 
-<https://talawah.io/blog/linux-kernel-vs-dpdk-http-performance-showdown/>
+[talawah.io/blog/linux-kernel-vs-dpdk-http-performance-showdown](https://talawah.io/blog/linux-kernel-vs-dpdk-http-performance-showdown/)
 
-<https://blog.cloudflare.com/kernel-bypass/>
+[blog.cloudflare.com/kernel-bypass](https://blog.cloudflare.com/kernel-bypass/)
 
-<https://databento.com/microstructure/kernel-bypass>
+[databento.com/microstructure/kernel-bypass](https://databento.com/microstructure/kernel-bypass)
 
-<http://info.iet.unipi.it/~luigi/papers/20120503-netmap-atc12.pdf>
+[info.iet.unipi.it/~luigi/papers/20120503-netmap-atc12.pdf](http://info.iet.unipi.it/~luigi/papers/20120503-netmap-atc12.pdf)
 
-<https://lukego.github.io/blog/2013/01/04/kernel-bypass-networking/ >
+[lukego.github.io/blog/2013/01/04/kernel-bypass-networking/ ](https://lukego.github.io/blog/2013/01/04/kernel-bypass-networking/ )
 
-<https://github.com/lukego/blog/issues/13>
+[github.com/lukego/blog/issues/13](https://github.com/lukego/blog/issues/13)
 
-<https://lwn.net/Articles/914992/>
+[lwn.net/Articles/914992](https://lwn.net/Articles/914992/)
 
-<https://define-technology.com/hft-virtualised/>
+[define-technology.com/hft-virtualised](https://define-technology.com/hft-virtualised/)

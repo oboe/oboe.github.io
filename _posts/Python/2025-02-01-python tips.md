@@ -3,7 +3,7 @@ layout: post
 tags:
   - Python
 ---
-<https://book.pythontips.com/en/latest/index.html>
+[book.pythontips.com/en/latest/index](https://book.pythontips.com/en/latest/index.html)
 
 ## args and kwargs
 Already know this but can be useful to define functions to patch code at runtime, which could see as being useful for debugging.

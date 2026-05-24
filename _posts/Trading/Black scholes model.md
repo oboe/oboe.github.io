@@ -37,14 +37,14 @@ Honestly not that different.
 ## Appendix
 
 BSM
-- <https://brilliant.org/wiki/black-scholes-merton/>
-- <https://www.investopedia.com/terms/b/blackscholes.asp>
-- <https://financetrainingcourse.com/education/wp-content/uploads/2011/03/Understanding.pdf>
-- <https://gregorygundersen.com/blog/2024/09/28/black-scholes/>
-- <https://benjaminwhiteside.com/2021/01/15/black-76/>
-- <https://www.researchgate.net/publication/228318867_An_Intuitive_Understanding_of_the_Black-Scholes_Formulas >
-- <https://notion.moontowermeta.com/the-intuition-behind-the-black-scholes-equation>
+- [brilliant.org/wiki/black-scholes-merton](https://brilliant.org/wiki/black-scholes-merton/)
+- [investopedia.com/terms/b/blackscholes](https://www.investopedia.com/terms/b/blackscholes.asp)
+- [financetrainingcourse.com/education/wp-content/uploads/2011/03/Understanding.pdf](https://financetrainingcourse.com/education/wp-content/uploads/2011/03/Understanding.pdf)
+- [gregorygundersen.com/blog/2024/09/28/black-scholes](https://gregorygundersen.com/blog/2024/09/28/black-scholes/)
+- [benjaminwhiteside.com/2021/01/15/black-76](https://benjaminwhiteside.com/2021/01/15/black-76/)
+- [researchgate.net/publication/228318867_An_Intuitive_Understanding_of_the_Black-Scholes_Formulas ](https://www.researchgate.net/publication/228318867_An_Intuitive_Understanding_of_the_Black-Scholes_Formulas )
+- [notion.moontowermeta.com/the-intuition-behind-the-black-scholes-equation](https://notion.moontowermeta.com/the-intuition-behind-the-black-scholes-equation)
 
 B76
-- <https://www.glynholton.com/notes/black_1976/>
-- <https://eumaeus.org/wordp/index.php/2018/08/27/why-black-76/>
+- [glynholton.com/notes/black_1976](https://www.glynholton.com/notes/black_1976/)
+- [eumaeus.org/wordp/index.php/2018/08/27/why-black-76](https://eumaeus.org/wordp/index.php/2018/08/27/why-black-76/)

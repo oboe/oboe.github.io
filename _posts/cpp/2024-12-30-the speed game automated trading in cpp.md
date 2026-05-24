@@ -3,7 +3,7 @@ layout: post
 tags:
   - Cpp
 ---
-<https://www.youtube.com/watch?v=ulOLGX3HNCI&list=WL&index=166&ab_channel=MeetingCpp>
+[youtube.com/watch](https://www.youtube.com/watch?v=ulOLGX3HNCI&list=WL&index=166&ab_channel=MeetingCpp)
 
 It's a race to
 1. receive market data
@@ -39,7 +39,7 @@ On cpp techniques
 5. Cache locality
 6. Compile time dispatch
 7. Constexpr
-8. Varadic templates: you can do a nice compile time recuse with varadic templates resulting in the evaluation of an overloaded base case, pretty nice <https://github.com/maciekgajewski/Fast-Log ><https://github.com/carlcook/variadicLogging/blob/master/main.cc >
+8. Varadic templates: you can do a nice compile time recuse with varadic templates resulting in the evaluation of an overloaded base case, pretty nice [github.com/maciekgajewski/Fast-Log ](https://github.com/maciekgajewski/Fast-Log )[github.com/carlcook/variadicLogging/blob/master/main.cc ](https://github.com/carlcook/variadicLogging/blob/master/main.cc )
 9. Loop unrolling
 10. Expression short circuiting: move expensive checks to the top
 11. Signed, unsigned comparisons
@@ -51,7 +51,7 @@ On cpp techniques
 17. Fast containers
 18. Lambda functions
 
-<https://github.com/Xilinx-CNS/onload>
+[github.com/Xilinx-CNS/onload](https://github.com/Xilinx-CNS/onload)
 - you can read write packets without system calls
 
 You have to measure to improve something
