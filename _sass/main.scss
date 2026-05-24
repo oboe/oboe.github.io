@@ -5,6 +5,7 @@ body {
   min-height: 100%;
   font-family: Garamond, serif, RobotoLight, "CMU-Serif", Georgia, Times New Roman, Times, serif;
   background-color: #FFFCF0;
+  line-height: 1.4;
 }
 
 h1,
@@ -28,6 +29,10 @@ ol {
   margin-top: 0.2rem;
   margin-bottom: 1rem;
   padding-left: 20px;
+}
+
+li {
+  margin-bottom: 0.2rem;
 }
 
 ul ul, ul ol,
@@ -81,19 +86,10 @@ a {
     color: #9F9D96;
   }
   @media (min-width: 600px) {
-    max-width: 900px;
+    max-width: 680px;
   }
 }
 
-.container-stripes {
-  background-image: repeating-linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.03) 1px,transparent 0,transparent 30px);
-  height: 100%;
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  width: 100%
-}
 
 .footer {
   color: #878580;

@@ -1,0 +1,3 @@
+something I think is an interesting heuristic to have is. the the idea that that the future life expectancy of non perishable things is proportional to their current age. aka probabilistically if you're observing something you're probably observing it somewhere in the middle of of its life expectancy.
+
+theres a few ways to apply this but to me at least it applies to books and software. so that a book thats stood the test of time must be worth reading. and the counter point being that new things are very often not worth consuming.

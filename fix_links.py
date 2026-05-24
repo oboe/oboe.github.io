@@ -1,6 +1,7 @@
 import sys
 import re
 import os
+from urllib.parse import urlparse
 
 # Regex to match bare URLs not inside <...>
 # Updated to use word boundaries and avoid capturing whitespace
@@ -40,7 +41,10 @@ def fix_links_in_text(content):
     # Apply URL regex to the rest of the content
     def url_replacer(match):
         url = match.group(1)
-        return f'<{url}>'
+        domain = urlparse(url).netloc
+        if domain.startswith('www.'):
+            domain = domain[4:]
+        return f'[{domain}]({url})'
     new_temp_content = URL_REGEX.sub(url_replacer, temp_content)
 
     # Restore image embeds
@@ -83,15 +87,15 @@ def _run_internal_asserts():
             f"{label} failed.\nExpected:\n{expected_text}\nActual:\n{actual_text}\nInput:\n{input_text}"
         )
 
-    # Bare URL should be wrapped
-    _assert_eq("Visit https://example.com for more", "Visit <https://example.com> for more", "bare-url-wrap")
+    # Bare URL should be replaced with [domain](url)
+    _assert_eq("Visit https://example.com for more", "Visit [example.com](https://example.com) for more", "bare-url-wrap")
 
     # Already wrapped URL should remain unchanged
     _assert_eq("See <https://example.com>", "See <https://example.com>", "already-wrapped")
 
     # Image embeds should be preserved
     md_img_in = "Here is an image ![alt](https://example.com/x.png) and a link https://example.com/page"
-    md_img_out = "Here is an image ![alt](https://example.com/x.png) and a link <https://example.com/page>"
+    md_img_out = "Here is an image ![alt](https://example.com/x.png) and a link [example.com](https://example.com/page)"
     _assert_eq(md_img_in, md_img_out, "image-embed-preserved")
 
     # No leftover placeholders
@@ -101,11 +105,11 @@ def _run_internal_asserts():
     )
 
     # http scheme
-    _assert_eq("Plain http http://example.com ok", "Plain http <http://example.com> ok", "http-scheme")
+    _assert_eq("Plain http http://example.com ok", "Plain http [example.com](http://example.com) ok", "http-scheme")
 
     # complex URL with subdomain, path, query, and fragment
     complex_in = "Go to https://sub.example.co.uk/path/to?p=1&q=two#frag now"
-    complex_out = "Go to <https://sub.example.co.uk/path/to?p=1&q=two#frag> now"
+    complex_out = "Go to [sub.example.co.uk](https://sub.example.co.uk/path/to?p=1&q=two#frag) now"
     _assert_eq(complex_in, complex_out, "complex-url")
 
     # www without scheme should not be altered
