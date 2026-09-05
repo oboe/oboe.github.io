@@ -1,0 +1,83 @@
+{% assign braille_mode = site.braille.mode | default: "sides" %}
+{% unless braille_mode == "off" %}
+<!-- Decorative braille-flow field. aria-hidden, pointer-events:none, and
+     never in the reading column. Mode is set in _config.yml. -->
+{% if braille_mode == "background" %}
+  <div class="braille-bg" aria-hidden="true"><canvas></canvas></div>
+{% elsif braille_mode == "right" %}
+  <div class="braille-strip braille-right" aria-hidden="true"><canvas></canvas></div>
+{% else %}
+  <div class="braille-strip braille-left" aria-hidden="true"><canvas></canvas></div>
+  <div class="braille-strip braille-right" aria-hidden="true"><canvas></canvas></div>
+{% endif %}
+
+<script src="{{ site.baseurl }}/assets/js/braille-flow.js"></script>
+<script>
+  (function () {
+    if (!window.BrailleFlow) return;
+    var mode = {{ braille_mode | jsonify }};
+
+    // Seed probing costs a few tens of ms, so keep it off the critical path —
+    // the strip showing up a frame late is invisible, a stalled first paint
+    // is not.
+    var defer = window.requestIdleCallback || function (fn) { setTimeout(fn, 0); };
+
+    // Stable per-page pattern: each post gets its own signature and it does
+    // not reshuffle between reloads.
+    var seed = 0, path = location.pathname;
+    for (var i = 0; i < path.length; i++) {
+      seed = (seed * 31 + path.charCodeAt(i)) % 100000;
+    }
+
+    function init(sel, opts, then) {
+      var el = document.querySelector(sel);
+      if (!el) return;
+      defer(function () {
+        var inst = BrailleFlow.create(el, opts);
+        if (then && inst) then(inst);
+      });
+    }
+
+    if (mode === 'background') {
+      // Full-page field, flowing on its own timer.
+      init('.braille-bg canvas', {
+        orientation: 'vertical',
+        cellSize: 18,
+        inkDensity: 0.13,     // held exactly, on every page
+        seedCandidates: 8,    // reject speckly draws
+        scale: 0.038,
+        bandScale: 0.7,       // fatter, more widely spaced ribbons
+        swirl: 3,             // bend amplitude: ribbons run many directions
+        opacity: 0.3,
+        fade: 0,
+        flowSpeed: 0.010,
+        fps: 20,
+        seed: seed
+      });
+      return;
+    }
+
+    var base = {
+      orientation: 'vertical',
+      cellSize: 17,       // fewer, chunkier cells -> ~25% cheaper per frame
+      inkDensity: 0.18,     // held exactly, on every page
+      seedCandidates: 8,    // reject speckly draws
+      scale: 0.042,
+      bandScale: 0.7,       // fatter ribbons; raise toward 1 for a busier weave
+      swirl: 3,             // bend amplitude: ribbons run many directions
+      // The ribbons flow on their own timer and are NOT tied to scrolling:
+      // scroll-linked redraws cost ~15ms a frame and always trail the text.
+      // Nothing here runs on scroll, so scrolling stays completely smooth.
+      flowSpeed: 0.014,    // gentle drift; raise for faster ribbons
+      fps: 24,
+      opacity: 0.85,
+      fade: 0.14
+    };
+
+    if (mode !== 'right') {
+      init('.braille-left canvas', Object.assign({}, base, { seed: seed }));
+    }
+    init('.braille-right canvas', Object.assign({}, base, { seed: seed + 7919 }));
+  })();
+</script>
+{% endunless %}

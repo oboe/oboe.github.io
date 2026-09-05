@@ -15,7 +15,7 @@ title: Oboe
             {{ post.date | date_to_string }}
             </p>
             {{ post.content }}
-            <hr style="width:100%;text-align:left;margin-left:0;border-width:0;height:2px;color:lightgray;background-color:lightgray;">
+            <hr>
         </body>
     </div>
     {% endfor %}

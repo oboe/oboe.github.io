@@ -1,80 +1,183 @@
+// ---------------------------------------------------------------------------
+// Tokens
+// ---------------------------------------------------------------------------
+// Typography is lifted from mattrickard.com: system sans, light weight,
+// slightly negative tracking, fluid body size, 1.5 line-height.
+$font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+// Palette stays Flexoki (warm paper), only the type changes.
+$paper:      #FFFCF0;
+$surface:    #F2F0E5;
+$ink:        #100F0F;
+$ink-soft:   #6F6E69;
+$muted:      #9F9D96;
+$rule:       #E6E4D9;
+$link:       #205EA6;
+
+$measure: 680px;
+$baseline: 8px;
+
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+html {
+  // Always reserve space for the vertical scrollbar so centered content
+  // (.container uses margin: 0 auto) doesn't shift sideways between pages
+  // that scroll and pages that don't.
+  overflow-y: scroll;        // fallback: keeps the track present everywhere
+  scrollbar-gutter: stable;  // modern: reserves the gutter without a visible track
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: Garamond, serif, RobotoLight, "CMU-Serif", Georgia, Times New Roman, Times, serif;
-  background-color: #FFFCF0;
-  line-height: 1.4;
+  color: $ink;
 }
 
+// Paper lives on <html> only: body stays transparent so the background
+// braille field (z-index:-1) isn't painted over by body's own background.
+html {
+  background-color: $paper;
+}
+
+body {
+  font-family: $font-sans;
+  // Keep font-size off <html> so 1rem stays 16px — setting it there makes
+  // every rem-based size below scale with it, which compounds fast.
+  font-size: min(calc(0.18vw + 0.94rem), 1.0625rem); // ~15.2px -> 17px
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ---------------------------------------------------------------------------
+// Headings
+// ---------------------------------------------------------------------------
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  line-height: normal;
-  margin-bottom: 0px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 2rem 0 0.5rem;
 }
 
-p + ul,
-p + ol {
-  margin-top: 0.2rem;
-  margin-bottom: 0rem;
+h1 {
+  font-size: clamp(1.5rem, 2.6vw, 1.75rem); // 24px -> 28px
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+h5,
+h6 {
+  font-size: 0.9rem;
+  color: $ink-soft;
+}
+
+// ---------------------------------------------------------------------------
+// Body copy
+// ---------------------------------------------------------------------------
+p {
+  margin: 0 0 1.25rem;
 }
 
 ul,
 ol {
-  margin-top: 0.2rem;
-  margin-bottom: 1rem;
-  padding-left: 20px;
+  margin: 0 0 1.25rem;
+  padding-left: 1.5rem;
 }
 
 li {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+li > p {
+  margin-bottom: 0.4rem;
 }
 
 ul ul, ul ol,
 ol ul, ol ol {
-  margin-bottom: 0rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
 }
 
-p {
-  margin-bottom: 0rem; /* Adjust this value to reduce space between paragraphs */
+hr {
+  border: 0;
+  border-top: 1px solid $rule;
+  margin: 2rem 0;
 }
 
 blockquote {
-  border-left: .25rem solid #9F9D96;
-  color: #9F9D96;
-  margin: .8rem 0;
-  padding: .5rem 1rem;
+  border-left: 2px solid $rule;
+  color: $ink-soft;
+  margin: 1.25rem 0;
+  padding: 0 0 0 1.25rem;
 
   p:last-child {
-    margin-bottom: 2;
-  }
-
-  @media (min-width: 600px) {
-    padding: 0 5rem 0 1.25rem;
+    margin-bottom: 0;
   }
 }
 
+small {
+  font-size: 0.8rem;
+}
+
+// ---------------------------------------------------------------------------
+// Links
+// ---------------------------------------------------------------------------
 a {
-  text-decoration: none;
-  color: #100F0F;
-  font-weight: bold;
+  color: $link;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.16em;
+  transition: opacity 0.15s ease;
+  word-wrap: break-word;
+
+  &:visited {
+    color: $link;
+  }
   &:hover {
-    text-decoration:underline;
+    opacity: 0.7;
   }
-  &:visited,:active {
-    text-decoration: none;
-    color: #100F0F;
-  }
-  word-wrap:break-word;
 }
 
+// Navigational / structural links opt out of the blue underline.
+// `:visited` has to be listed explicitly: `a:visited` above scores (0,1,1),
+// which outranks a bare class like `.archive-title` (0,1,0) — so without this
+// a post title turned blue as soon as you'd read it.
+.header a,
+.archive-title,
+.post-list-title,
+.toc a,
+.suggested-list a,
+.back-home {
+  &,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Layout
+// ---------------------------------------------------------------------------
 .container {
-  max-width: 80%;//756px;
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -83,146 +186,232 @@ a {
   flex-flow: column;
 
   .post-date {
-    color: #9F9D96;
+    color: $muted;
+    font-size: 0.8rem;
+    letter-spacing: 0;
   }
+
   @media (min-width: 600px) {
-    max-width: 680px;
+    max-width: $measure;
   }
 }
-
 
 .footer {
-  color: #878580;
-  margin-top:10px;
-  margin-left: 0px;
-  margin-bottom: 15px;
-  white-space: nowrap;
-  overflow: hidden;
+  color: $muted;
+  font-size: 0.8rem;
+  margin: 3rem 0 1rem;
+
+  > div {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 }
 
+// ---------------------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------------------
 .header {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin: 28px 0 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: baseline;
+  // Column gap only: the <hr> is a 100%-wide flex item, so a row gap would
+  // stack on top of its own margin and push the rule way off the wordmark.
+  column-gap: 1.25rem;
+  row-gap: 0;
 
-  // h1 {
-  //   margin: 0;
-  // }
-  small {
-    margin-left: 0px;
-    margin-right: 10px;
+  // The markup wraps the wordmark and the nav in <h1>s; keep them at nav scale.
+  h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin: 0;
   }
+
   .header-items {
-    margin-left: 10px;
-    margin-right: 0px;
-    @media (max-width: 440px) {
-      margin-left: 10px;
-    }
+    display: flex;
+    gap: 0.9rem;
   }
-  .header-logos {
-    margin: 0px;
+
+  small {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
+
   .a {
-    color: #100F0F;
+    color: $ink;
   }
   .a-muted {
-    color: #B7B5AC;
+    color: $ink;
+    opacity: 0.68;
+    &:hover { opacity: 1; }
   }
-  .h-logo-1 {
-    margin: 10px;
-    text-decoration:none;
-    border: 5px solid transparent;
-    padding: 1px;
-    display: flex;
-    justify-content: center;
-    float: left;
-    border-radius: 15px;
-    &:hover {
-      background-color: #F2F0E5;
-    }
-  }
-  .h-logo-2 {
-    margin:10px;
-    text-decoration:none;
-    border: 5px solid transparent;
-    padding: 1px;
-    display: flex;
-    justify-content: center;
-    float: left;
-    border-radius: 15px;
-    &:hover {
-      background-color: #F2F0E5;
-    }
+
+  hr {
+    width: 100%;
+    margin: 10px 0 0;
   }
 }
 
+// ---------------------------------------------------------------------------
+// Archive list
+// ---------------------------------------------------------------------------
 .archive-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 7px;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid $rule;
 
   @media screen and (max-width: 540px) {
     flex-direction: column;
+    gap: 0.1rem;
   }
 
   .archive-item-title {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   .archive-date {
     white-space: nowrap;
-    color: #9F9D96;
+    color: $muted;
+    font-size: 0.8rem;
+    letter-spacing: 0;
   }
 
   .archive-title {
-    font-weight: normal;
+    font-weight: 400;
+    &:hover { text-decoration: underline; text-underline-offset: 0.16em; }
   }
 }
 
 .post-title {
   overflow-wrap: break-word;
   word-wrap: break-word;
+  margin-top: 2.5rem;
 }
 
-$baseline: 8px;
-$thin-black-line: 1px solid #100F0F;
-$thin-gray-line: 1px solid #878580;
-
-pre > code {
-  overflow-x: auto;
-}
-
-// General code element style preferences
+// ---------------------------------------------------------------------------
+// Code
+// ---------------------------------------------------------------------------
 code {
-  border: $thin-gray-line;
+  font-family: $font-mono;
+  font-size: 0.85em;
+  font-weight: 400;
+  letter-spacing: 0;
+  border: 1px solid $rule;
   border-radius: 4px;
-  padding : 3px 3px 1px;
-  background-color: #F2F0E5;
+  padding: 0.1em 0.3em;
+  background-color: $surface;
 }
+
 pre {
-  margin-top: ($baseline * 3) - 5px;
-  margin-bottom: ($baseline * 3) - 5px;
+  margin: ($baseline * 3) - 5px 0;
+  overflow-x: auto;
 
   > code {
     display: block;
-    border: $thin-black-line;
+    border: 1px solid $rule;
     border-radius: 4px;
     margin: 0;
-    padding : 4px 6px;
-    line-height: 1.5rem;
-    background-color: transparent;
+    padding: 0.7rem 0.85rem;
+    line-height: 1.5;
+    background-color: $surface;
+    overflow-x: auto;
   }
 }
 
+// ---------------------------------------------------------------------------
+// Braille flow (decorative)
+// ---------------------------------------------------------------------------
+$braille-ink: #B7B5AC;
+$braille-gap: 16px; // breathing room between the ribbons and the text column
+
+// Gutter ribbons. Each fills its whole gutter and is masked horizontally so
+// the ink is densest at the viewport edge and has dissolved before it
+// reaches the reading column.
+.braille-strip {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  // Guarded by the 1100px media query below, where this is still ~194px.
+  width: calc((100vw - #{$measure}) / 2 - #{$braille-gap});
+  color: $braille-ink;
+  pointer-events: none;
+  z-index: 0;
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Below this the gutters are too narrow to be worth the paint cost.
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+.braille-left {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+}
+
+.braille-right {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+}
+
+// Narrow single-gutter variant (mode: right) — no horizontal dissolve needed.
+.braille-strip.braille-right:only-of-type {
+  width: 68px;
+}
+
+// Full-page field, behind everything. The ribbons stay continuous across the
+// whole width, but are knocked back to a trace where the reading column sits
+// so they never fight the text.
+$braille-bg-clear: 0.14; // ink kept behind the text column
+
+.braille-bg {
+  position: fixed;
+  inset: 0;
+  color: $braille-ink;
+  pointer-events: none;
+  z-index: -1;
+
+  --braille-edge: calc(50% - #{$measure} / 2 - 40px);
+  --braille-carve: linear-gradient(
+    to right,
+    #000 0,
+    rgba(0, 0, 0, #{$braille-bg-clear}) var(--braille-edge),
+    rgba(0, 0, 0, #{$braille-bg-clear}) calc(100% - var(--braille-edge)),
+    #000 100%
+  );
+  -webkit-mask-image: var(--braille-carve);
+  mask-image: var(--braille-carve);
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Misc
+// ---------------------------------------------------------------------------
 @keyframes infinite-spinner {
-  to {transform: rotate(360deg);}
+  to { transform: rotate(360deg); }
 }
 
 .infinite-spinner:before {
@@ -232,8 +421,8 @@ pre {
   height: 20px;
   border-radius: 50px;
   margin: 60px auto;
-  border: 2px solid #F2F0E5;
-  border-top-color: #100F0F;
+  border: 2px solid $surface;
+  border-top-color: $ink;
   animation: infinite-spinner .9s linear infinite;
 }
 
@@ -247,8 +436,8 @@ table {
   width: max(30rem, 100%);
   table-layout: fixed;
   overflow: scroll;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
 }
 
 th,
@@ -266,21 +455,16 @@ td {
 }
 
 thead {
-  //border-block-end: 2px solid;
-  background-color: #F2F0E5;
+  background-color: $surface;
+  font-weight: 500;
 }
-
-// tfoot {
-//   border-block-end: 2px solid;
-// }
 
 th,
 td {
-  //border: 2px solid;
   padding: 0.25rem 0.75rem;
   vertical-align: baseline;
 }
 
 tr:nth-child(even) {
-  background-color: #F2F0E5;
+  background-color: $surface;
 }

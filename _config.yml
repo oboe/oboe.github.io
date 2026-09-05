@@ -24,3 +24,11 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+# Decorative braille-flow graphic.
+#   sides      - wide ribbons in both gutters, dissolving toward the text
+#   background - one still, very faint field behind the whole page
+#   right      - narrow strip in the right gutter only
+#   off        - disabled
+braille:
+  mode: sides
