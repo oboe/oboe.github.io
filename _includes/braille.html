@@ -50,7 +50,7 @@
         swirl: 3,             // bend amplitude: ribbons run many directions
         opacity: 0.3,
         fade: 0,
-        flowSpeed: 0.010,
+        flowSpeed: 0.008,
         fps: 20,
         seed: seed
       });
@@ -68,7 +68,7 @@
       // The ribbons flow on their own timer and are NOT tied to scrolling:
       // scroll-linked redraws cost ~15ms a frame and always trail the text.
       // Nothing here runs on scroll, so scrolling stays completely smooth.
-      flowSpeed: 0.014,    // gentle drift; raise for faster ribbons
+      flowSpeed: 0.011,    // gentle drift; raise for faster ribbons
       fps: 24,
       opacity: 0.85,
       fade: 0.14

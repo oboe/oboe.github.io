@@ -14,3 +14,8 @@ pub.sh
 _posts/*.md
 _posts/.obsidian/
 _posts/_drafts/
+
+# Build/OS cruft (fix_links.py and fix_list_headers.py are kept — pub.sh runs them)
+__pycache__/
+*.pyc
+.DS_Store

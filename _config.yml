@@ -1,9 +1,23 @@
+title: oboe
+description: >-
+  Short notes on software, systems and whatever else is holding my attention.
+author: oboe
+lang: en_GB
+
+# All three ship with the github-pages gem, so no Gemfile change is needed.
+# seo-tag writes <title>, meta description, Open Graph and Twitter cards, so
+# layouts must NOT also hand-roll a <title>.
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
 collections:
   authors:
     output: true
 
 baseurl: ""
-url: "https://oboe.github.io/"
+url: "https://oboe.github.io"   # no trailing slash: it doubles up in canonical/og URLs
 
 highlighter: rouge
 input: "GFM"

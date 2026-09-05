@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Oboe
+title: oboe
 ---
 
 <div class="archive tag-master">

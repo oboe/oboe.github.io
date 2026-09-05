@@ -261,7 +261,7 @@
       raf = requestAnimationFrame(frame);
       if (ts - last < 1000 / o.fps) return;
       last = ts;
-      t += o.flowSpeed + 0.004;
+      t += o.flowSpeed;   // flowSpeed alone sets the pace; 0 is genuinely still
       draw();
     }
 

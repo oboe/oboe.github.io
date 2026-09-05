@@ -4,7 +4,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎺</text></svg>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }}</title>
+    {% seo %}
+    {% feed_meta %}
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css?{{ site.time | date: '%s%N' }}">
     <link href="{{ site.baseurl }}/assets/css/syntax.css?{{ site.time | date: '%s%N' }}" rel="stylesheet" >
     {% include analytics.html %}
@@ -17,7 +18,17 @@
       }
       .collapsible-content {
         overflow: hidden;
-        transition: height 0.3s ease;
+      }
+      /* Deliberately quiet: short, no easing drama, and the fade trails the
+         height slightly so the text doesn't appear to slide. */
+      .collapsible-content.animating {
+        transition: height 0.18s ease, opacity 0.14s ease;
+      }
+      .collapsible-content.is-collapsed {
+        opacity: 0;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .collapsible-content.animating { transition: none; }
       }
       .collapsible-header.collapsed h1::after,
       .collapsible-header.collapsed h2::after,
@@ -347,8 +358,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   hiddenSections.forEach((section, sectionIndex) => {
     const headers = section.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    console.log("onumshin debug", headers)
-
     headers.forEach((header, headerIndex) => {
       let newId = `${config.prefix}${sectionIndex + 1}-${header.tagName.toLowerCase()}-${headerIndex + 1}`;
       if (config.replaceExisting || !header.id) {
@@ -356,6 +365,43 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  }
+
+  // height:auto can't be interpolated, so animate between explicit pixel
+  // heights and hand back to auto once the transition lands (otherwise nested
+  // content resizing later would be stuck at a stale fixed height).
+  function setCollapsed(el, collapsed) {
+    // scrollHeight is the content height even while the box is clamped to 0,
+    // so it gives the open height in both directions.
+    const full = el.scrollHeight;
+
+    if (el._onEnd) el.removeEventListener('transitionend', el._onEnd);
+    clearTimeout(el._fallback);
+
+    el.classList.add('animating');
+    el.style.height = (collapsed ? full : 0) + 'px';   // explicit starting point
+
+    const settle = function () {
+      if (el._onEnd) el.removeEventListener('transitionend', el._onEnd);
+      el._onEnd = null;
+      clearTimeout(el._fallback);
+      el.classList.remove('animating');
+      if (!collapsed) el.style.height = 'auto';        // let nested content resize later
+    };
+
+    el._onEnd = function (e) {
+      if (e.target !== el || e.propertyName !== 'height') return;
+      settle();
+    };
+    el.addEventListener('transitionend', el._onEnd);
+    // transitionend never fires under prefers-reduced-motion (transition:none).
+    el._fallback = setTimeout(settle, 300);
+
+    // Next frame, so the browser has a starting height to animate from.
+    requestAnimationFrame(() => {
+      el.classList.toggle('is-collapsed', collapsed);
+      el.style.height = (collapsed ? 0 : full) + 'px';
+    });
   }
 
   function makeHeadersCollapsible() {
@@ -386,8 +432,9 @@ document.addEventListener('DOMContentLoaded', function() {
         content.forEach(el => contentWrapper.appendChild(el));
         
         headerWrapper.addEventListener('click', () => {
-          headerWrapper.classList.toggle('collapsed');
-          contentWrapper.style.height = headerWrapper.classList.contains('collapsed') ? '0' : 'auto';
+          const collapsing = !headerWrapper.classList.contains('collapsed');
+          headerWrapper.classList.toggle('collapsed', collapsing);
+          setCollapsed(contentWrapper, collapsing);
         });
       }
     });

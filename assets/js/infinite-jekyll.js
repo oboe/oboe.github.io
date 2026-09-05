@@ -5,34 +5,15 @@ $(function() {
       shouldFetchPosts = true;
 
   // Load the JSON file containing all URLs
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  // If a tag was passed as a url parameter then use it to filter the urls
-  if (urlParams.has('tag')){
-    const tag = urlParams.get('tag');
-    document.getElementById(tag).classList.toggle('hidden');
-    $.getJSON('/posts-by-tag.json', function(data) {
-        let tag_item = data.find(el => el.tag === tag);
-        postURLs = tag_item["posts"];
-        // If there aren't any more posts available to load than already visible, disable fetching
-        if (postURLs.length <= postsToLoad)
-        disableFetching();
-    });
-  } else {
-      $.getJSON('/all-posts.json', function(data) {
-        postURLs = data["posts"];
-        // If there aren't any more posts available to load than already visible, disable fetching
-        if (postURLs.length <= postsToLoad)
-          disableFetching();
-      });
-  }
+  $.getJSON('/all-posts.json', function(data) {
+    postURLs = data["posts"];
+    // If there aren't any more posts available to load than already visible, disable fetching
+    if (postURLs.length <= postsToLoad)
+      disableFetching();
+  });
 
   var postsToLoad = 1,
       loadNewPostsThreshold = 1000;
-
-  console.log('Initial posts to load:', postsToLoad);
-  console.log($(".tag-master:not(.hidden) .post-list").children())
-  console.log('Total post URLs:', postURLs ? postURLs.length : 'Not loaded');
 
   // If there's no spinner, it's not a page where posts should be fetched
   if ($(".infinite-spinner").length < 1)
@@ -54,9 +35,7 @@ $(function() {
         windowScrollPosition = $(window).scrollTop(),
         bottomScrollPosition = windowHeight + windowScrollPosition,
         documentHeight = $(document).height();
-    console.log(windowHeight,",",windowScrollPosition, "|", documentHeight,"-",loadNewPostsThreshold,"<=",bottomScrollPosition)
     if ((documentHeight - loadNewPostsThreshold) <= bottomScrollPosition) {
-      console.log("Hit loading spinner");
       fetchPosts();
     } 
   }
@@ -95,7 +74,6 @@ $(function() {
     var postURL = postURLs[index];
     
     function attemptFetch(remainingRetries) {
-      console.info(`Fetching ${postURL}`)
       $.get(postURL)
         .done(function(data) {
           $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
