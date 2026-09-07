@@ -1,6 +1,4 @@
 title: oboe
-description: >-
-  Short notes on software, systems and whatever else is holding my attention.
 author: oboe
 lang: en_GB
 
@@ -40,9 +38,11 @@ defaults:
       layout: "default"
 
 # Decorative braille-flow graphic.
-#   sides      - wide ribbons in both gutters, dissolving toward the text
+#   sides      - wide ribbons in both gutters, dissolving under the text
 #   background - one still, very faint field behind the whole page
 #   right      - narrow strip in the right gutter only
 #   off        - disabled
+# The gutter modes (sides/right) only have a gutter to sit in above 1100px;
+# at or below that they switch themselves to still top/bottom edge bands.
 braille:
   mode: sides

@@ -44,6 +44,11 @@ html {
 }
 
 body {
+  // Positioning context for the small-screen braille bands, which anchor to
+  // the ends of the DOCUMENT (so they scroll with it) rather than the viewport.
+  // Nothing else on the site positions against the initial containing block.
+  position: relative;
+
   font-family: $font-sans;
   // Keep font-size off <html> so 1rem stays 16px — setting it there makes
   // every rem-based size below scale with it, which compounds fast.
@@ -338,20 +343,25 @@ pre {
 // Braille flow (decorative)
 // ---------------------------------------------------------------------------
 $braille-ink: #B7B5AC;
-$braille-gap: 16px; // breathing room between the ribbons and the text column
+$braille-gap: 6px;       // breathing room between the ribbons and the text column
+$braille-underlap: 28px; // how far each strip runs PAST the gutter, under the column
 
 // Gutter ribbons. Each fills its whole gutter and is masked horizontally so
-// the ink is densest at the viewport edge and has dissolved before it
-// reaches the reading column.
+// the ink is densest at the viewport edge and has dissolved by the time it is
+// a couple of characters into the reading column.
 .braille-strip {
   position: fixed;
   top: 0;
   height: 100vh;
-  // Guarded by the 1100px media query below, where this is still ~194px.
-  width: calc((100vw - #{$measure}) / 2 - #{$braille-gap});
+  // Guarded by the 1100px media query below, where this is still ~232px.
+  width: calc((100vw - #{$measure}) / 2 - #{$braille-gap} + #{$braille-underlap});
   color: $braille-ink;
   pointer-events: none;
-  z-index: 0;
+  // Behind the text, not beside it. The last ~22px of each strip sit under the
+  // reading column so the ribbons dissolve behind the words rather than
+  // stopping short in empty margin. This only works because <body> is
+  // transparent and the paper lives on <html> (see the note at the top).
+  z-index: -1;
 
   canvas {
     display: block;
@@ -359,27 +369,89 @@ $braille-gap: 16px; // breathing room between the ribbons and the text column
     height: 100%;
   }
 
-  // Below this the gutters are too narrow to be worth the paint cost.
+  // Below this there is no gutter left to sit in — the edge bands take over.
   @media (max-width: 1100px) {
     display: none;
   }
 }
 
+// The knee sits late and drops in two steps, so real ink survives all the way
+// to the column edge (~9% alpha there) instead of being half gone by mid-gutter.
 .braille-left {
   left: 0;
-  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
-  mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.62) 62%, rgba(0, 0, 0, 0.24) 86%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.62) 62%, rgba(0, 0, 0, 0.24) 86%, transparent 100%);
 }
 
 .braille-right {
   right: 0;
-  -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
-  mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.62) 62%, rgba(0, 0, 0, 0.24) 86%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.62) 62%, rgba(0, 0, 0, 0.24) 86%, transparent 100%);
 }
 
 // Narrow single-gutter variant (mode: right) — no horizontal dissolve needed.
-.braille-strip.braille-right:only-of-type {
+// Tagged from the include rather than matched with :only-of-type, which stopped
+// being true once the edge bands joined it as siblings.
+.braille-strip.braille-solo {
   width: 68px;
+}
+
+// ---------------------------------------------------------------------------
+// Edge bands (small screens)
+//
+// Under 1100px there is no gutter to work with, and under 600px .container
+// drops its max-width entirely so the reading column IS the viewport. So the
+// field moves to full-bleed horizontal bands: one behind the masthead, one at
+// the foot of the page, each densest at its edge and dissolved before it
+// reaches the body copy.
+//
+// These are absolute, NOT fixed: they belong to the ends of the document, so
+// the masthead band scrolls away with the header instead of sitting over the
+// text for the whole page, and the foot band arrives with the footer. Both
+// are out of flow, so neither adds height or shifts the layout.
+//
+// They sit at z-index -1 like the strips and drift at the same pace. Being
+// absolute rather than fixed is what keeps that cheap: once a band scrolls out
+// of view its IntersectionObserver stops the redraw entirely.
+// ---------------------------------------------------------------------------
+.braille-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: $braille-ink;
+  pointer-events: none;
+  z-index: -1;
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Exactly the complement of the strips' cutoff, so the two never coexist
+  // and the desktop gutter ribbons are left alone.
+  @media (min-width: 1101px) {
+    display: none;
+  }
+}
+
+.braille-band-top {
+  top: 0;
+  // Capped in vh as well so a landscape phone doesn't hand a quarter of its
+  // screen to the ornament.
+  height: min(190px, 24vh);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.5) 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.5) 55%, transparent 100%);
+}
+
+// Anchored to the bottom of <body>, i.e. the end of the document, so it reads
+// as a footer ornament. It can carry the same weight as the masthead band now
+// that it is not parked over the reading area for the whole scroll.
+.braille-band-bottom {
+  bottom: 0;
+  height: min(150px, 20vh);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.5) 55%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.5) 55%, transparent 100%);
 }
 
 // Full-page field, behind everything. The ribbons stay continuous across the

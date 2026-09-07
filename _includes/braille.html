@@ -1,14 +1,22 @@
 {% assign braille_mode = site.braille.mode | default: "sides" %}
 {% unless braille_mode == "off" %}
 <!-- Decorative braille-flow field. aria-hidden, pointer-events:none, and
-     never in the reading column. Mode is set in _config.yml. -->
+     never in the reading column. Mode is set in _config.yml.
+
+     Two geometries ship together and the CSS picks one by width: fixed gutter
+     strips above 1100px, and at or below it a pair of full-bleed bands anchored
+     to the top and bottom of the document — small screens have no gutter, and
+     under 600px the reading column is the whole viewport. The bands scroll
+     with the page: the first belongs to the masthead, the second to the foot. -->
 {% if braille_mode == "background" %}
   <div class="braille-bg" aria-hidden="true"><canvas></canvas></div>
-{% elsif braille_mode == "right" %}
-  <div class="braille-strip braille-right" aria-hidden="true"><canvas></canvas></div>
 {% else %}
+  {% unless braille_mode == "right" %}
   <div class="braille-strip braille-left" aria-hidden="true"><canvas></canvas></div>
-  <div class="braille-strip braille-right" aria-hidden="true"><canvas></canvas></div>
+  {% endunless %}
+  <div class="braille-strip braille-right{% if braille_mode == 'right' %} braille-solo{% endif %}" aria-hidden="true"><canvas></canvas></div>
+  <div class="braille-band braille-band-top" aria-hidden="true"><canvas></canvas></div>
+  <div class="braille-band braille-band-bottom" aria-hidden="true"><canvas></canvas></div>
 {% endif %}
 
 <script src="{{ site.baseurl }}/assets/js/braille-flow.js"></script>
@@ -78,6 +86,41 @@
       init('.braille-left canvas', Object.assign({}, base, { seed: seed }));
     }
     init('.braille-right canvas', Object.assign({}, base, { seed: seed + 7919 }));
+
+    // --- edge bands (small screens) ---------------------------------------
+    // A band is short in the axis where the strips are long, so the strips'
+    // own numbers don't transfer: at cellSize 17 / scale 0.042 a phone-width
+    // band holds a single ribbon that piles into one corner — and on the top
+    // band that corner is the bottom edge, exactly where the CSS mask fades it
+    // to nothing. Measured 0.055/12 across every real band geometry (390x190
+    // through 1100x190, plus the landscape vh-capped sizes): coherence
+    // 0.91-0.93 with 2-10 ribbons, i.e. the same weave the gutters run at
+    // 0.89-0.94, spread over the whole band.
+    //
+    // Do not chase more ribbons by raising `scale` further. Ribbon period and
+    // ribbon width both fall with scale*bandScale, so past here the field just
+    // shatters: 0.07 -> 0.88 coherence, 0.12 -> 0.79, 0.24 -> 0.60 (speckle).
+    // Raising `bandScale` instead is worse — swirl is added to `p` BEFORE the
+    // multiply, so it scales the 3.0 swirl into over a full period of wobble.
+    // Motion (flowSpeed/fps) is inherited from `base`, so the bands drift at
+    // exactly the same pace as the gutter ribbons. That is affordable here for
+    // two reasons: the two bands together are ~2350 cells a frame against the
+    // gutters' ~6100, and because they are absolutely positioned they scroll
+    // out of view, at which point the IntersectionObserver stops them outright.
+    // In practice the masthead band animates only over the first ~190px of
+    // scroll and the foot band only once you reach the bottom.
+    var bandBase = Object.assign({}, base, {
+      cellSize: 12,
+      scale: 0.055,
+      inkDensity: 0.15,   // lighter than the gutters: this ink sits behind text
+      fade: 0             // the dissolve is a CSS mask on the wrapper instead
+    });
+
+    // Offsets are not the 7919 used between the two strips: pickPhase() walks a
+    // fixed 41957 ladder, so instances seeded a common distance apart settle on
+    // the same phase as each other.
+    init('.braille-band-top canvas',    Object.assign({}, bandBase, { seed: seed + 1543, opacity: 0.72 }));
+    init('.braille-band-bottom canvas', Object.assign({}, bandBase, { seed: seed + 3181, opacity: 0.72 }));
   })();
 </script>
 {% endunless %}

@@ -35,6 +35,9 @@
     recalibrateEvery: 30,// draws between threshold refreshes as the field moves
     fps: 24,
     seed: null,
+    animate: true,       // false = paint one frame and never start the rAF loop.
+                         // For a small field a still draw is visually the same
+                         // and costs nothing to keep on screen.
     respectReducedMotion: true,
     pauseWhenOffscreen: true
   };
@@ -267,7 +270,7 @@
 
     function start() {
       if (running) return;
-      if (reduce && o.respectReducedMotion) { draw(); return; } // one still frame
+      if (!o.animate || (reduce && o.respectReducedMotion)) { draw(); return; } // one still frame
       running = true; last = performance.now(); raf = requestAnimationFrame(frame);
     }
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
