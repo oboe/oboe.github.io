@@ -2,6 +2,7 @@
 layout: post
 tags:
   - Apps
+math: false
 ---
 Here's some data on what mobile app (CPIs) cost per installs look like. 
 

@@ -1,0 +1,36 @@
+<!-- Mermaid diagrams (```mermaid blocks) render everywhere. LaTeX renders
+     inside .math-content, which every post gets unless it sets `math: false`:
+     do that for posts quoting prices like "$1.70 ... $2.55", which would
+     otherwise turn into math. $ inside code blocks is always left alone.
+     Anything inside .hidden (the copy infinite-jekyll fetches) is skipped;
+     infinite-jekyll.js calls renderRich() on each post it appends. -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    startup: { typeset: false }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<script>
+  window.renderRich = function (root) {
+    function visible(selector) {
+      return Array.from(root.querySelectorAll(selector)).filter(function (el) {
+        return !el.closest('.hidden');
+      });
+    }
+
+    var math = visible('.math-content');
+    if (math.length) {
+      MathJax.startup.promise.then(function () { return MathJax.typesetPromise(math); });
+    }
+
+    var diagrams = visible('code.language-mermaid');
+    if (diagrams.length) {
+      import('https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs').then(function (m) {
+        m.default.initialize({ startOnLoad: false });
+        m.default.run({ nodes: diagrams });
+      });
+    }
+  };
+  document.addEventListener('DOMContentLoaded', function () { renderRich(document); });
+</script>

@@ -52,7 +52,7 @@
             <p class="post-date">
               {{ page.date | date_to_string }}
             </p>
-            <div class="post-container">
+            <div class="post-container{% unless page.math == false %} math-content{% endunless %}">
               {{ content }}
             </div>
           </body>
@@ -72,7 +72,7 @@
           <aside class="toc" aria-label="Table of contents" hidden>
             <nav id="toc"></nav>
           </aside>
-          <div class="post-content">
+          <div class="post-content{% unless page.math == false %} math-content{% endunless %}">
             {{ content }}
           </div>
           
@@ -133,6 +133,7 @@
       {% include footer.html %}
     </div>
 {% include braille.html %}
+{% include rich-content.html %}
 </html>
 
 <style>

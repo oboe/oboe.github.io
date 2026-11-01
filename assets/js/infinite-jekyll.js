@@ -76,7 +76,8 @@ $(function() {
     function attemptFetch(remainingRetries) {
       $.get(postURL)
         .done(function(data) {
-          $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
+          var $post = $(data).find(".post").appendTo(".tag-master:not(.hidden) .post-list");
+          if (window.renderRich) $post.each(function() { renderRich(this); });
           callback();
         })
         .fail(function(jqXHR, textStatus, errorThrown) {

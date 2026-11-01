@@ -14,7 +14,9 @@ title: oboe
             <p class="post-date">
             {{ post.date | date_to_string }}
             </p>
+            <div{% unless post.math == false %} class="math-content"{% endunless %}>
             {{ post.content }}
+            </div>
             <hr>
         </body>
     </div>
